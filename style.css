@@ -33,11 +33,20 @@ body {
 }
 
 .logo {
-  font-family: "Merriweather", serif;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 0.4px;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  line-height: 1;
+  flex-shrink: 0;
+  z-index: 10001;
+}
+
+.logo img {
+  display: block;
+  height: 58px;
+  width: auto;
+  max-width: 360px;
+  object-fit: contain;
 }
 
 .nav-links {
@@ -855,8 +864,9 @@ footer a:hover {
     font-size: 38px;
   }
 
-  .logo {
-    font-size: 20px;
+  .logo img {
+    height: 38px;
+    max-width: 220px;
   }
 
   .section h2 {
@@ -1210,5 +1220,11 @@ footer a:hover {
 
   .shows-list {
     gap: 8px;
+  }
+}
+@media (max-width: 768px) {
+  .logo img {
+    height: 42px;
+    max-width: 240px;
   }
 }
