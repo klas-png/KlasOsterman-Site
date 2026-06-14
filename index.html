@@ -296,28 +296,44 @@
         allowfullscreen>
       </iframe>
     </div>
-  </div>
 
-  <div id="show-popup" class="show-popup" onclick="closeShowInfo()">
-    <div class="show-popup-content" onclick="event.stopPropagation()">
-      <button class="close-video" onclick="closeShowInfo()">×</button>
-      <h2 id="popup-title"></h2>
-      <p id="popup-location"></p>
-      <p><strong>Mer info:</strong> Fyll i mer här.</p>
-    </div>
   </div>
+      <div id="show-popup" class="show-popup" onclick="closeShowInfo()">
+  <div class="show-popup-content" onclick="event.stopPropagation()">
+    <button class="close-video" onclick="closeShowInfo()">×</button>
+    <h2 id="popup-title"></h2>
+    <p id="popup-location"></p>
+    <p><strong>Mer info:</strong> Fyll i mer här.</p>
+  </div>
+</div>
 
  <script>
-  function stopSpotify() {
-    const spotify = document.getElementById("spotify-player");
-    if (spotify) {
-      const currentSrc = spotify.src;
-      spotify.src = "";
-      setTimeout(() => {
-        spotify.src = currentSrc;
-      }, 50);
-    }
+function stopSpotify() {
+  const spotify = document.getElementById("spotify-player");
+
+  if (spotify) {
+    const spotifySection = document.getElementById("music");
+
+    // Ta bort gamla spelaren
+    spotify.remove();
+
+    // Skapa en ny
+    const newSpotify = document.createElement("iframe");
+
+    newSpotify.id = "spotify-player";
+    newSpotify.style.borderRadius = "12px";
+    newSpotify.src = "https://open.spotify.com/embed/artist/5YfH3tH3YRKdskP1CHgadt?utm_source=generator";
+    newSpotify.width = "100%";
+    newSpotify.height = "352";
+    newSpotify.frameBorder = "0";
+    newSpotify.allowFullscreen = true;
+    newSpotify.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+    newSpotify.loading = "lazy";
+
+    // Lägg tillbaka spelaren sist i musiksektionen
+    spotifySection.appendChild(newSpotify);
   }
+}
 
   function openVideo(videoId) {
     stopSpotify();
