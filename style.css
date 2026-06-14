@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap');
-
+:root {
+  --gold: #C8A46A;
+  --gold-hover: #D8B67F;
+  --white-soft: rgba(255,255,255,0.92);
+  --dark: #111111;
+}
 * {
   margin: 0;
   padding: 0;
@@ -98,7 +103,7 @@ body {
   bottom: -7px;
   width: 0;
   height: 1px;
-  background: rgba(243,239,231,0.85);
+  background: var(--gold);
   opacity: 0;
   transition: all 0.25s ease;
 }
@@ -162,8 +167,7 @@ body {
     url("hero.jpg");
   background-size: cover;
   background-position: center;
-  display: flex;
-  flex-direction: column;
+  background-repeat: no-repeat;
 }
 
 .hero::before {
@@ -174,16 +178,15 @@ body {
     radial-gradient(circle at 50% 30%, rgba(255,255,255,0.08), transparent 45%);
   pointer-events: none;
 }
-
 .hero-content {
   position: relative;
   z-index: 2;
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
   text-align: right;
+  min-height: 100vh;
   padding: 110px 120px 60px 24px;
 }
 
@@ -574,12 +577,13 @@ body {
 }
 
 /* BIO */
-.bio-quote {
-  margin-top: 34px !important;
-  font-family: "Merriweather", serif;
-  font-size: clamp(24px, 3vw, 34px) !important;
-  line-height: 1.35;
-  color: rgba(243,239,231,0.92) !important;
+@media (max-width: 768px) {
+  .bio-quote {
+    font-size: 23px !important;
+    line-height: 1.5;
+    margin-top: 22px !important;
+    max-width: 92%;
+  }
 }
 
 /* LIGHTBOX + POPUP */
@@ -1018,7 +1022,6 @@ footer a:hover {
   .hero-content {
     padding-top: 100px;
   }
-
   .buttons {
     display: flex;
     justify-content: center;
@@ -1224,7 +1227,8 @@ footer a:hover {
 }
 @media (max-width: 768px) {
   .logo img {
-    height: 42px;
-    max-width: 240px;
-  }
+  height: 58px;
+  width: auto;
 }
+  }
+
