@@ -1,33 +1,63 @@
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Klas Österman</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <title>Klas Österman | Singer-songwriter</title>
+  <meta
+    name="description"
+    content="Klas Österman – svensk singer-songwriter. Lyssna på musik, se videor, hitta spelningar och boka solo, duo eller band."
+  >
+
+  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+  <style>
+    .past-show {
+      opacity: 0.45;
+      filter: grayscale(30%);
+    }
+
+    .past-show .show-date,
+    .past-show .show-info h3 {
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      text-decoration-color: rgba(255,255,255,0.45);
+    }
+
+    .past-show:hover {
+      transform: none;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="scroll-progress"></div>
+  <div class="scroll-progress"></div>
 
   <header class="hero">
-    <nav class="nav">
+    <nav class="nav" aria-label="Huvudmeny">
       <a class="logo" href="#" aria-label="Klas Österman startsida">
         <img src="logo-header-gold.png" alt="Klas Österman logotyp">
       </a>
 
-      <button class="menu-toggle" onclick="toggleMenu()">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Öppna meny"
+        aria-expanded="false"
+        onclick="toggleMenu()"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
       <div class="nav-links">
         <a href="#music">Lyssna</a>
-        <a href="#videos">Videos</a>
+        <a href="#videos">Videor</a>
         <a href="#live">Live</a>
         <a href="#duo">Duo</a>
         <a href="#bio">Bio</a>
@@ -41,408 +71,543 @@
 
       <div class="buttons">
         <a href="#music">Lyssna</a>
-        <a href="#videos">Se videos</a>
+        <a href="#videos">Se videor</a>
       </div>
 
-      <div class="social-icons">
-        <a href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt" target="_blank"><i class="fab fa-spotify"></i></a>
-        <a href="https://www.youtube.com/@KlasOstermanMusic" target="_blank"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.instagram.com/klasostermanmusic/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@klasosterman" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.facebook.com/KlasOstermanMusic" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://music.apple.com/se/artist/klas-österman/1201085087" target="_blank"><i class="fab fa-apple"></i></a>
-        <a href="https://link.deezer.com/s/33kyknYXZ2SQVEx1ijzKj" target="_blank"><i class="fas fa-music"></i></a>
+      <div class="social-icons" aria-label="Sociala medier">
+        <a href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+          <i class="fab fa-spotify"></i>
+        </a>
+        <a href="https://www.youtube.com/@KlasOstermanMusic" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.instagram.com/klasostermanmusic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.tiktok.com/@klasosterman" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://www.facebook.com/KlasOstermanMusic" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://music.apple.com/se/artist/klas-österman/1201085087" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
+          <i class="fab fa-apple"></i>
+        </a>
+        <a href="https://link.deezer.com/s/33kyknYXZ2SQVEx1ijzKj" target="_blank" rel="noopener noreferrer" aria-label="Deezer">
+          <i class="fas fa-music"></i>
+        </a>
       </div>
     </div>
   </header>
 
-  <section id="music" class="section">
-   <h2><i class="fas fa-headphones"></i> Lyssna</h2>
+  <main>
+    <section id="music" class="section">
+      <h2><i class="fas fa-headphones"></i> Lyssna</h2>
 
-<iframe
-  id="spotify-player"
-  style="border-radius:12px"
-  src="https://open.spotify.com/embed/artist/5YfH3tH3YRKdskP1CHgadt?utm_source=generator"
-  width="100%"
-  height="352"
-  frameborder="0"
-  allowfullscreen=""
-  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-  loading="lazy">
-</iframe>
-  </section>
+      <iframe
+        id="spotify-player"
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/artist/5YfH3tH3YRKdskP1CHgadt?utm_source=generator"
+        width="100%"
+        height="352"
+        frameborder="0"
+        allowfullscreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+    </section>
 
-  <section id="videos" class="section">
-   <h2><i class="fas fa-play"></i> Musikvideos</h2>
+    <section id="videos" class="section">
+      <h2><i class="fas fa-play"></i> Musikvideor</h2>
+      <p class="section-intro">Ett urval av musikvideor, livekänsla och visuella berättelser.</p>
 
-<p class="section-intro">Ett urval av musikvideos, livekänsla och visuella berättelser.</p>
+      <div class="video-grid">
+        <button class="video-card" type="button" onclick="openVideo('iS0_Bc853Bc')">
+          <img src="https://img.youtube.com/vi/iS0_Bc853Bc/hqdefault.jpg" alt="Där änglar hör">
+          <span>Där änglar hör</span>
+        </button>
 
-    <div class="video-grid">
-      <button class="video-card" onclick="openVideo('iS0_Bc853Bc')">
-        <img src="https://img.youtube.com/vi/iS0_Bc853Bc/hqdefault.jpg">
-        <span>Där änglar hör</span>
-      </button>
+        <button class="video-card" type="button" onclick="openVideo('CaXVYGNNGY0')">
+          <img src="https://img.youtube.com/vi/CaXVYGNNGY0/hqdefault.jpg" alt="Min filosofi">
+          <span>Min filosofi</span>
+        </button>
 
-      <button class="video-card" onclick="openVideo('CaXVYGNNGY0')">
-        <img src="https://img.youtube.com/vi/CaXVYGNNGY0/hqdefault.jpg">
-        <span>Min filosofi</span>
-      </button>
+        <button class="video-card" type="button" onclick="openVideo('SVQvr4itZno')">
+          <img src="https://img.youtube.com/vi/SVQvr4itZno/hqdefault.jpg" alt="Löpsedel">
+          <span>Löpsedel</span>
+        </button>
 
-      <button class="video-card" onclick="openVideo('SVQvr4itZno')">
-        <img src="https://img.youtube.com/vi/SVQvr4itZno/hqdefault.jpg">
-        <span>Löpsedel</span>
-      </button>
+        <button class="video-card" type="button" onclick="openVideo('bdJ6qrHlZ34')">
+          <img src="https://img.youtube.com/vi/bdJ6qrHlZ34/hqdefault.jpg" alt="Paradise">
+          <span>Paradise</span>
+        </button>
 
-      <button class="video-card" onclick="openVideo('bdJ6qrHlZ34')">
-        <img src="https://img.youtube.com/vi/bdJ6qrHlZ34/hqdefault.jpg">
-        <span>Paradise</span>
-      </button>
+        <button class="video-card" type="button" onclick="openVideo('jyEEpuWH82c')">
+          <img src="https://img.youtube.com/vi/jyEEpuWH82c/hqdefault.jpg" alt="Hummeldal">
+          <span>Hummeldal</span>
+        </button>
 
-      <button class="video-card" onclick="openVideo('jyEEpuWH82c')">
-        <img src="https://img.youtube.com/vi/jyEEpuWH82c/hqdefault.jpg">
-        <span>Hummeldal</span>
-      </button>
+        <button class="video-card" type="button" onclick="openVideo('LKZUf40ns8o')">
+          <img src="https://img.youtube.com/vi/LKZUf40ns8o/hqdefault.jpg" alt="Blood Moon">
+          <span>Blood Moon</span>
+        </button>
+      </div>
+    </section>
 
-      <button class="video-card" onclick="openVideo('LKZUf40ns8o')">
-        <img src="https://img.youtube.com/vi/LKZUf40ns8o/hqdefault.jpg">
-        <span>Blood Moon</span>
-      </button>
-    </div>
-  </section>
+    <section id="live" class="section">
+      <h2><i class="fas fa-calendar-days"></i> Spelningar</h2>
 
-  <section id="live" class="section">
-    <h2><i class="fas fa-calendar-days"></i> Kommande spelningar</h2>
-
-    <div class="shows-list">
-
-      <div class="show-item" onclick="openShowInfo('13 juni 2026', 'Privat bröllop', 'Fredriksborgs Hotell, Värmdö')">
-        <div class="show-date">13 juni 2026</div>
-        <div class="show-info">
-         <h3>Fredriksborgs Hotell, Värmdö</h3>
-         <p>Klas Österman & Josefin Blomberg</p>
+      <div class="shows-list">
+        <div
+          class="show-item"
+          role="button"
+          tabindex="0"
+          onclick="openShowInfo('16 juli 2026', 'Live', 'Ingmarsö Krog', 'Klas Österman & Josefin Blomberg')"
+          onkeydown="handleShowKey(event, '16 juli 2026', 'Live', 'Ingmarsö Krog', 'Klas Österman & Josefin Blomberg')"
+        >
+          <div class="show-date">16 juli 2026</div>
+          <div class="show-info">
+            <h3>Ingmarsö Krog</h3>
+            <p>Klas Österman & Josefin Blomberg</p>
+          </div>
+          <button
+            class="show-info-button"
+            type="button"
+            aria-label="Mer information om spelningen på Ingmarsö Krog"
+            onclick="event.stopPropagation(); openShowInfo('16 juli 2026', 'Live', 'Ingmarsö Krog', 'Klas Österman & Josefin Blomberg')"
+          >
+            <i class="fas fa-info"></i>
+          </button>
         </div>
-        <button class="show-info-button" onclick="openShowInfo('11 juni 2026', 'Privat bröllop', 'Rimbo kyrka')">
-  <i class="fas fa-info"></i>
-</button>
+
+        <p class="section-intro" style="margin-top: 24px;">Tidigare spelningar</p>
+
+        <div
+          class="show-item past-show"
+          role="button"
+          tabindex="0"
+          onclick="openShowInfo('11 juli 2026', 'Live med band', 'Logen, Östra Lagnö', 'Klas Österman & Josefin Blomberg + band')"
+          onkeydown="handleShowKey(event, '11 juli 2026', 'Live med band', 'Logen, Östra Lagnö', 'Klas Österman & Josefin Blomberg + band')"
+        >
+          <div class="show-date">11 juli 2026</div>
+          <div class="show-info">
+            <h3>Logen, Östra Lagnö</h3>
+            <p>Klas Österman & Josefin Blomberg + band</p>
+          </div>
+          <button
+            class="show-info-button"
+            type="button"
+            aria-label="Mer information om spelningen på Logen"
+            onclick="event.stopPropagation(); openShowInfo('11 juli 2026', 'Live med band', 'Logen, Östra Lagnö', 'Klas Österman & Josefin Blomberg + band')"
+          >
+            <i class="fas fa-info"></i>
+          </button>
+        </div>
+
+        <div
+          class="show-item past-show"
+          role="button"
+          tabindex="0"
+          onclick="openShowInfo('27 juni 2026', 'Privat bröllop', 'Idöborg, Värmdö', 'Klas Österman & Josefin Blomberg')"
+          onkeydown="handleShowKey(event, '27 juni 2026', 'Privat bröllop', 'Idöborg, Värmdö', 'Klas Österman & Josefin Blomberg')"
+        >
+          <div class="show-date">27 juni 2026</div>
+          <div class="show-info">
+            <h3>Idöborg, Värmdö</h3>
+            <p>Klas Österman & Josefin Blomberg</p>
+          </div>
+          <button
+            class="show-info-button"
+            type="button"
+            aria-label="Mer information om spelningen på Idöborg"
+            onclick="event.stopPropagation(); openShowInfo('27 juni 2026', 'Privat bröllop', 'Idöborg, Värmdö', 'Klas Österman & Josefin Blomberg')"
+          >
+            <i class="fas fa-info"></i>
+          </button>
+        </div>
+
+        <div
+          class="show-item past-show"
+          role="button"
+          tabindex="0"
+          onclick="openShowInfo('26 juni 2026', 'Live', 'Café Chocolat, Rimbo', 'Klas Österman & Josefin Blomberg')"
+          onkeydown="handleShowKey(event, '26 juni 2026', 'Live', 'Café Chocolat, Rimbo', 'Klas Österman & Josefin Blomberg')"
+        >
+          <div class="show-date">26 juni 2026</div>
+          <div class="show-info">
+            <h3>Café Chocolat, Rimbo</h3>
+            <p>Klas Österman & Josefin Blomberg</p>
+          </div>
+          <button
+            class="show-info-button"
+            type="button"
+            aria-label="Mer information om spelningen på Café Chocolat"
+            onclick="event.stopPropagation(); openShowInfo('26 juni 2026', 'Live', 'Café Chocolat, Rimbo', 'Klas Österman & Josefin Blomberg')"
+          >
+            <i class="fas fa-info"></i>
+          </button>
+        </div>
+
+        <div
+          class="show-item past-show"
+          role="button"
+          tabindex="0"
+          onclick="openShowInfo('13 juni 2026', 'Privat bröllop', 'Fredriksborgs Hotell, Värmdö', 'Klas Österman & Josefin Blomberg')"
+          onkeydown="handleShowKey(event, '13 juni 2026', 'Privat bröllop', 'Fredriksborgs Hotell, Värmdö', 'Klas Österman & Josefin Blomberg')"
+        >
+          <div class="show-date">13 juni 2026</div>
+          <div class="show-info">
+            <h3>Fredriksborgs Hotell, Värmdö</h3>
+            <p>Klas Österman & Josefin Blomberg</p>
+          </div>
+          <button
+            class="show-info-button"
+            type="button"
+            aria-label="Mer information om spelningen på Fredriksborgs Hotell"
+            onclick="event.stopPropagation(); openShowInfo('13 juni 2026', 'Privat bröllop', 'Fredriksborgs Hotell, Värmdö', 'Klas Österman & Josefin Blomberg')"
+          >
+            <i class="fas fa-info"></i>
+          </button>
+        </div>
+
+        <div
+          class="show-item past-show"
+          role="button"
+          tabindex="0"
+          onclick="openShowInfo('11 juni 2026', 'Privat bröllop', 'Rimbo kyrka', 'Klas Österman & Josefin Blomberg')"
+          onkeydown="handleShowKey(event, '11 juni 2026', 'Privat bröllop', 'Rimbo kyrka', 'Klas Österman & Josefin Blomberg')"
+        >
+          <div class="show-date">11 juni 2026</div>
+          <div class="show-info">
+            <h3>Rimbo kyrka</h3>
+            <p>Klas Österman & Josefin Blomberg</p>
+          </div>
+          <button
+            class="show-info-button"
+            type="button"
+            aria-label="Mer information om spelningen i Rimbo kyrka"
+            onclick="event.stopPropagation(); openShowInfo('11 juni 2026', 'Privat bröllop', 'Rimbo kyrka', 'Klas Österman & Josefin Blomberg')"
+          >
+            <i class="fas fa-info"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><i class="fas fa-microphone-lines"></i> Liveformat</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Band</h3>
+          <p>Klas Österman live med fullt band – egna låtar med närvaro, energi och känsla.</p>
+          <a href="#contact">Boka / kontakt</a>
+        </div>
+
+        <div class="card">
+          <h3>Duo</h3>
+          <p>Två röster, piano och gitarr – personliga tolkningar i ett varmt och intimt liveformat.</p>
+          <a href="#duo">Se duo</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="duo" class="section highlight">
+      <h2><i class="fas fa-user-group"></i> Duo — Klas Österman & Josefin Blomberg</h2>
+
+      <div class="video-grid">
+        <button class="video-card" type="button" onclick="openVideo('epgLor8Q7ns')">
+          <img src="https://img.youtube.com/vi/epgLor8Q7ns/hqdefault.jpg" alt="Det eviga intets land">
+          <span>Det eviga intets land</span>
+        </button>
+
+        <button class="video-card" type="button" onclick="openVideo('1yt9LfNf8ZM')">
+          <img src="https://img.youtube.com/vi/1yt9LfNf8ZM/hqdefault.jpg" alt="Om du lämnade mig nu">
+          <span>Om du lämnade mig nu</span>
+        </button>
+
+        <button class="video-card" type="button" onclick="openVideo('KqaZP5e_FeY')">
+          <img src="https://img.youtube.com/vi/KqaZP5e_FeY/hqdefault.jpg" alt="Maid of the River">
+          <span>Maid of the River</span>
+        </button>
+
+        <button class="video-card" type="button" onclick="openVideo('w5T6a0E-rKA')">
+          <img src="https://img.youtube.com/vi/w5T6a0E-rKA/hqdefault.jpg" alt="San Francisco">
+          <span>San Francisco</span>
+        </button>
+
+        <button class="video-card" type="button" onclick="openVideo('quZoqEIczVs')">
+          <img src="https://img.youtube.com/vi/quZoqEIczVs/hqdefault.jpg" alt="Living comes with dying">
+          <span>Living comes with dying</span>
+        </button>
+
+        <button class="video-card" type="button" onclick="openVideo('ypPF4HfDf0k')">
+          <img src="https://img.youtube.com/vi/ypPF4HfDf0k/hqdefault.jpg" alt="Santeria">
+          <span>Santeria</span>
+        </button>
+
+        <button class="video-card duo-extra" type="button" onclick="openVideo('KrLpDEw9f98')">
+          <img src="https://img.youtube.com/vi/KrLpDEw9f98/hqdefault.jpg" alt="Vi gjorde vårt bästa">
+          <span>Vi gjorde vårt bästa</span>
+        </button>
       </div>
 
-      <div class="show-item">
-        <div class="show-date">11 juni 2026</div>
-        <div class="show-info">
-          <h3>Rimbo kyrka</h3>
-          <p>Klas Österman & Josefin Blomberg</p>
-        </div>
-        <button class="show-info-button" onclick="openShowInfo('11 juni 2026', 'Privat bröllop', 'Rimbo kyrka')">
-  <i class="fas fa-info"></i>
-</button>
-      </div>
+      <button class="main-button show-more-button" type="button" onclick="showMoreDuo()">Visa fler</button>
+      <a class="main-button" href="#contact">Boka duon</a>
+    </section>
 
-      <div class="show-item" onclick="openShowInfo('26 juni 2026', 'Live', 'Café Chocolat, Rimbo')">
-        <div class="show-date">26 juni 2026</div>
-        <div class="show-info">
-          <h3>Café Chocolat, Rimbo</h3>
-          <p>Klas Österman & Josefin Blomberg</p>
-        </div>
-        <button class="show-info-button" onclick="openShowInfo('11 juni 2026', 'Privat bröllop', 'Rimbo kyrka')">
-  <i class="fas fa-info"></i>
-</button>
-      </div>
+    <section id="bio" class="section">
+      <h2><i class="fas fa-feather-pointed"></i> Bio</h2>
 
-      <div class="show-item" onclick="openShowInfo('27 juni 2026', 'Privat bröllop', 'Idöborg, Värmdö')">
-        <div class="show-date">27 juni 2026</div>
-        <div class="show-info">
-          <h3>Idöborg, Värmdö</h3>
-          <p>Klas Österman & Josefin Blomberg</p>
-        </div>
-        <button class="show-info-button" onclick="openShowInfo('11 juni 2026', 'Privat bröllop', 'Rimbo kyrka')">
-  <i class="fas fa-info"></i>
-</button>
-      </div>
-
-      <div class="show-item" onclick="openShowInfo('11 juli 2026', 'Live med band', 'Logen, Östra Lagnö')">
-        <div class="show-date">11 juli 2026</div>
-        <div class="show-info">
-          <h3>Logen, Östra Lagnö</h3>
-          <p>Klas Österman & Josefin Blomberg + band</p>
-        </div>
-        <button class="show-info-button" onclick="openShowInfo('11 juni 2026', 'Privat bröllop', 'Rimbo kyrka')">
-  <i class="fas fa-info"></i>
-</button>
-      </div>
-
-    </div>
-  </section>
-<section class="section">
-  <h2><i class="fas fa-microphone-lines"></i> Liveformat</h2>
-
-  <div class="cards">
-    <div class="card">
-      <h3>Band</h3>
       <p>
-        Klas Österman live med fullt band – egna låtar med närvaro, energi och känsla.
+        Klas Österman är en svensk singer-songwriter, artist och låtskrivare med rötter i
+        hiphopens textvärld och ett starkt fokus på berättande, melodier och personligt uttryck.
       </p>
-      <a href="#contact">Boka / kontakt</a>
-    </div>
 
-    <div class="card">
-      <h3>Duo</h3>
       <p>
-        Två röster, piano och gitarr – personliga tolkningar i ett varmt och intimt liveformat.
+        Med texter som rör sig nära livet och musik som spänner från avskalat akustiskt till
+        större, atmosfäriska produktioner skapar han ett eget sound där ärlighet, känsla och
+        starka melodier står i centrum.
       </p>
-      <a href="#duo">Se duo</a>
-    </div>
-  </div>
-</section>
 
+      <p>
+        Efter många år som låtskrivare och producent, och en längre period borta från musiken,
+        hittade Klas tillbaka till sitt skapande, sin röst och viljan att stå på scen.
+      </p>
 
-  <section id="duo" class="section highlight">
-    <h2><i class="fas fa-user-group"></i> Duo — Klas Österman & Josefin Blomberg</h2>
+      <p class="bio-quote">För Klas är musik inte ett val. Det är ett behov.</p>
+    </section>
 
-    <div class="video-grid">
-      <button class="video-card" onclick="openVideo('epgLor8Q7ns')">
-        <img src="https://img.youtube.com/vi/epgLor8Q7ns/hqdefault.jpg" alt="Det eviga intets land">
-        <span>Det eviga intets land</span>
-      </button>
+    <section id="contact" class="section contact-section">
+      <h2><i class="fas fa-envelope"></i> Boka Klas Österman</h2>
 
-      <button class="video-card" onclick="openVideo('1yt9LfNf8ZM')">
-        <img src="https://img.youtube.com/vi/1yt9LfNf8ZM/hqdefault.jpg" alt="Om du lämnade mig nu">
-        <span>Om du lämnade mig nu</span>
-      </button>
+      <p>
+        För bokningar, samarbeten eller frågor kring konserter, bröllop, privata event,
+        duoformat eller fullt band.
+      </p>
 
-      <button class="video-card" onclick="openVideo('KqaZP5e_FeY')">
-        <img src="https://img.youtube.com/vi/KqaZP5e_FeY/hqdefault.jpg" alt="Maid of the River">
-        <span>Maid of the River</span>
-      </button>
-
-      <button class="video-card" onclick="openVideo('w5T6a0E-rKA')">
-        <img src="https://img.youtube.com/vi/w5T6a0E-rKA/hqdefault.jpg" alt="San Francisco">
-        <span>San Francisco</span>
-      </button>
-
-      <button class="video-card" onclick="openVideo('quZoqEIczVs')">
-        <img src="https://img.youtube.com/vi/quZoqEIczVs/hqdefault.jpg" alt="Living comes with dying">
-        <span>Living comes with dying</span>
-      </button>
-
-      <button class="video-card" onclick="openVideo('ypPF4HfDf0k')">
-        <img src="https://img.youtube.com/vi/ypPF4HfDf0k/hqdefault.jpg" alt="Santeria">
-        <span>Santeria</span>
-      </button>
-
-      <button class="video-card duo-extra" onclick="openVideo('KrLpDEw9f98')">
-        <img src="https://img.youtube.com/vi/KrLpDEw9f98/hqdefault.jpg" alt="Vi gjorde vårt bästa">
-        <span>Vi gjorde vårt bästa</span>
-      </button>
-    </div>
-
-    <button class="main-button show-more-button" onclick="showMoreDuo()">Visa fler</button>
-    <a class="main-button" href="#contact">Boka duon</a>
-  </section>
-
-  <section id="bio" class="section">
-    <h2><i class="fas fa-feather-pointed"></i> Bio</h2>
-<p>
-  Klas Österman är en svensk singer-songwriter, artist och låtskrivare med rötter i hiphopens textvärld och ett starkt fokus på berättande, melodier och personligt uttryck.
-</p>
-
-<p>
-  Med texter som rör sig nära livet och musik som spänner från avskalat akustiskt till större, atmosfäriska produktioner skapar han ett eget sound där ärlighet, känsla och starka melodier står i centrum.
-</p>
-
-<p>
-  Efter många år som låtskrivare och producent, och en längre period borta från musiken, hittade Klas tillbaka till sitt skapande, sin röst och viljan att stå på scen.
-</p>
-
-<p class="bio-quote">
-  För Klas är musik inte ett val. Det är ett behov.
-</p>
-  </section>
-
- <section id="contact" class="section contact-section">
-<h2><i class="fas fa-envelope"></i> Boka Klas Österman</h2>
-  <p>
-    För bokningar, samarbeten eller frågor kring konserter, bröllop, privata events,
-    duoformat eller fullt band.
-  </p>
-
-  
- <a class="main-button" href="mailto:info@klasosterman.se">info@klasosterman.se</a>
-</section>
+      <a class="main-button" href="mailto:info@klasosterman.se">info@klasosterman.se</a>
+    </section>
+  </main>
 
   <footer>
-    <div class="social-icons">
-      <a href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt?si=XypCv75lQsG7yJbCoC7J7g" target="_blank"><i class="fab fa-spotify"></i></a>
-      <a href="https://www.youtube.com/@KlasOstermanMusic" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.instagram.com/klasostermanmusic/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/@klasosterman" target="_blank"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.facebook.com/KlasOstermanMusic" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://music.apple.com/se/artist/klas-österman/1201085087" target="_blank"><i class="fab fa-apple"></i></a>
-      <a href="https://link.deezer.com/s/33kyknYXZ2SQVEx1ijzKj" target="_blank"><i class="fas fa-music"></i></a>
+    <div class="social-icons" aria-label="Sociala medier">
+      <a href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+        <i class="fab fa-spotify"></i>
+      </a>
+      <a href="https://www.youtube.com/@KlasOstermanMusic" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://www.instagram.com/klasostermanmusic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.tiktok.com/@klasosterman" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="https://www.facebook.com/KlasOstermanMusic" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://music.apple.com/se/artist/klas-österman/1201085087" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
+        <i class="fab fa-apple"></i>
+      </a>
+      <a href="https://link.deezer.com/s/33kyknYXZ2SQVEx1ijzKj" target="_blank" rel="noopener noreferrer" aria-label="Deezer">
+        <i class="fas fa-music"></i>
+      </a>
     </div>
 
     <p>Klas Österman · Singer-songwriter · Stockholm</p>
-<p><a href="mailto:info@klasosterman.se">info@klasosterman.se</a></p>
+    <p><a href="mailto:info@klasosterman.se">info@klasosterman.se</a></p>
   </footer>
 
   <div id="video-lightbox" class="video-lightbox" onclick="closeVideo()">
-    <button class="close-video" onclick="closeVideo()">×</button>
+    <button class="close-video" type="button" aria-label="Stäng video" onclick="closeVideo()">×</button>
 
     <div class="lightbox-content" onclick="event.stopPropagation()">
       <iframe
         id="lightbox-iframe"
         src=""
+        title="YouTube-video"
         frameborder="0"
         allow="autoplay; encrypted-media; picture-in-picture"
         allowfullscreen>
       </iframe>
     </div>
-
   </div>
-      <div id="show-popup" class="show-popup" onclick="closeShowInfo()">
-  <div class="show-popup-content" onclick="event.stopPropagation()">
-    <button class="close-video" onclick="closeShowInfo()">×</button>
-    <h2 id="popup-title"></h2>
-    <p id="popup-location"></p>
-    <p><strong>Mer info:</strong> Fyll i mer här.</p>
+
+  <div id="show-popup" class="show-popup" onclick="closeShowInfo()">
+    <div class="show-popup-content" onclick="event.stopPropagation()">
+      <button class="close-video" type="button" aria-label="Stäng information" onclick="closeShowInfo()">×</button>
+      <h2 id="popup-title"></h2>
+      <p id="popup-location"></p>
+      <p id="popup-act"></p>
+    </div>
   </div>
-</div>
 
- <script>
-function stopSpotify() {
-  const spotify = document.getElementById("spotify-player");
+  <script>
+    function stopSpotify() {
+      const spotify = document.getElementById("spotify-player");
 
-  if (spotify) {
-    const spotifySection = document.getElementById("music");
+      if (!spotify) return;
 
-    // Ta bort gamla spelaren
-    spotify.remove();
+      const spotifySection = document.getElementById("music");
+      spotify.remove();
 
-    // Skapa en ny
-    const newSpotify = document.createElement("iframe");
+      const newSpotify = document.createElement("iframe");
+      newSpotify.id = "spotify-player";
+      newSpotify.style.borderRadius = "12px";
+      newSpotify.src = "https://open.spotify.com/embed/artist/5YfH3tH3YRKdskP1CHgadt?utm_source=generator";
+      newSpotify.width = "100%";
+      newSpotify.height = "352";
+      newSpotify.frameBorder = "0";
+      newSpotify.allowFullscreen = true;
+      newSpotify.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+      newSpotify.loading = "lazy";
 
-    newSpotify.id = "spotify-player";
-    newSpotify.style.borderRadius = "12px";
-    newSpotify.src = "https://open.spotify.com/embed/artist/5YfH3tH3YRKdskP1CHgadt?utm_source=generator";
-    newSpotify.width = "100%";
-    newSpotify.height = "352";
-    newSpotify.frameBorder = "0";
-    newSpotify.allowFullscreen = true;
-    newSpotify.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
-    newSpotify.loading = "lazy";
+      spotifySection.appendChild(newSpotify);
+    }
 
-    // Lägg tillbaka spelaren sist i musiksektionen
-    spotifySection.appendChild(newSpotify);
-  }
-}
+    function openVideo(videoId) {
+      stopSpotify();
 
-  function openVideo(videoId) {
-    stopSpotify();
+      const lightbox = document.getElementById("video-lightbox");
+      const iframe = document.getElementById("lightbox-iframe");
 
-    const lightbox = document.getElementById("video-lightbox");
-    const iframe = document.getElementById("lightbox-iframe");
+      iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0";
+      lightbox.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
 
-    iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0";
-    lightbox.classList.add("active");
-  }
+    function closeVideo() {
+      document.getElementById("lightbox-iframe").src = "";
+      document.getElementById("video-lightbox").classList.remove("active");
+      document.body.style.overflow = "";
+    }
 
-  function closeVideo() {
-    document.getElementById("lightbox-iframe").src = "";
-    document.getElementById("video-lightbox").classList.remove("active");
-  }
+    function showMoreDuo() {
+      document.querySelectorAll(".duo-extra").forEach(video => {
+        video.classList.add("show");
+      });
 
-  function showMoreDuo() {
-    document.querySelectorAll(".duo-extra").forEach(video => {
-      video.classList.add("show");
-    });
+      const button = document.querySelector(".show-more-button");
+      if (button) button.style.display = "none";
+    }
 
-    document.querySelector(".show-more-button").style.display = "none";
-  }
+    function openShowInfo(date, title, location, act) {
+      document.getElementById("popup-title").innerText = date + " — " + title;
+      document.getElementById("popup-location").innerText = location;
+      document.getElementById("popup-act").innerText = act;
+      document.getElementById("show-popup").classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
 
-  function openShowInfo(date, title, location) {
-    document.getElementById("popup-title").innerText = date + " — " + title;
-    document.getElementById("popup-location").innerText = location;
-    document.getElementById("show-popup").classList.add("active");
-  }
+    function closeShowInfo() {
+      document.getElementById("show-popup").classList.remove("active");
+      document.body.style.overflow = "";
+    }
 
-  function closeShowInfo() {
-    document.getElementById("show-popup").classList.remove("active");
-  }
+    function handleShowKey(event, date, title, location, act) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openShowInfo(date, title, location, act);
+      }
+    }
 
-  function toggleMenu() {
-    document.querySelector(".nav-links").classList.toggle("open");
-    document.querySelector(".menu-toggle").classList.toggle("open");
-  }
+    function toggleMenu() {
+      const navLinks = document.querySelector(".nav-links");
+      const menuToggle = document.querySelector(".menu-toggle");
+      const isOpen = navLinks.classList.toggle("open");
 
-  document.addEventListener("click", function (e) {
-    const navLinks = document.querySelector(".nav-links");
-    const menuToggle = document.querySelector(".menu-toggle");
+      menuToggle.classList.toggle("open", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
 
-    if (
-      navLinks.classList.contains("open") &&
-      !navLinks.contains(e.target) &&
-      !menuToggle.contains(e.target)
-    ) {
+    function closeMenu() {
+      const navLinks = document.querySelector(".nav-links");
+      const menuToggle = document.querySelector(".menu-toggle");
+
       navLinks.classList.remove("open");
       menuToggle.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
     }
-  });
 
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      document.querySelector(".nav-links").classList.remove("open");
-      document.querySelector(".menu-toggle").classList.remove("open");
-    });
-  });
+    document.addEventListener("click", function(event) {
+      const navLinks = document.querySelector(".nav-links");
+      const menuToggle = document.querySelector(".menu-toggle");
 
-  const sections = document.querySelectorAll(".section");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, { threshold: 0.15 });
-
-  sections.forEach(section => {
-    section.classList.add("fade-section");
-    observer.observe(section);
-  });
-
-  const navMenuLinks = document.querySelectorAll(".nav-links a");
-  const pageSections = document.querySelectorAll("section[id]");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-
-    pageSections.forEach(section => {
-      const sectionTop = section.offsetTop - 180;
-
-      if (window.scrollY >= sectionTop) {
-        current = section.getAttribute("id");
+      if (
+        navLinks.classList.contains("open") &&
+        !navLinks.contains(event.target) &&
+        !menuToggle.contains(event.target)
+      ) {
+        closeMenu();
       }
     });
 
-    navMenuLinks.forEach(link => {
-      link.classList.remove("active");
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
 
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeVideo();
+        closeShowInfo();
+        closeMenu();
       }
     });
 
-    const progressBar = document.querySelector(".scroll-progress");
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (window.scrollY / totalHeight) * 100;
+    const sections = document.querySelectorAll(".section");
 
-    progressBar.style.width = progress + "%";
-  });
-</script>
-<a href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt?si=m_5XsYYuT8asAUKeBFOL7Q"
-   class="floating-listen"
-   target="_blank">
-  <i class="fab fa-spotify"></i>
-  Lyssna
-</a>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.15 });
+
+    sections.forEach(section => {
+      section.classList.add("fade-section");
+      observer.observe(section);
+    });
+
+    const navMenuLinks = document.querySelectorAll(".nav-links a");
+    const pageSections = document.querySelectorAll("section[id]");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      pageSections.forEach(section => {
+        const sectionTop = section.offsetTop - 180;
+
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navMenuLinks.forEach(link => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+
+      const progressBar = document.querySelector(".scroll-progress");
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+
+      progressBar.style.width = progress + "%";
+    });
+  </script>
+
+  <a
+    href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt"
+    class="floating-listen"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i class="fab fa-spotify"></i>
+    Lyssna
+  </a>
 </body>
 </html>
