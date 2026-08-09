@@ -34,7 +34,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - Håll anmälan enkel och be till en början bara om e-postadress.
 - Ge möjlighet att senare välja ort eller område för lokalt relevanta utskick.
 - [Genomfört] Märk varje spelning som offentlig eller privat och förbered märkning för fri entré, biljettbelagd och slutsåld.
-- Lägg till biljettlänk, kalenderpåminnelse och delningsmöjlighet för offentliga spelningar.
+- [Påbörjat] Lägg till biljettlänk, kalenderpåminnelse och delningsmöjlighet för offentliga spelningar. Kalender och delning är klara; biljettknappen aktiveras när riktiga länkar läggs in.
 - Skapa en tydlig bokningssida för solo, duo, fullt band, bröllop, mingel, företag och privata evenemang.
 - [Genomfört] Lägg till ett kort bokningsformulär för datum, ort, lokal, evenemang, liveformat, antal gäster och kontaktuppgifter.
 
