@@ -25,6 +25,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - En första mejllisteanmälan finns på båda sidorna via besökarens mejlprogram.
 - Duo-sidan har fått ett mobilanpassat bokningsflöde i tre tydliga steg före förfrågningsformuläret.
 - Huvudsidan presenterar solo, duo och fullt band som tre tydliga mobilanpassade val.
+- Duo-sidan använder utvalda, mobiloptimerade bilder från ett riktigt bröllopsmingel.
 
 ## Prioritet 1 – publik och bokningar
 
@@ -38,12 +39,12 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 
 ## Prioritet 2 – material och förtroende
 
-- Lägg in utvalda bilder från riktiga spelningar.
+- [Genomfört] Lägg in utvalda bilder från riktiga spelningar.
 - Presentera solo, duo och fullt band med egna bilder, korta videor och tydligare innehåll.
 - Lägg till två eller tre kundomdömen med godkända namn eller arrangörer.
 - Visa situationsbaserade exempel, till exempel vigsel, mingel, akustisk duo och fullt band.
 - Skapa ett digitalt presskit med presentation, pressbilder, musik, livevideor, teknisk information och kontaktuppgifter.
-- Bildoptimera allt nytt material för mobil och dator före publicering.
+- [Genomfört] Bildoptimera allt nytt material för mobil och dator före publicering.
 
 ## Prioritet 3 – musiksläpp och synlighet
 
