@@ -416,21 +416,35 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section live-format-section">
+      <p class="section-eyebrow">Välj känsla och storlek</p>
       <h2><i class="fas fa-microphone-lines"></i> Liveformat</h2>
+      <p class="section-intro">Från nära och avskalat till ett större scenuttryck – vi hittar ett format som passar tillfället.</p>
 
-      <div class="cards">
-        <div class="card">
+      <div class="cards live-format-cards">
+        <article class="card live-format-card">
+          <span class="live-format-icon" aria-hidden="true"><i class="fas fa-guitar"></i></span>
+          <p class="live-format-label">Avskalat</p>
+          <h3>Solo</h3>
+          <p>Sång och gitarr med närhet till texten – för mindre konserter och personliga tillfällen.</p>
+          <a href="#contact">Fråga om solo</a>
+        </article>
+
+        <article class="card live-format-card live-format-card-featured">
+          <span class="live-format-icon" aria-hidden="true"><i class="fas fa-user-group"></i></span>
+          <p class="live-format-label">Två röster</p>
+          <h3>Duo</h3>
+          <p>Klas och Josefin med piano och gitarr – varmt, flexibelt och nära.</p>
+          <a href="duo/">Upptäck duon</a>
+        </article>
+
+        <article class="card live-format-card">
+          <span class="live-format-icon" aria-hidden="true"><i class="fas fa-drum"></i></span>
+          <p class="live-format-label">Större energi</p>
           <h3>Band</h3>
           <p>Klas Österman live med fullt band – egna låtar med närvaro, energi och känsla.</p>
-          <a href="#contact">Boka / kontakt</a>
-        </div>
-
-        <div class="card">
-          <h3>Duo</h3>
-          <p>Två röster, piano och gitarr – personliga tolkningar i ett varmt och intimt liveformat.</p>
-          <a href="duo/">Se duo</a>
-        </div>
+          <a href="#contact">Fråga om band</a>
+        </article>
       </div>
     </section>
 
@@ -618,6 +632,8 @@
       <h2 id="popup-title"></h2>
       <p id="popup-location"></p>
       <p id="popup-act"></p>
+      <div id="popup-meta" class="show-meta"></div>
+      <div id="popup-actions" class="show-actions"></div>
     </div>
   </div>
 
@@ -663,10 +679,66 @@
       document.body.style.overflow = "";
     }
 
-    function openShowInfo(date, title, location, act) {
-      document.getElementById("popup-title").innerText = date + " — " + title;
-      document.getElementById("popup-location").innerText = location;
-      document.getElementById("popup-act").innerText = act;
+    const showLabels = {
+      public: "Offentlig",
+      private: "Privat",
+      free: "Fri entré",
+      ticketed: "Biljett krävs",
+      soldout: "Slutsåld"
+    };
+
+    function calendarUrl(show) {
+      const date = show.date.replaceAll("-", "");
+      const nextDay = new Date(show.date + "T12:00:00");
+      nextDay.setDate(nextDay.getDate() + 1);
+      const end = [nextDay.getFullYear(), String(nextDay.getMonth() + 1).padStart(2, "0"), String(nextDay.getDate()).padStart(2, "0")].join("");
+      const params = new URLSearchParams({
+        action: "TEMPLATE",
+        text: `${show.title} – ${show.act}`,
+        dates: `${date}/${end}`,
+        location: show.location,
+        details: "Aktuell information: https://klasosterman.se/#live"
+      });
+      return `https://calendar.google.com/calendar/render?${params}`;
+    }
+
+    function openShowInfo(dateOrShow, title, location, act) {
+      const show = typeof dateOrShow === "object"
+        ? dateOrShow
+        : { displayDate: dateOrShow, title, location, act };
+      document.getElementById("popup-title").innerText = show.displayDate + " — " + show.title;
+      document.getElementById("popup-location").innerText = show.location;
+      document.getElementById("popup-act").innerText = show.act;
+
+      const meta = document.getElementById("popup-meta");
+      meta.replaceChildren();
+      [show.visibility, show.admission, show.format].filter(Boolean).forEach(value => {
+        const badge = document.createElement("span");
+        badge.className = `show-badge show-badge-${value}`;
+        badge.textContent = showLabels[value] || value;
+        meta.appendChild(badge);
+      });
+
+      const actions = document.getElementById("popup-actions");
+      actions.replaceChildren();
+      if (show.visibility === "public") {
+        const calendar = document.createElement("a");
+        calendar.className = "show-action";
+        calendar.href = calendarUrl(show);
+        calendar.target = "_blank";
+        calendar.rel = "noopener noreferrer";
+        calendar.textContent = "Lägg i kalender";
+        actions.appendChild(calendar);
+      }
+      if (show.ticketUrl && show.admission !== "soldout") {
+        const ticket = document.createElement("a");
+        ticket.className = "show-action show-action-primary";
+        ticket.href = show.ticketUrl;
+        ticket.target = "_blank";
+        ticket.rel = "noopener noreferrer";
+        ticket.textContent = "Biljetter";
+        actions.appendChild(ticket);
+      }
       document.getElementById("show-popup").classList.add("active");
       document.body.style.overflow = "hidden";
     }
@@ -690,12 +762,7 @@
       item.setAttribute("role", "button");
       item.tabIndex = 0;
 
-      const open = () => openShowInfo(
-        show.displayDate,
-        show.title,
-        show.location,
-        show.act
-      );
+      const open = () => openShowInfo(show);
 
       item.addEventListener("click", open);
       item.addEventListener("keydown", event => {
@@ -718,6 +785,15 @@
       const act = document.createElement("p");
       act.textContent = show.act;
 
+      const meta = document.createElement("div");
+      meta.className = "show-meta";
+      [show.visibility, show.admission, show.format].filter(Boolean).forEach(value => {
+        const badge = document.createElement("span");
+        badge.className = `show-badge show-badge-${value}`;
+        badge.textContent = showLabels[value] || value;
+        meta.appendChild(badge);
+      });
+
       const button = document.createElement("button");
       button.className = "show-info-button";
       button.type = "button";
@@ -728,7 +804,7 @@
         open();
       });
 
-      info.append(location, act);
+      info.append(location, act, meta);
       item.append(date, info, button);
       return item;
     }

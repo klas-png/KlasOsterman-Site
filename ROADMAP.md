@@ -23,13 +23,15 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - Duo-innehållet på startsidan har förenklats till en förhandsvisning som leder vidare till den permanenta duo-sidan.
 - Bokningsformulär finns på Klas-sidan och duo-sidan och skapar färdiga bokningsmejl utan att lagra personuppgifter.
 - En första mejllisteanmälan finns på båda sidorna via besökarens mejlprogram.
+- Duo-sidan har fått ett mobilanpassat bokningsflöde i tre tydliga steg före förfrågningsformuläret.
+- Huvudsidan presenterar solo, duo och fullt band som tre tydliga mobilanpassade val.
 
 ## Prioritet 1 – publik och bokningar
 
 - Koppla den förberedda mejllisteanmälan till en riktig utskickstjänst när tjänst och konto har valts.
 - Håll anmälan enkel och be till en början bara om e-postadress.
 - Ge möjlighet att senare välja ort eller område för lokalt relevanta utskick.
-- Märk varje spelning som offentlig, privat, fri entré, biljettbelagd eller slutsåld.
+- [Genomfört] Märk varje spelning som offentlig eller privat och förbered märkning för fri entré, biljettbelagd och slutsåld.
 - Lägg till biljettlänk, kalenderpåminnelse och delningsmöjlighet för offentliga spelningar.
 - Skapa en tydlig bokningssida för solo, duo, fullt band, bröllop, mingel, företag och privata evenemang.
 - [Genomfört] Lägg till ett kort bokningsformulär för datum, ort, lokal, evenemang, liveformat, antal gäster och kontaktuppgifter.
@@ -62,7 +64,7 @@ Klas skickar tills vidare nya spelningar, släpp och andra ändringar som tydlig
 - [Genomfört] Flytta spelningarna till den strukturerade datafilen `shows.js`.
 - [Genomfört] Låt sidan automatiskt skapa, datumordna och kategorisera spelningarna.
 - Använd samma princip för musiksläpp, omdömen, bilder och nyheter när det blir relevant.
-- Förbered datamodellen för offentligt/privat, tid, biljettlänk, entré och liveformat.
+- [Genomfört] Förbered datamodellen för offentligt/privat, biljettlänk, entré och liveformat. Tid läggs till när exakta tider finns.
 
 ### Steg 3 – enkelt CMS
 
