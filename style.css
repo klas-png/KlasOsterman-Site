@@ -13,6 +13,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -20,6 +21,7 @@ body {
   background: #0e0e0d;
   color: #f3efe7;
   line-height: 1.7;
+  overflow-x: hidden;
 }
 
 /* NAV */
@@ -1201,20 +1203,42 @@ footer a:hover {
 }
 
 @media (max-width: 768px) {
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero h1,
+  .hero p,
+  .buttons,
+  .hero .social-icons {
+    max-width: 100%;
+  }
+
   .show-item {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     padding: 16px 50px 16px 16px;
     gap: 2px;
     border-radius: 16px;
   }
 
+  .show-info {
+    width: 100%;
+    min-width: 0;
+  }
+
   .show-info h3 {
     font-size: 16px;
     margin-bottom: 0;
+    overflow-wrap: anywhere;
   }
 
   .show-info p {
     font-size: 12px;
     line-height: 1.2;
+    overflow-wrap: anywhere;
   }
 
   .show-date {
@@ -1222,13 +1246,48 @@ footer a:hover {
   }
 
   .shows-list {
+    width: 100%;
+    max-width: 100%;
     gap: 8px;
   }
-}
-@media (max-width: 768px) {
-  .logo img {
-  height: 58px;
-  width: auto;
-}
+
+  .past-shows-heading {
+    width: 100%;
+    overflow-wrap: anywhere;
   }
 
+  .logo img {
+    height: 50px;
+    width: auto;
+    max-width: calc(100vw - 96px);
+  }
+}
+
+@media (max-width: 420px) {
+  .section {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .show-item {
+    padding: 14px 46px 14px 14px;
+  }
+
+  .show-info-button {
+    right: 10px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .show-info h3 {
+    font-size: 15px;
+  }
+
+  .show-info p {
+    font-size: 11px;
+  }
+
+  .logo img {
+    height: 44px;
+  }
+}
