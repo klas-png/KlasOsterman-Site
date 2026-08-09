@@ -509,6 +509,57 @@ body {
   font-size: 16px;
 }
 
+.show-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.show-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 9px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.07);
+  color: rgba(243,239,231,0.9);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.show-badge-public,
+.show-badge-free {
+  border-color: rgba(203, 169, 102, 0.5);
+  color: #e6c982;
+}
+
+.show-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.show-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  color: #f3efe7;
+  text-decoration: none;
+}
+
+.show-action-primary {
+  background: #e6c982;
+  color: #111;
+}
+
 .show-info-button {
   position: absolute;
   right: 22px;
@@ -722,6 +773,76 @@ body {
 }
 
 /* DUO */
+.live-format-section {
+  max-width: 1120px;
+}
+
+.live-format-cards {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 42px;
+}
+
+.live-format-card {
+  display: flex;
+  min-width: 0;
+  padding: 32px 26px 28px;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.live-format-card-featured {
+  border-color: rgba(200,164,106,0.38);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(200,164,106,0.15), transparent 52%),
+    rgba(255,255,255,0.045);
+}
+
+.live-format-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 24px;
+  place-items: center;
+  border: 1px solid rgba(200,164,106,0.35);
+  border-radius: 50%;
+  color: var(--gold);
+  background: rgba(200,164,106,0.07);
+  font-size: 18px;
+}
+
+.live-format-label {
+  width: 100%;
+  margin: 0 0 8px !important;
+  color: var(--gold) !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.live-format-card h3 {
+  margin-bottom: 12px;
+  font-size: 30px;
+}
+
+.live-format-card > p:not(.live-format-label) {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.live-format-card a {
+  margin: 24px 0 0;
+  margin-top: auto;
+  transform: translateY(18px);
+}
+
+.live-format-card a:hover {
+  transform: translateY(15px);
+}
+
 .duo-preview .video-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   max-width: 780px;
@@ -731,6 +852,54 @@ body {
 
 .duo-preview-actions {
   margin-top: 28px;
+}
+
+@media (max-width: 850px) {
+  .live-format-cards {
+    grid-template-columns: 1fr;
+    max-width: 620px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .live-format-card {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    column-gap: 18px;
+  }
+
+  .live-format-icon {
+    grid-row: 1 / span 4;
+    margin: 0;
+  }
+
+  .live-format-card a {
+    grid-column: 2;
+    width: fit-content;
+    margin-top: 20px;
+    transform: none;
+  }
+
+  .live-format-card a:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .live-format-card {
+    display: block;
+    padding: 26px 20px 28px;
+  }
+
+  .live-format-icon {
+    margin-bottom: 20px;
+  }
+
+  .live-format-card a {
+    width: 100%;
+    margin-top: 22px;
+    text-align: center;
+  }
 }
 
 /* BIO */
@@ -1308,6 +1477,17 @@ footer a:hover {
     line-height: 1.3;
   }
 
+  .show-meta {
+    gap: 5px;
+    margin-top: 7px;
+  }
+
+  .show-badge {
+    min-height: 23px;
+    padding: 3px 7px;
+    font-size: 10px;
+  }
+
   .show-info-button {
     right: 14px;
     bottom: 50%;
@@ -1526,6 +1706,64 @@ footer a:hover {
   font-size: 16px;
 }
 
+.booking-steps-section {
+  max-width: 1040px;
+}
+
+.booking-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 44px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: booking-step;
+}
+
+.booking-steps li {
+  position: relative;
+  min-width: 0;
+  padding: 30px 24px 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgba(200,164,106,0.08), transparent 55%),
+    rgba(255,255,255,0.025);
+  text-align: left;
+}
+
+.booking-step-number {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 22px;
+  place-items: center;
+  border: 1px solid rgba(200,164,106,0.52);
+  border-radius: 50%;
+  color: var(--gold);
+  font-family: "Merriweather", serif;
+  font-size: 18px;
+}
+
+.booking-steps h3 {
+  margin-bottom: 9px;
+  font-family: "Merriweather", serif;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.booking-steps p {
+  margin: 0;
+  color: rgba(243,239,231,0.68);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.booking-steps-button {
+  margin: 30px auto 0;
+}
+
 .duo-shows-link {
   display: block;
   width: fit-content;
@@ -1557,6 +1795,32 @@ footer a:hover {
 
   .duo-page-hero .buttons {
     justify-content: center;
+  }
+
+  .booking-steps {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .booking-steps li {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 16px;
+    padding: 22px 18px;
+  }
+
+  .booking-step-number {
+    margin: 0;
+  }
+
+  .booking-steps h3 {
+    font-size: 20px;
+  }
+
+  .booking-steps-button {
+    width: 100%;
+    max-width: 360px;
   }
 }
 
