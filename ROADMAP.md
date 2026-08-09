@@ -21,29 +21,36 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - Spelningarna har flyttats till `shows.js` och skapas och sorteras automatiskt på sidan.
 - En permanent duo-sida har skapats på `/duo/` som grund för bokning och framtida QR-koder.
 - Duo-innehållet på startsidan har förenklats till en förhandsvisning som leder vidare till den permanenta duo-sidan.
-- Bokningsformulär finns på Klas-sidan och duo-sidan och skapar färdiga bokningsmejl utan att lagra personuppgifter.
-- En första mejllisteanmälan finns på båda sidorna via besökarens mejlprogram.
+- Bokningsformulären på Klas-sidan och duo-sidan skickas direkt via Formspree till `info@klasosterman.se` utan att öppna besökarens mejlprogram.
+- Mejllisteanmälan på båda sidorna skickas direkt via Formspree och samlar tills vidare adresserna som tydligt märkta inskick.
 - Duo-sidan har fått ett mobilanpassat bokningsflöde i tre tydliga steg före förfrågningsformuläret.
 - Huvudsidan presenterar solo, duo och fullt band som tre tydliga mobilanpassade val.
 - Duo-sidan använder utvalda, mobiloptimerade bilder från ett riktigt bröllopsmingel.
 - Duo-sidan visar tre omdömen från olika brudpar i en generell kundsektion som kan uppdateras med fler typer av evenemang.
+- Duo-sidan visar separata exempel för bröllop och andra event, med bilder från bröllopsmingel och Ingmarsö krog.
+- Duo-sidan har en utvald livevideo för Blood Moon och en samlad videosektion med fungerande externa länkar där inbäddning inte tillåts.
+- Mejllistorna har förenklats till e-postadress, samtycke och en tydlig knapp, med genväg redan från sidornas topp.
+- Klas-sidan har fått en tydligare, mobilanpassad artistbiografi med en varm solobild som stärker den personliga artistidentiteten.
 
 ## Prioritet 1 – publik och bokningar
 
-- Koppla den förberedda mejllisteanmälan till en riktig utskickstjänst när tjänst och konto har valts.
-- Håll anmälan enkel och be till en början bara om e-postadress.
+- [Påbörjat] Koppla mejllisteanmälan till en riktig utskickstjänst. Direkt insamling via Formspree är klar; val av tjänst för utskick, avregistrering och listhantering återstår.
+- [Genomfört] Håll anmälan enkel och be till en början bara om e-postadress.
 - Ge möjlighet att senare välja ort eller område för lokalt relevanta utskick.
 - [Genomfört] Märk varje spelning som offentlig eller privat och förbered märkning för fri entré, biljettbelagd och slutsåld.
 - [Påbörjat] Lägg till biljettlänk, kalenderpåminnelse och delningsmöjlighet för offentliga spelningar. Kalender och delning är klara; biljettknappen aktiveras när riktiga länkar läggs in.
-- Skapa en tydlig bokningssida för solo, duo, fullt band, bröllop, mingel, företag och privata evenemang.
+- [Påbörjat] Skapa en tydlig bokningsväg för solo, duo, fullt band, bröllop, mingel, företag och privata evenemang. Formulär och huvudsakliga vägar är klara; en eventuell fristående bokningssida kan utvärderas senare.
 - [Genomfört] Lägg till ett kort bokningsformulär för datum, ort, lokal, evenemang, liveformat, antal gäster och kontaktuppgifter.
+- [Genomfört] Skicka bokningsförfrågningar direkt på sidan via Formspree och visa tydliga tack- och felmeddelanden.
+- [Påbörjat] Testa samtliga fyra publicerade formulär på mobil och dator. Den 10 augusti 2026 accepterade Formspree tekniska testinskick från alla fyra formulären. Manuell kontroll av mejlaviseringarna samt den visuella upplevelsen på fysisk mobil och dator återstår.
+- [Avvaktar] Gör `info@klasosterman.se` till synlig avsändaradress när Klas svarar på bokningar. Första alternativet är att be administratören för `moonsplash.se` aktivera externa SMTP-servrar i Google Workspace. Om det inte går och bokningarna växer, uppgraderas LoopiaDNS med en riktig e-postlåda och SMTP för `info@klasosterman.se`. Tills vidare skickas svar från `klas@moonsplash.se` med `info@klasosterman.se` som svarsadress och i signaturen.
 
 ## Prioritet 2 – material och förtroende
 
 - [Genomfört] Lägg in utvalda bilder från riktiga spelningar.
-- Presentera solo, duo och fullt band med egna bilder, korta videor och tydligare innehåll.
+- [Påbörjat] Presentera solo, duo och fullt band med egna bilder, korta videor och tydligare innehåll. Solo, duo och event har stärkts; fullt band avvaktar tills en representativ bandbild eller ett starkare liveklipp finns.
 - [Genomfört] Lägg till två eller tre kundomdömen med godkända namn eller arrangörer.
-- Visa situationsbaserade exempel, till exempel vigsel, mingel, akustisk duo och fullt band.
+- [Påbörjat] Visa situationsbaserade exempel. Vigsel, mingel, restaurang och event finns; fullt band kan utvecklas vidare.
 - Skapa ett digitalt presskit med presentation, pressbilder, musik, livevideor, teknisk information och kontaktuppgifter.
 - [Genomfört] Bildoptimera allt nytt material för mobil och dator före publicering.
 
@@ -119,14 +126,11 @@ Bygg ett sammanhängande system där Klas och Josefin har varsin personlig webbp
 5. Skapa visitkorten och de spårbara QR-länkarna.
 6. Provtryck och testa innan slutlig beställning.
 
-## Material som behövs från Klas
+## Material som kan stärka nästa etapp
 
-- Tre till fem livebilder från olika spelningar.
-- En tydlig solobild.
-- Två till tre duobilder med Josefin.
 - En eller två bilder med hela bandet.
-- En bra porträttbild till biografin.
-- Eventuellt en bild från bröllop eller mingel där publicering är godkänd.
-- Godkända kundomdömen och namn på de personer eller arrangörer som får anges.
+- Ett representativt liveklipp med fullt band; befintligt svagare material sparas men används inte tills vidare.
+- Ett kundomdöme från en födelsedagsfest, restaurang eller ett företagsevent som kompletterar bröllopsomdömena.
+- Bekräftelse på att publiceringstillstånd finns för bilder och kundnamn som används.
 
-Ta upp de kvarvarande punkterna när webbplatsen utvecklas vidare. Prioritera mejllista, offentliga spelningar och bokningssida innan en egen backend övervägs.
+Ta upp de kvarvarande punkterna när webbplatsen utvecklas vidare. När formulärtesten är godkända prioriteras riktig utskickstjänst, offentliga spelningar och tydligare solo-/bandmaterial innan en egen backend övervägs.
