@@ -160,6 +160,7 @@
       <div class="shows-list">
         <div
           class="show-item"
+          data-show-date="2026-07-16"
           role="button"
           tabindex="0"
           onclick="openShowInfo('16 juli 2026', 'Live', 'Ingmarsö Krog', 'Klas Österman & Josefin Blomberg')"
@@ -180,10 +181,11 @@
           </button>
         </div>
 
-        <p class="section-intro" style="margin-top: 24px;">Tidigare spelningar</p>
+        <p class="section-intro past-shows-heading" style="margin-top: 24px;">Tidigare spelningar</p>
 
         <div
-          class="show-item past-show"
+          class="show-item"
+          data-show-date="2026-07-11"
           role="button"
           tabindex="0"
           onclick="openShowInfo('11 juli 2026', 'Live med band', 'Logen, Östra Lagnö', 'Klas Österman & Josefin Blomberg + band')"
@@ -205,7 +207,8 @@
         </div>
 
         <div
-          class="show-item past-show"
+          class="show-item"
+          data-show-date="2026-06-27"
           role="button"
           tabindex="0"
           onclick="openShowInfo('27 juni 2026', 'Privat bröllop', 'Idöborg, Värmdö', 'Klas Österman & Josefin Blomberg')"
@@ -227,7 +230,8 @@
         </div>
 
         <div
-          class="show-item past-show"
+          class="show-item"
+          data-show-date="2026-06-26"
           role="button"
           tabindex="0"
           onclick="openShowInfo('26 juni 2026', 'Live', 'Café Chocolat, Rimbo', 'Klas Österman & Josefin Blomberg')"
@@ -249,7 +253,8 @@
         </div>
 
         <div
-          class="show-item past-show"
+          class="show-item"
+          data-show-date="2026-06-13"
           role="button"
           tabindex="0"
           onclick="openShowInfo('13 juni 2026', 'Privat bröllop', 'Fredriksborgs Hotell, Värmdö', 'Klas Österman & Josefin Blomberg')"
@@ -271,7 +276,8 @@
         </div>
 
         <div
-          class="show-item past-show"
+          class="show-item"
+          data-show-date="2026-06-11"
           role="button"
           tabindex="0"
           onclick="openShowInfo('11 juni 2026', 'Privat bröllop', 'Rimbo kyrka', 'Klas Österman & Josefin Blomberg')"
@@ -512,6 +518,31 @@
       }
     }
 
+    function updatePastShows() {
+      const showsList = document.querySelector(".shows-list");
+      const heading = document.querySelector(".past-shows-heading");
+      const shows = [...document.querySelectorAll(".show-item[data-show-date]")];
+
+      if (!showsList || !heading || !shows.length) return;
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      shows.forEach(show => {
+        const showDate = new Date(show.dataset.showDate + "T00:00:00");
+        show.classList.toggle("past-show", showDate < today);
+      });
+
+      const firstPastShow = shows.find(show => show.classList.contains("past-show"));
+
+      if (firstPastShow) {
+        showsList.insertBefore(heading, firstPastShow);
+        heading.hidden = false;
+      } else {
+        heading.hidden = true;
+      }
+    }
+
     function toggleMenu() {
       const navLinks = document.querySelector(".nav-links");
       const menuToggle = document.querySelector(".menu-toggle");
@@ -529,6 +560,8 @@
       menuToggle.classList.remove("open");
       menuToggle.setAttribute("aria-expanded", "false");
     }
+
+    updatePastShows();
 
     document.addEventListener("click", function(event) {
       const navLinks = document.querySelector(".nav-links");
