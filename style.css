@@ -1559,3 +1559,97 @@ footer a:hover {
     justify-content: center;
   }
 }
+
+/* MOBILKVALITET: moderna skärmhöjder, safe areas och pekskärmar */
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+@supports (min-height: 100dvh) {
+  .hero,
+  .hero-content {
+    min-height: 100dvh;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links {
+      height: 100dvh;
+    }
+
+    .duo-page-hero {
+      min-height: 75dvh;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .video-lightbox,
+  .show-popup {
+    padding:
+      max(16px, env(safe-area-inset-top))
+      max(14px, env(safe-area-inset-right))
+      max(16px, env(safe-area-inset-bottom))
+      max(14px, env(safe-area-inset-left));
+  }
+
+  .show-popup-content {
+    max-height: calc(100dvh - 32px);
+    padding: 54px 22px 28px;
+    overflow-y: auto;
+  }
+
+  .close-video {
+    width: 44px;
+    height: 44px;
+    top: max(10px, env(safe-area-inset-top));
+    right: max(10px, env(safe-area-inset-right));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .floating-listen {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+    min-height: 44px;
+  }
+
+  .show-item {
+    padding-right: 58px;
+  }
+
+  .show-info-button {
+    right: 7px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .duo-page-nav .nav-cta {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .video-card:hover,
+  .card:hover,
+  .show-item:hover,
+  .buttons a:hover,
+  .main-button:hover,
+  .floating-listen:hover {
+    transform: none;
+  }
+
+  .video-card::before,
+  .card::before,
+  .show-item::before,
+  .contact-section::before {
+    display: none;
+  }
+}

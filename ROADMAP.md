@@ -2,6 +2,15 @@
 
 Målet är att webbplatsen både ska bygga en publik och generera fler bokningar. Den ska därför ha två tydliga vägar: en för fans som vill följa musiken och en för arrangörer och privatpersoner som vill boka.
 
+## Permanent arbetsprincip – mobil först
+
+- Utforma varje ny funktion för mobil från början, inte som en senare efterjustering.
+- Säkerställ att innehåll, knappar, formulär, menyer, bilder och videor fungerar lika bra på mobil som på laptop.
+- Kontrollera minst små mobiler, större mobiler och laptop före varje publicering.
+- Undvik horisontell scroll, för liten text, tätt placerade tryckytor och innehåll som hamnar bakom fasta knappar.
+- Optimera bilder och laddning särskilt för mobilnät.
+- Prioritera tydliga bokningsvägar och korta, lättlästa avsnitt på små skärmar.
+
 ## Genomfört eller påbörjat
 
 - Tydligare bokningsväg från startsidan.
