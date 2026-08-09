@@ -48,6 +48,7 @@
           <a class="hero-booking-button" href="#booking">Boka Klas & Josefin</a>
           <a href="#videos">Se och lyssna</a>
         </div>
+        <a class="hero-news-link" href="#newsletter">Få nyheter om musik & spelningar <span aria-hidden="true">↓</span></a>
       </div>
     </header>
 
@@ -62,7 +63,7 @@
     <section class="section event-story-section" aria-labelledby="event-story-title">
       <div class="wedding-story-content">
         <p class="section-eyebrow">Krog, fest & event</p>
-        <h2 id="event-story-title">Livemusik mitt i kvällen</h2>
+        <h2 id="event-story-title">Musik som lyfter ert event</h2>
         <p>
           Ett nära duoformat för restauranger, födelsedagar, företagskvällar och privata fester.
           Repertoaren anpassas efter rummet – från lågmäld middagsmusik till låtar som samlar hela kvällen.
@@ -275,25 +276,23 @@
       <a class="duo-shows-link" href="../#live">Se aktuella spelningar</a>
     </section>
 
-    <section class="section newsletter-section duo-newsletter-section">
-      <p class="section-eyebrow">Håll kontakten</p>
-      <h2><i class="fas fa-paper-plane"></i> Offentliga spelningar</h2>
-      <p class="section-intro">Få ett mejl när Klas och Josefin annonserar en offentlig spelning eller släpper ny musik.</p>
+    <section id="newsletter" class="section newsletter-section compact-newsletter-section">
+      <p class="section-eyebrow">Mejllista</p>
+      <h2>Ny musik & spelningar</h2>
+      <p class="section-intro">Få ett kort mejl när vi släpper musik eller annonserar en offentlig spelning.</p>
       <form class="mailto-form newsletter-form" data-subject="Anmälan till Klas & Josefins mejllista">
-        <div class="form-field">
-          <label for="duo-newsletter-email">E-postadress</label>
-          <input id="duo-newsletter-email" name="E-post" type="email" autocomplete="email" required placeholder="namn@exempel.se">
-        </div>
-        <div class="form-field">
-          <label for="duo-newsletter-area">Ort eller område <span>(valfritt)</span></label>
-          <input id="duo-newsletter-area" name="Ort eller område" type="text" autocomplete="address-level2" placeholder="Till exempel Stockholm eller Roslagen">
+        <div class="newsletter-signup-row">
+          <div class="form-field">
+            <label for="duo-newsletter-email">Din e-postadress</label>
+            <input id="duo-newsletter-email" name="E-post" type="email" autocomplete="email" required placeholder="namn@exempel.se">
+          </div>
+          <button class="main-button" type="submit">Håll mig uppdaterad</button>
         </div>
         <label class="consent-field">
           <input name="consent" type="checkbox" required>
-          <span>Jag vill få mejl om nya låtar och offentliga spelningar och kan avsluta när jag vill.</span>
+          <span>Jag vill få nyheter om musik och spelningar. Jag kan avsluta när jag vill.</span>
         </label>
-        <button class="main-button" type="submit">Skriv upp mig</button>
-        <p class="form-note">Anmälan öppnas i ditt mejlprogram. En utskickstjänst kopplas in senare.</p>
+        <p class="form-note">Tills vidare öppnas anmälan i ditt mejlprogram.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
