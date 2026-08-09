@@ -11,6 +11,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - Tydligare presentation av vilka typer av evenemang och liveformat som erbjuds.
 - Spelningarna har flyttats till `shows.js` och skapas och sorteras automatiskt på sidan.
 - En permanent duo-sida har skapats på `/duo/` som grund för bokning och framtida QR-koder.
+- Duo-innehållet på startsidan har förenklats till en förhandsvisning som leder vidare till den permanenta duo-sidan.
 - Bokningsformulär finns på Klas-sidan och duo-sidan och skapar färdiga bokningsmejl utan att lagra personuppgifter.
 - En första mejllisteanmälan finns på båda sidorna via besökarens mejlprogram.
 

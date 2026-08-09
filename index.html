@@ -434,8 +434,12 @@
       </div>
     </section>
 
-    <section id="duo" class="section highlight">
+    <section id="duo" class="section highlight duo-preview">
       <h2><i class="fas fa-user-group"></i> Duo — Klas Österman & Josefin Blomberg</h2>
+      <p class="section-intro">
+        Två röster, piano och gitarr — ett varmt och nära liveformat för bröllop, konserter,
+        mingel och privata evenemang.
+      </p>
 
       <div class="video-grid">
         <button class="video-card" type="button" onclick="openVideo('epgLor8Q7ns')">
@@ -448,34 +452,12 @@
           <span>Om du lämnade mig nu</span>
         </button>
 
-        <button class="video-card" type="button" onclick="openVideo('KqaZP5e_FeY')">
-          <img src="https://img.youtube.com/vi/KqaZP5e_FeY/hqdefault.jpg" alt="Maid of the River" loading="lazy" decoding="async">
-          <span>Maid of the River</span>
-        </button>
-
-        <button class="video-card" type="button" onclick="openVideo('w5T6a0E-rKA')">
-          <img src="https://img.youtube.com/vi/w5T6a0E-rKA/hqdefault.jpg" alt="San Francisco" loading="lazy" decoding="async">
-          <span>San Francisco</span>
-        </button>
-
-        <button class="video-card" type="button" onclick="openVideo('quZoqEIczVs')">
-          <img src="https://img.youtube.com/vi/quZoqEIczVs/hqdefault.jpg" alt="Living comes with dying" loading="lazy" decoding="async">
-          <span>Living comes with dying</span>
-        </button>
-
-        <button class="video-card" type="button" onclick="openVideo('ypPF4HfDf0k')">
-          <img src="https://img.youtube.com/vi/ypPF4HfDf0k/hqdefault.jpg" alt="Santeria" loading="lazy" decoding="async">
-          <span>Santeria</span>
-        </button>
-
-        <button class="video-card duo-extra" type="button" onclick="openVideo('KrLpDEw9f98')">
-          <img src="https://img.youtube.com/vi/KrLpDEw9f98/hqdefault.jpg" alt="Vi gjorde vårt bästa" loading="lazy" decoding="async">
-          <span>Vi gjorde vårt bästa</span>
-        </button>
       </div>
 
-      <button class="main-button show-more-button" type="button" onclick="showMoreDuo()">Visa fler</button>
-      <a class="main-button" href="#contact">Boka duon</a>
+      <div class="duo-preview-actions">
+        <a class="main-button hero-booking-button" href="duo/">Upptäck Klas & Josefin</a>
+        <a class="main-button" href="duo/#booking">Boka duon</a>
+      </div>
     </section>
 
     <section id="bio" class="section">
@@ -679,15 +661,6 @@
       document.getElementById("lightbox-iframe").src = "";
       document.getElementById("video-lightbox").classList.remove("active");
       document.body.style.overflow = "";
-    }
-
-    function showMoreDuo() {
-      document.querySelectorAll(".duo-extra").forEach(video => {
-        video.classList.add("show");
-      });
-
-      const button = document.querySelector(".show-more-button");
-      if (button) button.style.display = "none";
     }
 
     function openShowInfo(date, title, location, act) {
