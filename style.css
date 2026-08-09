@@ -1950,22 +1950,47 @@ footer a:hover {
   }
 
   .duo-page-hero {
-    min-height: 75vh;
-    padding: 124px 18px 64px;
+    display: block;
+    min-height: 0;
+    padding: 84px 0 0;
+    text-align: center;
+  }
+
+  .duo-page-hero::after {
+    display: none;
   }
 
   .duo-page-hero-media {
-    top: calc(92px + env(safe-area-inset-top));
+    position: absolute;
+    z-index: -1;
+    inset: 84px 0 auto;
+    display: block;
+    height: clamp(580px, 105vw, 720px);
+    overflow: hidden;
+  }
+
+  .duo-page-hero-media::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(
+      180deg,
+      rgba(8,8,7,0.06) 0%,
+      rgba(8,8,7,0.14) 42%,
+      rgba(14,14,13,0.78) 76%,
+      #0e0e0d 100%
+    );
   }
 
   .duo-page-hero-media img {
     object-position: center top;
+    filter: brightness(0.9);
   }
 
   .duo-page-hero h1 {
-    margin-bottom: 22px;
-    font-size: clamp(34px, 8.5vw, 46px);
-    line-height: 1;
+    margin-bottom: 18px;
+    font-size: clamp(34px, 9vw, 44px);
+    line-height: 1.04;
   }
 
   .duo-page-kicker {
@@ -1975,11 +2000,31 @@ footer a:hover {
   }
 
   .duo-page-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: none;
+    padding: clamp(330px, 70vw, 430px) 18px 64px;
     transform: none;
+    background: transparent;
+  }
+
+  .duo-page-hero-content > p:not(.duo-page-kicker) {
+    max-width: 520px;
+    font-size: 16px;
+    line-height: 1.55;
   }
 
   .duo-page-hero .buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: min(100%, 360px);
+    margin: 28px auto 0;
     justify-content: center;
+  }
+
+  .duo-page-hero .buttons a {
+    width: 100%;
   }
 
   .booking-steps {
@@ -2073,7 +2118,7 @@ textarea {
     }
 
     .duo-page-hero {
-      min-height: 75dvh;
+      min-height: 0;
     }
   }
 }
