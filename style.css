@@ -1746,6 +1746,23 @@ footer a:hover {
   font-size: clamp(17px, 2vw, 21px);
 }
 
+.hero-news-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  color: rgba(243,239,231,0.72);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero-news-link:hover,
+.hero-news-link:focus-visible {
+  color: var(--gold);
+}
+
 .duo-format-cards .card p {
   font-size: 16px;
 }
@@ -2049,6 +2066,50 @@ footer a:hover {
   color: rgba(243,239,231,0.78);
 }
 
+.compact-newsletter-section {
+  max-width: 760px;
+  padding-top: 88px;
+  padding-bottom: 88px;
+}
+
+.compact-newsletter-section h2 {
+  margin-bottom: 16px;
+}
+
+.compact-newsletter-section .newsletter-form {
+  max-width: 680px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.newsletter-signup-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.newsletter-signup-row .form-field {
+  margin-bottom: 0;
+}
+
+.newsletter-signup-row .main-button {
+  min-height: 50px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.compact-newsletter-section .consent-field {
+  max-width: 560px;
+  margin: 14px auto 0;
+  justify-content: center;
+}
+
+.compact-newsletter-section .form-note {
+  color: rgba(243,239,231,0.48);
+}
+
 @media (max-width: 768px) {
   .duo-page .nav {
     display: flex;
@@ -2140,6 +2201,11 @@ footer a:hover {
     width: 100%;
   }
 
+  .hero-news-link {
+    margin-top: 20px;
+    font-size: 13px;
+  }
+
   .duo-video-feature {
     margin: 32px auto 42px;
     aspect-ratio: 4 / 5;
@@ -2211,6 +2277,20 @@ footer a:hover {
 
   .event-story-media img {
     object-position: center 52%;
+  }
+
+  .compact-newsletter-section {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .newsletter-signup-row {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-signup-row .main-button {
+    width: 100%;
+    max-width: none;
   }
 
   .wedding-story-content,

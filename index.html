@@ -75,6 +75,8 @@
         <a class="hero-booking-button" href="#contact">Boka live</a>
       </div>
 
+      <a class="hero-news-link" href="#newsletter">Få nyheter om musik & spelningar <span aria-hidden="true">↓</span></a>
+
       <div class="social-icons" aria-label="Sociala medier">
         <a href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
           <i class="fab fa-spotify"></i>
@@ -496,29 +498,24 @@
       <p class="bio-quote">För Klas är musik inte ett val. Det är ett behov.</p>
     </section>
 
-    <section id="newsletter" class="section newsletter-section">
-      <p class="section-eyebrow">Håll kontakten</p>
-      <h2><i class="fas fa-paper-plane"></i> Nya låtar & offentliga spelningar</h2>
-      <p class="section-intro">
-        Få ett personligt mejl när ny musik släpps eller en offentlig spelning annonseras.
-        Inget onödigt brus.
-      </p>
+    <section id="newsletter" class="section newsletter-section compact-newsletter-section">
+      <p class="section-eyebrow">Mejllista</p>
+      <h2>Ny musik & spelningar</h2>
+      <p class="section-intro">Få ett kort mejl när jag släpper musik eller annonserar en offentlig spelning.</p>
 
       <form class="mailto-form newsletter-form" data-subject="Anmälan till Klas Östermans mejllista">
-        <div class="form-field">
-          <label for="newsletter-email">E-postadress</label>
-          <input id="newsletter-email" name="E-post" type="email" autocomplete="email" required placeholder="namn@exempel.se">
-        </div>
-        <div class="form-field">
-          <label for="newsletter-area">Ort eller område <span>(valfritt)</span></label>
-          <input id="newsletter-area" name="Ort eller område" type="text" autocomplete="address-level2" placeholder="Till exempel Stockholm eller Roslagen">
+        <div class="newsletter-signup-row">
+          <div class="form-field">
+            <label for="newsletter-email">Din e-postadress</label>
+            <input id="newsletter-email" name="E-post" type="email" autocomplete="email" required placeholder="namn@exempel.se">
+          </div>
+          <button class="main-button" type="submit">Håll mig uppdaterad</button>
         </div>
         <label class="consent-field">
           <input name="consent" type="checkbox" required>
-          <span>Jag vill få mejl om nya låtar och offentliga spelningar och kan avsluta när jag vill.</span>
+          <span>Jag vill få nyheter om musik och spelningar. Jag kan avsluta när jag vill.</span>
         </label>
-        <button class="main-button" type="submit">Skriv upp mig</button>
-        <p class="form-note">Anmälan öppnas i ditt mejlprogram. En utskickstjänst kopplas in senare.</p>
+        <p class="form-note">Tills vidare öppnas anmälan i ditt mejlprogram.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
