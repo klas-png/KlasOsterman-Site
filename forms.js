@@ -1,34 +1,51 @@
 (function () {
-  const recipient = "info@klasosterman.se";
-
-  function buildMessage(form) {
-    const data = new FormData(form);
-    const lines = [];
-
-    for (const [name, value] of data.entries()) {
-      if (name === "consent" || !String(value).trim()) continue;
-      lines.push(`${name}: ${String(value).trim()}`);
-    }
-
-    lines.push("", `Skickat från: ${window.location.href}`);
-    return lines.join("\n");
-  }
-
-  document.querySelectorAll(".mailto-form").forEach(form => {
-    form.addEventListener("submit", event => {
+  document.querySelectorAll(".direct-form").forEach(form => {
+    form.addEventListener("submit", async event => {
       event.preventDefault();
 
       if (!form.reportValidity()) return;
 
-      const subject = form.dataset.subject || "Meddelande via klasosterman.se";
       const status = form.querySelector(".form-status");
-      const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildMessage(form))}`;
+      const button = form.querySelector('button[type="submit"]');
+      const originalButtonText = button ? button.textContent : "";
+      const data = new FormData(form);
+
+      data.append("_subject", form.dataset.subject || "Meddelande via klasosterman.se");
+      data.append("Formulär", form.dataset.formType || "Kontakt");
+      data.append("Sida", window.location.href);
 
       if (status) {
-        status.textContent = "Ditt mejlprogram öppnas med uppgifterna ifyllda. Kontrollera och skicka mejlet därifrån.";
+        status.textContent = "Skickar …";
       }
 
-      window.location.href = mailto;
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Skickar …";
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" }
+        });
+
+        if (!response.ok) throw new Error("Form submission failed");
+
+        form.reset();
+        if (status) {
+          status.textContent = form.dataset.success || "Tack! Ditt meddelande är skickat.";
+        }
+      } catch (error) {
+        if (status) {
+          status.textContent = "Det gick inte att skicka just nu. Försök igen eller mejla info@klasosterman.se.";
+        }
+      } finally {
+        if (button) {
+          button.disabled = false;
+          button.textContent = originalButtonText;
+        }
+      }
     });
   });
 })();
