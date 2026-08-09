@@ -230,7 +230,7 @@
       <h2><i class="fas fa-envelope"></i> Boka Klas & Josefin</h2>
       <p>Berätta gärna datum, plats och typ av evenemang, så återkommer vi med ett upplägg som passar.</p>
 
-      <form class="mailto-form booking-form" data-subject="Bokningsförfrågan – Klas & Josefin">
+      <form class="direct-form booking-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-subject="Bokningsförfrågan – Klas & Josefin" data-form-type="Bokning – Klas & Josefin" data-success="Tack! Er bokningsförfrågan är skickad. Vi återkommer så snart vi kan.">
         <div class="form-grid">
           <div class="form-field">
             <label for="duo-booking-name">Namn</label>
@@ -238,7 +238,7 @@
           </div>
           <div class="form-field">
             <label for="duo-booking-email">E-post</label>
-            <input id="duo-booking-email" name="E-post" type="email" autocomplete="email" required>
+            <input id="duo-booking-email" name="email" type="email" autocomplete="email" required>
           </div>
           <div class="form-field">
             <label for="duo-booking-date">Önskat datum</label>
@@ -268,8 +268,8 @@
           <label for="duo-booking-message">Berätta kort om evenemanget</label>
           <textarea id="duo-booking-message" name="Meddelande" rows="5" required></textarea>
         </div>
-        <button class="main-button" type="submit">Förbered bokningsmejl</button>
-        <p class="form-note">Dina uppgifter sparas inte på webbplatsen. Ett färdigt mejl öppnas som du själv skickar.</p>
+        <button class="main-button" type="submit">Skicka bokningsförfrågan</button>
+        <p class="form-note">Uppgifterna skickas säkert via Formspree till info@klasosterman.se.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
       <p class="contact-email">info@klasosterman.se</p>
@@ -280,11 +280,11 @@
       <p class="section-eyebrow">Mejllista</p>
       <h2>Ny musik & spelningar</h2>
       <p class="section-intro">Få ett kort mejl när vi släpper musik eller annonserar en offentlig spelning.</p>
-      <form class="mailto-form newsletter-form" data-subject="Anmälan till Klas & Josefins mejllista">
+      <form class="direct-form newsletter-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-subject="Anmälan till Klas & Josefins mejllista" data-form-type="Mejllista – Klas & Josefin" data-success="Tack! Du är nu anmäld till mejllistan.">
         <div class="newsletter-signup-row">
           <div class="form-field">
             <label for="duo-newsletter-email">Din e-postadress</label>
-            <input id="duo-newsletter-email" name="E-post" type="email" autocomplete="email" required placeholder="namn@exempel.se">
+            <input id="duo-newsletter-email" name="email" type="email" autocomplete="email" required placeholder="namn@exempel.se">
           </div>
           <button class="main-button" type="submit">Håll mig uppdaterad</button>
         </div>
@@ -292,7 +292,7 @@
           <input name="consent" type="checkbox" required>
           <span>Jag vill få nyheter om musik och spelningar. Jag kan avsluta när jag vill.</span>
         </label>
-        <p class="form-note">Tills vidare öppnas anmälan i ditt mejlprogram.</p>
+        <p class="form-note">Din adress används endast för nyheter om musik och spelningar.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>

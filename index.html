@@ -503,11 +503,11 @@
       <h2>Ny musik & spelningar</h2>
       <p class="section-intro">Få ett kort mejl när jag släpper musik eller annonserar en offentlig spelning.</p>
 
-      <form class="mailto-form newsletter-form" data-subject="Anmälan till Klas Östermans mejllista">
+      <form class="direct-form newsletter-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-subject="Anmälan till Klas Östermans mejllista" data-form-type="Mejllista – Klas Österman" data-success="Tack! Du är nu anmäld till mejllistan.">
         <div class="newsletter-signup-row">
           <div class="form-field">
             <label for="newsletter-email">Din e-postadress</label>
-            <input id="newsletter-email" name="E-post" type="email" autocomplete="email" required placeholder="namn@exempel.se">
+            <input id="newsletter-email" name="email" type="email" autocomplete="email" required placeholder="namn@exempel.se">
           </div>
           <button class="main-button" type="submit">Håll mig uppdaterad</button>
         </div>
@@ -515,7 +515,7 @@
           <input name="consent" type="checkbox" required>
           <span>Jag vill få nyheter om musik och spelningar. Jag kan avsluta när jag vill.</span>
         </label>
-        <p class="form-note">Tills vidare öppnas anmälan i ditt mejlprogram.</p>
+        <p class="form-note">Din adress används endast för nyheter om musik och spelningar.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </section>
@@ -528,7 +528,7 @@
         duoformat eller fullt band.
       </p>
 
-      <form class="mailto-form booking-form" data-subject="Bokningsförfrågan via klasosterman.se">
+      <form class="direct-form booking-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-subject="Bokningsförfrågan via klasosterman.se" data-form-type="Bokning – Klas Österman" data-success="Tack! Din bokningsförfrågan är skickad. Jag återkommer så snart jag kan.">
         <div class="form-grid">
           <div class="form-field">
             <label for="booking-name">Namn</label>
@@ -536,7 +536,7 @@
           </div>
           <div class="form-field">
             <label for="booking-email">E-post</label>
-            <input id="booking-email" name="E-post" type="email" autocomplete="email" required>
+            <input id="booking-email" name="email" type="email" autocomplete="email" required>
           </div>
           <div class="form-field">
             <label for="booking-date">Önskat datum</label>
@@ -571,8 +571,8 @@
           <label for="booking-message">Berätta kort om evenemanget</label>
           <textarea id="booking-message" name="Meddelande" rows="5" required></textarea>
         </div>
-        <button class="main-button" type="submit">Förbered bokningsmejl</button>
-        <p class="form-note">Dina uppgifter sparas inte på webbplatsen. Ett färdigt mejl öppnas som du själv skickar.</p>
+        <button class="main-button" type="submit">Skicka bokningsförfrågan</button>
+        <p class="form-note">Uppgifterna skickas säkert via Formspree till info@klasosterman.se.</p>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
       <p class="contact-email">info@klasosterman.se</p>
