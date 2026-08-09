@@ -634,6 +634,7 @@
       <p id="popup-act"></p>
       <div id="popup-meta" class="show-meta"></div>
       <div id="popup-actions" class="show-actions"></div>
+      <p id="popup-action-status" class="show-action-status" role="status" aria-live="polite"></p>
     </div>
   </div>
 
@@ -702,6 +703,40 @@
       return `https://calendar.google.com/calendar/render?${params}`;
     }
 
+    function showShareUrl(show) {
+      const url = new URL("https://klasosterman.se/");
+      url.searchParams.set("show", show.date);
+      url.hash = "live";
+      return url.toString();
+    }
+
+    async function shareShow(show) {
+      const status = document.getElementById("popup-action-status");
+      const shareData = {
+        title: `${show.title} – ${show.act}`,
+        text: `${show.displayDate}: ${show.act} på ${show.location}`,
+        url: showShareUrl(show)
+      };
+
+      status.textContent = "";
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          return;
+        } catch (error) {
+          if (error.name === "AbortError") return;
+        }
+      }
+
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        status.textContent = "Länken är kopierad.";
+      } catch (error) {
+        status.textContent = "Kopiera länken från webbläsarens adressfält.";
+      }
+    }
+
     function openShowInfo(dateOrShow, title, location, act) {
       const show = typeof dateOrShow === "object"
         ? dateOrShow
@@ -721,6 +756,7 @@
 
       const actions = document.getElementById("popup-actions");
       actions.replaceChildren();
+      document.getElementById("popup-action-status").textContent = "";
       if (show.visibility === "public") {
         const calendar = document.createElement("a");
         calendar.className = "show-action";
@@ -729,6 +765,13 @@
         calendar.rel = "noopener noreferrer";
         calendar.textContent = "Lägg i kalender";
         actions.appendChild(calendar);
+
+        const share = document.createElement("button");
+        share.className = "show-action";
+        share.type = "button";
+        share.textContent = "Dela spelningen";
+        share.addEventListener("click", () => shareShow(show));
+        actions.appendChild(share);
       }
       if (show.ticketUrl && show.admission !== "soldout") {
         const ticket = document.createElement("a");
@@ -860,6 +903,14 @@
       }
     }
 
+    function openLinkedShow() {
+      const showDate = new URLSearchParams(window.location.search).get("show");
+      if (!showDate || !Array.isArray(window.SHOWS)) return;
+
+      const show = window.SHOWS.find(item => item.date === showDate && item.visibility === "public");
+      if (show) openShowInfo(show);
+    }
+
     function toggleMenu() {
       const navLinks = document.querySelector(".nav-links");
       const menuToggle = document.querySelector(".menu-toggle");
@@ -880,6 +931,7 @@
 
     renderShows();
     updatePastShows();
+    openLinkedShow();
 
     document.addEventListener("click", function(event) {
       const navLinks = document.querySelector(".nav-links");
