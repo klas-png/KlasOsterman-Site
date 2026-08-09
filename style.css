@@ -1750,12 +1750,125 @@ footer a:hover {
   font-size: 16px;
 }
 
+.duo-video-feature {
+  position: relative;
+  display: block;
+  width: min(100%, 1180px);
+  margin: 42px auto 54px;
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(199, 154, 94, 0.26);
+  border-radius: 24px;
+  background: #0e0e0d;
+  color: var(--offwhite);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.34);
+}
+
+.duo-video-feature img,
+.duo-video-feature-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.duo-video-feature img {
+  object-fit: cover;
+  transition: transform 0.7s ease, filter 0.7s ease;
+}
+
+.duo-video-feature-shade {
+  background: linear-gradient(90deg, rgba(8,8,7,0.08) 38%, rgba(8,8,7,0.82) 100%);
+}
+
+.duo-video-feature-copy {
+  position: absolute;
+  z-index: 1;
+  right: clamp(28px, 6vw, 78px);
+  bottom: clamp(28px, 6vw, 70px);
+  display: grid;
+  justify-items: start;
+  max-width: 360px;
+}
+
+.duo-video-feature-copy .section-eyebrow {
+  margin-bottom: 10px;
+}
+
+.duo-video-feature-copy strong {
+  font-family: "Merriweather", serif;
+  font-size: clamp(38px, 5vw, 66px);
+  line-height: 1;
+}
+
+.duo-video-feature-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.duo-video-feature-play i {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--offwhite);
+  color: #111;
+  font-size: 14px;
+}
+
+.duo-video-feature:hover img,
+.duo-video-feature:focus-visible img {
+  transform: scale(1.025);
+  filter: brightness(1.08);
+}
+
 .wedding-story-section {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
   gap: clamp(34px, 6vw, 72px);
   max-width: 1180px;
   align-items: center;
+}
+
+.event-story-section {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(34px, 6vw, 72px);
+  max-width: 1180px;
+  align-items: center;
+}
+
+.event-story-media {
+  aspect-ratio: 4 / 3;
+}
+
+.event-story-media img {
+  object-position: center 58%;
+}
+
+.video-card-external small {
+  display: block;
+  margin-top: 5px;
+  color: rgba(243,239,231,0.62);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.video-card-external {
+  text-decoration: none;
+}
+
+.video-card-external::after {
+  content: "\f35d";
+  padding-left: 0;
 }
 
 .wedding-story-media {
@@ -2027,6 +2140,30 @@ footer a:hover {
     width: 100%;
   }
 
+  .duo-video-feature {
+    margin: 32px auto 42px;
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+  }
+
+  .duo-video-feature img {
+    object-position: 42% center;
+  }
+
+  .duo-video-feature-shade {
+    background: linear-gradient(180deg, rgba(8,8,7,0.02) 35%, rgba(8,8,7,0.9) 100%);
+  }
+
+  .duo-video-feature-copy {
+    right: 22px;
+    bottom: 24px;
+    left: 22px;
+  }
+
+  .duo-video-feature-copy strong {
+    font-size: clamp(36px, 12vw, 48px);
+  }
+
   .booking-steps {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -2053,9 +2190,14 @@ footer a:hover {
     max-width: 360px;
   }
 
-  .wedding-story-section {
+  .wedding-story-section,
+  .event-story-section {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+
+  .event-story-media {
+    order: -1;
   }
 
   .wedding-story-media {
@@ -2065,6 +2207,10 @@ footer a:hover {
 
   .wedding-story-media img {
     object-position: center 58%;
+  }
+
+  .event-story-media img {
+    object-position: center 52%;
   }
 
   .wedding-story-content,
