@@ -543,8 +543,12 @@ body {
   display: none;
 }
 
-.shows-list.shows-expanded .show-extra {
+.shows-list.shows-expanded .show-item.show-extra {
   display: flex;
+}
+
+.shows-list.shows-expanded .past-shows-heading.show-extra {
+  display: block;
 }
 
 .shows-toggle {

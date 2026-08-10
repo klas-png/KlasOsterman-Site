@@ -912,21 +912,22 @@
         const heading = document.createElement("p");
         heading.className = "section-intro past-shows-heading";
         heading.textContent = "Tidigare spelningar";
+        if (upcoming.length) heading.classList.add("show-extra");
         showsList.appendChild(heading);
 
         past.forEach((show, index) => {
           const item = createShowItem(show);
           item.classList.add("past-show");
-          if (index >= 3) item.classList.add("show-extra");
+          if (upcoming.length || index >= 3) item.classList.add("show-extra");
           showsList.appendChild(item);
         });
       }
 
-      const hasExtras = upcoming.length > 3 || past.length > 3;
+      const hasExtras = upcoming.length > 3 || past.length > (upcoming.length ? 0 : 3);
       if (toggle) {
         toggle.hidden = !hasExtras;
         toggle.setAttribute("aria-expanded", "false");
-        toggle.textContent = "Visa fler spelningar";
+        toggle.textContent = "Visa alla spelningar";
       }
     }
 
@@ -937,7 +938,7 @@
 
       const expanded = showsList.classList.toggle("shows-expanded");
       toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-      toggle.textContent = expanded ? "Visa färre spelningar" : "Visa fler spelningar";
+      toggle.textContent = expanded ? "Visa färre spelningar" : "Visa alla spelningar";
     }
 
     function updatePastShows() {
