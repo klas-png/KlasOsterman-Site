@@ -1982,6 +1982,41 @@ footer:not(.site-footer) a {
   color: #111;
 }
 
+.duo-context-bar {
+  position: fixed;
+  z-index: 999;
+  top: 99px;
+  left: 0;
+  width: 100%;
+  padding: 7px 24px;
+  background: rgba(14,14,13,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  backdrop-filter: blur(14px);
+  text-align: center;
+}
+
+.duo-context-bar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(243,239,231,0.84);
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.duo-context-bar small {
+  color: rgba(243,239,231,0.48);
+  font-size: inherit;
+  font-weight: 500;
+}
+
+.duo-context-bar a:hover,
+.duo-context-bar a:focus-visible {
+  color: var(--gold);
+}
+
 .duo-page-hero {
   position: relative;
   isolation: isolate;
@@ -2425,10 +2460,24 @@ footer:not(.site-footer) a {
     display: none;
   }
 
+  .duo-context-bar {
+    top: 68px;
+    padding: 8px 14px;
+  }
+
+  .duo-context-bar a {
+    gap: 7px;
+    font-size: 12px;
+  }
+
+  .duo-context-bar small {
+    display: none;
+  }
+
   .duo-page-hero {
     display: block;
     min-height: 0;
-    padding: 84px 0 0;
+    padding: 108px 0 0;
     text-align: center;
   }
 
@@ -2439,7 +2488,7 @@ footer:not(.site-footer) a {
   .duo-page-hero-media {
     position: absolute;
     z-index: -1;
-    inset: 84px 0 auto;
+    inset: 108px 0 auto;
     display: block;
     height: clamp(580px, 105vw, 720px);
     overflow: hidden;
