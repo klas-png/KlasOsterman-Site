@@ -31,6 +31,10 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - Duo-sidan har en utvald livevideo för Blood Moon och en samlad videosektion med fungerande externa länkar där inbäddning inte tillåts.
 - Mejllistorna har förenklats till e-postadress, samtycke och en tydlig knapp, med genväg redan från sidornas topp.
 - Klas-sidan har fått en tydligare, mobilanpassad artistbiografi med en varm solobild som stärker den personliga artistidentiteten.
+- Startsidan har fått två tydliga huvudval i toppen: lyssna eller boka live. Musikvideor ligger kvar som en diskret sekundär länk.
+- Spelningslistan visar som standard högst tre kommande och tre tidigare spelningar, med möjlighet att visa hela arkivet.
+- Sidtiteln har förtydligats för både besökare och sökmotorer till artist, låtskrivare och livemusik.
+- Spotify-sektionen har fått en tydlig knapp som öppnar artistprofilen i Spotify-appen för bättre ljudkvalitet.
 
 ## Prioritet 1 – publik och bokningar
 

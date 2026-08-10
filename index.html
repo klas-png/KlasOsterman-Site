@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Klas Österman | Singer-songwriter</title>
+  <title>Klas Österman – artist, låtskrivare &amp; livemusik</title>
   <meta
     name="description"
     content="Klas Österman – svensk singer-songwriter. Lyssna på musik, se videor, hitta spelningar och boka solo, duo eller band."
@@ -71,11 +71,12 @@
 
       <div class="buttons">
         <a href="#music">Lyssna</a>
-        <a href="#videos">Se videor</a>
         <a class="hero-booking-button" href="#contact">Boka live</a>
       </div>
 
-      <a class="hero-news-link" href="#newsletter">Få nyheter om musik & spelningar <span aria-hidden="true">↓</span></a>
+      <a class="hero-video-link" href="#videos">Se musikvideor <span aria-hidden="true">↓</span></a>
+
+      <a class="hero-news-link" href="#newsletter">Få nyheter om musik &amp; spelningar <span aria-hidden="true">↓</span></a>
 
       <div class="social-icons" aria-label="Sociala medier">
         <a href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
@@ -118,6 +119,17 @@
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy">
       </iframe>
+
+      <div class="spotify-actions">
+        <a
+          class="main-button spotify-button"
+          href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt"
+          target="_blank"
+          rel="noopener noreferrer">
+          <i class="fab fa-spotify" aria-hidden="true"></i>
+          Öppna i Spotify – bättre ljud
+        </a>
+      </div>
     </section>
 
     <section id="videos" class="section section-band section-band-soft">
@@ -416,6 +428,10 @@
           </button>
         </div>
       </div>
+
+      <button class="shows-toggle" type="button" aria-expanded="false" hidden>
+        Visa fler spelningar
+      </button>
     </section>
 
     <section class="section live-format-section section-band section-band-warm">
@@ -869,6 +885,7 @@
 
     function renderShows() {
       const showsList = document.querySelector(".shows-list");
+      const toggle = document.querySelector(".shows-toggle");
 
       if (!showsList || !Array.isArray(window.SHOWS)) return;
 
@@ -884,13 +901,43 @@
         .sort((a, b) => b.date.localeCompare(a.date));
 
       showsList.replaceChildren();
-      [...upcoming, ...past].forEach(show => showsList.appendChild(createShowItem(show)));
 
-      const heading = document.createElement("p");
-      heading.className = "section-intro past-shows-heading";
-      heading.textContent = "Tidigare spelningar";
-      heading.style.marginTop = "24px";
-      showsList.appendChild(heading);
+      upcoming.forEach((show, index) => {
+        const item = createShowItem(show);
+        if (index >= 3) item.classList.add("show-extra");
+        showsList.appendChild(item);
+      });
+
+      if (past.length) {
+        const heading = document.createElement("p");
+        heading.className = "section-intro past-shows-heading";
+        heading.textContent = "Tidigare spelningar";
+        showsList.appendChild(heading);
+
+        past.forEach((show, index) => {
+          const item = createShowItem(show);
+          item.classList.add("past-show");
+          if (index >= 3) item.classList.add("show-extra");
+          showsList.appendChild(item);
+        });
+      }
+
+      const hasExtras = upcoming.length > 3 || past.length > 3;
+      if (toggle) {
+        toggle.hidden = !hasExtras;
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.textContent = "Visa fler spelningar";
+      }
+    }
+
+    function toggleShows() {
+      const toggle = document.querySelector(".shows-toggle");
+      const showsList = document.querySelector(".shows-list");
+      if (!toggle || !showsList) return;
+
+      const expanded = showsList.classList.toggle("shows-expanded");
+      toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+      toggle.textContent = expanded ? "Visa färre spelningar" : "Visa fler spelningar";
     }
 
     function updatePastShows() {
@@ -947,6 +994,8 @@
     renderShows();
     updatePastShows();
     openLinkedShow();
+
+    document.querySelector(".shows-toggle")?.addEventListener("click", toggleShows);
 
     document.addEventListener("click", function(event) {
       const navLinks = document.querySelector(".nav-links");

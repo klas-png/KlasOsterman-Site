@@ -231,6 +231,23 @@ body {
   margin-top: 36px;
 }
 
+.hero-video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  color: rgba(243,239,231,0.78);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero-video-link:hover,
+.hero-video-link:focus-visible {
+  color: #f3efe7;
+}
+
 .hero-booking-button {
   background: rgba(243,239,231,0.95) !important;
   color: #111 !important;
@@ -342,6 +359,23 @@ body {
   margin: 0 auto 10px auto;
   font-size: 18px;
   color: rgba(243,239,231,0.68);
+}
+
+.spotify-actions {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.spotify-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.spotify-button .fa-spotify {
+  font-size: 20px;
 }
 
 /* FADE IN */
@@ -503,6 +537,39 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
+}
+
+.show-extra {
+  display: none;
+}
+
+.shows-list.shows-expanded .show-extra {
+  display: flex;
+}
+
+.shows-toggle {
+  min-height: 48px;
+  margin: 28px auto 0;
+  padding: 12px 24px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  color: #f3efe7;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.shows-toggle:hover,
+.shows-toggle:focus-visible {
+  border-color: rgba(230,201,130,0.62);
+  background: rgba(230,201,130,0.1);
+  transform: translateY(-2px);
+}
+
+.shows-toggle[hidden] {
+  display: none;
 }
 
 .show-item {
