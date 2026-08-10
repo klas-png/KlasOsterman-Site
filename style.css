@@ -1987,6 +1987,7 @@ footer:not(.site-footer) a {
   z-index: 999;
   top: 99px;
   left: 0;
+  display: none;
   width: 100%;
   padding: 7px 24px;
   background: rgba(14,14,13,0.9);
@@ -2462,6 +2463,7 @@ footer:not(.site-footer) a {
 
   .duo-context-bar {
     top: 68px;
+    display: block;
     padding: 8px 14px;
   }
 
