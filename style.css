@@ -543,6 +543,10 @@ body {
   display: none;
 }
 
+.shows-list [hidden] {
+  display: none !important;
+}
+
 .shows-list.shows-expanded .show-item.show-extra {
   display: flex;
 }

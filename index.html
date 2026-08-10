@@ -10,7 +10,7 @@
     content="Klas Österman – svensk singer-songwriter. Lyssna på musik, se videor, hitta spelningar och boka solo, duo eller band."
   >
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20260810-2">
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -669,8 +669,8 @@
     </div>
   </div>
 
-  <script src="shows.js"></script>
-  <script src="forms.js" defer></script>
+  <script src="shows.js?v=20260810-2"></script>
+  <script src="forms.js?v=20260810-2" defer></script>
   <script>
     function stopSpotify() {
       const spotify = document.getElementById("spotify-player");
@@ -904,7 +904,10 @@
 
       upcoming.forEach((show, index) => {
         const item = createShowItem(show);
-        if (index >= 3) item.classList.add("show-extra");
+        if (index >= 3) {
+          item.classList.add("show-extra");
+          item.hidden = true;
+        }
         showsList.appendChild(item);
       });
 
@@ -912,13 +915,19 @@
         const heading = document.createElement("p");
         heading.className = "section-intro past-shows-heading";
         heading.textContent = "Tidigare spelningar";
-        if (upcoming.length) heading.classList.add("show-extra");
+        if (upcoming.length) {
+          heading.classList.add("show-extra");
+          heading.hidden = true;
+        }
         showsList.appendChild(heading);
 
         past.forEach((show, index) => {
           const item = createShowItem(show);
           item.classList.add("past-show");
-          if (upcoming.length || index >= 3) item.classList.add("show-extra");
+          if (upcoming.length || index >= 3) {
+            item.classList.add("show-extra");
+            item.hidden = true;
+          }
           showsList.appendChild(item);
         });
       }
@@ -937,6 +946,9 @@
       if (!toggle || !showsList) return;
 
       const expanded = showsList.classList.toggle("shows-expanded");
+      showsList.querySelectorAll(".show-extra").forEach(item => {
+        item.hidden = !expanded;
+      });
       toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
       toggle.textContent = expanded ? "Visa färre spelningar" : "Visa alla spelningar";
     }
@@ -993,7 +1005,6 @@
     }
 
     renderShows();
-    updatePastShows();
     openLinkedShow();
 
     document.querySelector(".shows-toggle")?.addEventListener("click", toggleShows);
