@@ -539,7 +539,7 @@ body {
   gap: 18px;
 }
 
-.show-extra {
+.shows-list .show-extra {
   display: none;
 }
 
