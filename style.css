@@ -1876,6 +1876,7 @@ footer:not(.site-footer) a {
   .hero-content {
     width: 100%;
     max-width: 100%;
+    padding: 88px 20px 120px;
   }
 
   .hero h1,
