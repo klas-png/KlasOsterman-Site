@@ -35,6 +35,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - Spelningslistan visar som standard högst tre kommande spelningar. Övriga kommande och hela historiken nås via en knapp; om kommande spelningar saknas visas de tre senaste.
 - Sidtiteln har förtydligats för både besökare och sökmotorer till artist, låtskrivare och livemusik.
 - Spotify-sektionen har fått en tydlig knapp som öppnar artistprofilen i Spotify-appen för bättre ljudkvalitet.
+- Grundläggande teknisk SEO är införd på artist- och duo-sidan: unika sidtitlar och beskrivningar, canonical-adresser, delningsmetadata, strukturerad data, `robots.txt` och XML-sitemap.
 
 ## Prioritet 1 – publik och bokningar
 
@@ -60,11 +61,13 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 
 ## Prioritet 3 – musiksläpp och synlighet
 
+- [Påbörjat] Registrera domänen i Google Search Console, verifiera den via DNS, skicka in sitemap och begär indexering av artist- och duo-sidan.
 - Skapa en enkel sida eller sektion för varje större musiksläpp.
 - Kombinera Spotify-länk, musikvideo, bakgrund till låten, bilder och mejlanmälan.
 - Använd mejllistan före, under och efter ett släpp utan att skicka för ofta.
 - Bygg genuint innehåll kring relevanta lokala sökningar, exempelvis livemusik till bröllop, akustisk duo och liveband i Stockholm och Roslagen.
 - Mät bokningsklick, förfrågningar, mejlanmälningar och vilka kanaler besökarna kommer från.
+- Skapa en egen permanent sida för varje offentlig spelning som ska kunna visas som ett evenemang i Google. Lägg därefter till Event-strukturerad data; privata spelningar ska inte indexeras.
 
 ## Teknisk utvecklingsplan
 
