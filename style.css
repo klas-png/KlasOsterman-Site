@@ -2751,3 +2751,19 @@ textarea {
     display: none;
   }
 }
+
+/* Mobil: håll artistpresentationen fri från porträttet i hero-bilden. */
+@media (max-width: 768px) {
+  .hero-content {
+    justify-content: flex-start;
+    padding: 104px 20px 120px;
+  }
+
+  .hero p {
+    width: min(58vw, 235px);
+    margin-left: auto;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+}
