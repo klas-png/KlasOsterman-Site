@@ -486,7 +486,7 @@
           <p class="live-format-label">Avskalat</p>
           <h3>Solo</h3>
           <p>Sång och gitarr med närhet till texten – för mindre konserter och personliga tillfällen.</p>
-          <a href="#contact">Fråga om solo</a>
+          <a href="#contact" data-booking-format="Solo">Fråga om solo</a>
         </article>
 
         <article class="card live-format-card live-format-card-featured">
@@ -502,7 +502,7 @@
           <p class="live-format-label">Större energi</p>
           <h3>Band</h3>
           <p>Klas Österman live med fullt band – egna låtar med närvaro, energi och känsla.</p>
-          <a href="#contact">Fråga om band</a>
+          <a href="#contact" data-booking-format="Fullt band">Fråga om band</a>
         </article>
       </div>
     </section>
@@ -598,6 +598,7 @@
         För bokningar, samarbeten eller frågor kring konserter, bröllop, privata event,
         duoformat eller fullt band.
       </p>
+      <p class="booking-reassurance">Du behöver inte ha alla detaljer klara – skicka det du vet, så hittar vi resten tillsammans.</p>
 
       <form class="direct-form booking-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-subject="Bokningsförfrågan via klasosterman.se" data-form-type="Bokning – Klas Österman" data-success="Tack! Din bokningsförfrågan är skickad. Jag återkommer så snart jag kan.">
         <div class="form-grid">
@@ -636,6 +637,10 @@
               <option>Duo med Josefin</option>
               <option>Fullt band</option>
             </select>
+          </div>
+          <div class="form-field">
+            <label for="booking-guests">Ungefärligt antal gäster</label>
+            <input id="booking-guests" name="Ungefärligt antal gäster" type="number" min="1" inputmode="numeric">
           </div>
         </div>
         <div class="form-field">
@@ -712,7 +717,7 @@
   </div>
 
   <script src="shows.js?v=20260813-1"></script>
-  <script src="forms.js?v=20260810-2" defer></script>
+  <script src="forms.js?v=20260813-1" defer></script>
   <script>
     function stopSpotify() {
       const spotify = document.getElementById("spotify-player");

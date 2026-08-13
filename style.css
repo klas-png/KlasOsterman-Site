@@ -1241,6 +1241,13 @@ body {
   background: var(--gold-hover);
 }
 
+.booking-reassurance {
+  max-width: 720px;
+  margin: 14px auto 28px;
+  color: rgba(243,239,231,0.78);
+  font-size: 0.96rem;
+}
+
 .booking-tags {
   margin: 34px auto 24px auto;
   display: flex;

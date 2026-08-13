@@ -1,4 +1,11 @@
 (function () {
+  document.querySelectorAll("[data-booking-format]").forEach(link => {
+    link.addEventListener("click", () => {
+      const formatSelect = document.getElementById("booking-format");
+      if (formatSelect) formatSelect.value = link.dataset.bookingFormat;
+    });
+  });
+
   document.querySelectorAll(".direct-form").forEach(form => {
     form.addEventListener("submit", async event => {
       event.preventDefault();

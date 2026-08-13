@@ -67,7 +67,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - Kombinera Spotify-länk, musikvideo, bakgrund till låten, bilder och mejlanmälan.
 - Använd mejllistan före, under och efter ett släpp utan att skicka för ofta.
 - Bygg genuint innehåll kring relevanta lokala sökningar, exempelvis livemusik till bröllop, akustisk duo och liveband i Stockholm och Roslagen.
-- Mät bokningsklick, förfrågningar, mejlanmälningar och vilka kanaler besökarna kommer från.
+- [Avvaktar] Mät bokningsklick, förfrågningar, mejlanmälningar och vilka kanaler besökarna kommer från. Tas upp igen när webbplatsen ger mer återbäring; tills dess används Formspree, Spotify och YouTubes befintliga statistik utan en extra betaltjänst eller cookie-ruta.
 - Skapa en egen permanent sida för varje offentlig spelning som ska kunna visas som ett evenemang i Google. Lägg därefter till Event-strukturerad data; privata spelningar ska inte indexeras.
 
 ## Teknisk utvecklingsplan
