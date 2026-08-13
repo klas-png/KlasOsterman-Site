@@ -2206,23 +2206,6 @@ footer:not(.site-footer) a {
   object-position: center 58%;
 }
 
-.video-card-external small {
-  display: block;
-  margin-top: 5px;
-  color: rgba(243,239,231,0.62);
-  font-size: 11px;
-  font-weight: 500;
-}
-
-.video-card-external {
-  text-decoration: none;
-}
-
-.video-card-external::after {
-  content: "\f35d";
-  padding-left: 0;
-}
-
 .wedding-story-media {
   display: block;
   min-width: 0;
