@@ -404,6 +404,14 @@
     const iframe = document.getElementById("lightbox-iframe");
 
     function openVideo(videoId) {
+      const isDesktopSafari = /^((?!chrome|chromium|android).)*safari/i.test(navigator.userAgent)
+        && !/iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+      if (isDesktopSafari) {
+        window.open("https://www.youtube.com/watch?v=" + videoId, "_blank", "noopener,noreferrer");
+        return;
+      }
+
       iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0&playsinline=1";
       lightbox.classList.add("active");
       lightbox.setAttribute("aria-hidden", "false");

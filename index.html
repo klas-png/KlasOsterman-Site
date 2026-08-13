@@ -739,6 +739,14 @@
     function openVideo(videoId) {
       stopSpotify();
 
+      const isDesktopSafari = /^((?!chrome|chromium|android).)*safari/i.test(navigator.userAgent)
+        && !/iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+
+      if (isDesktopSafari) {
+        window.open("https://www.youtube.com/watch?v=" + videoId, "_blank", "noopener,noreferrer");
+        return;
+      }
+
       const lightbox = document.getElementById("video-lightbox");
       const iframe = document.getElementById("lightbox-iframe");
 
