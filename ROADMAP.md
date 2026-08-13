@@ -106,6 +106,10 @@ Bygg ett sammanhängande system där Klas och Josefin har varsin personlig webbp
 - Återanvänd mobilanpassning, navigation, spelningar, datumhantering, videoöppning, bokningsflöde, prestanda och tillgänglighet.
 - Skapa en riktig och permanent duo-adress på båda webbplatserna, exempelvis `/duo`, i stället för att endast länka till `/#duo`.
 - Låt sidhuvud och navigation tillhöra respektive artist även när duo-innehållet visas.
+- [Beslutat] DUOVI ska finnas på två publika adresser: `klasosterman.se/duo/` och `josefinblomberg.se/duo/`. Det gör att respektive artists DUOVI-sida och visitkort håller besökaren på rätt domän.
+- [Beslutat] De två DUOVI-sidorna ska byggas från en gemensam innehållskälla för texter, bilder, videor, repertoar, spelningar och bokningsinformation. Innehållet ska inte underhållas manuellt i två fristående kopior.
+- Anpassa endast sidhuvud, tillbaka-länk och spårning av formulär och visitkort till respektive artistdomän.
+- Utse en huvudsaklig canonical-adress för DUOVI när Josefins webbplats byggs. Tills en eventuell egen DUOVI-domän finns används `https://klasosterman.se/duo/` som canonical även från Josefins DUOVI-sida, så att de två adresserna inte konkurrerar i Google.
 
 ### Gemensam duoidentitet
 
@@ -113,7 +117,7 @@ Bygg ett sammanhängande system där Klas och Josefin har varsin personlig webbp
 - Använd samma namn, presentation, bilder, videor och grafiska uttryck för duon på båda webbplatserna.
 - Visa samma repertoar, liveformat, offentliga duospelningar och bokningsinformation.
 - Ha en tydlig knapp med **Boka DUOVI**.
-- Strukturera duo-innehållet så att en ändring enkelt kan hållas synkroniserad mellan webbplatserna.
+- [Beslutat] Strukturera duo-innehållet så att en ändring i den gemensamma innehållskällan kan slå igenom på båda webbplatserna.
 
 ### Visitkort
 
