@@ -229,7 +229,7 @@
       <h2><i class="fas fa-play"></i> Se och lyssna</h2>
       <p class="section-intro">Ett urval med DUOVI – Klas Österman och Josefin Blomberg.</p>
 
-      <button class="duo-video-feature" type="button" data-video-id="LKZUf40ns8o" aria-label="Spela Blood Moon live session">
+      <button class="duo-video-feature" type="button" data-video-id="LKZUf40ns8o" data-local-video="../assets/videos/blood-moon-live-720p.mp4" aria-label="Spela Blood Moon live session">
         <img
           src="../assets/images/blood-moon-live.jpg"
           alt="Klas Österman och Josefin Blomberg framför Blood Moon på scen"
@@ -396,6 +396,8 @@
         allow="autoplay; encrypted-media; picture-in-picture"
         allowfullscreen>
       </iframe>
+      <video id="lightbox-local-video" controls playsinline preload="metadata" hidden></video>
+      <a id="lightbox-youtube-view" class="youtube-view-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Se även på YouTube</a>
     </div>
   </div>
 
@@ -403,6 +405,8 @@
   <script>
     const lightbox = document.getElementById("video-lightbox");
     const iframe = document.getElementById("lightbox-iframe");
+    const localVideo = document.getElementById("lightbox-local-video");
+    const youtubeLink = document.getElementById("lightbox-youtube-view");
 
     function openVideo(videoId) {
       iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId
@@ -414,15 +418,40 @@
       document.body.style.overflow = "hidden";
     }
 
+    function openLocalVideo(videoPath, youtubeId) {
+      iframe.src = "";
+      iframe.hidden = true;
+      localVideo.src = videoPath;
+      localVideo.hidden = false;
+      youtubeLink.href = "https://www.youtube.com/watch?v=" + youtubeId;
+      youtubeLink.hidden = false;
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      localVideo.play().catch(() => {});
+    }
+
     function closeVideo() {
       iframe.src = "";
+      iframe.hidden = false;
+      localVideo.pause();
+      localVideo.removeAttribute("src");
+      localVideo.load();
+      localVideo.hidden = true;
+      youtubeLink.hidden = true;
       lightbox.classList.remove("active");
       lightbox.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
     }
 
     document.querySelectorAll("[data-video-id]").forEach(button => {
-      button.addEventListener("click", () => openVideo(button.dataset.videoId));
+      button.addEventListener("click", () => {
+        if (button.dataset.localVideo) {
+          openLocalVideo(button.dataset.localVideo, button.dataset.videoId);
+        } else {
+          openVideo(button.dataset.videoId);
+        }
+      });
     });
 
     lightbox.addEventListener("click", event => {
