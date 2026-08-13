@@ -693,6 +693,7 @@
         src=""
         title="YouTube-video"
         frameborder="0"
+        referrerpolicy="strict-origin-when-cross-origin"
         allow="autoplay; encrypted-media; picture-in-picture"
         allowfullscreen>
       </iframe>
@@ -742,7 +743,10 @@
       const lightbox = document.getElementById("video-lightbox");
       const iframe = document.getElementById("lightbox-iframe");
 
-      iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0&playsinline=1";
+      iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId
+        + "?autoplay=1&rel=0&playsinline=1"
+        + "&origin=https%3A%2F%2Fklasosterman.se"
+        + "&widget_referrer=https%3A%2F%2Fklasosterman.se%2F";
       lightbox.classList.add("active");
       document.body.style.overflow = "hidden";
     }
