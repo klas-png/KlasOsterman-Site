@@ -36,6 +36,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - Sidtiteln har förtydligats för både besökare och sökmotorer till artist, låtskrivare och livemusik.
 - Spotify-sektionen har fått en tydlig knapp som öppnar artistprofilen i Spotify-appen för bättre ljudkvalitet.
 - Grundläggande teknisk SEO är införd på artist- och duo-sidan: unika sidtitlar och beskrivningar, canonical-adresser, delningsmetadata, strukturerad data, `robots.txt` och XML-sitemap.
+- Duon har fått namnet DUOVI på webbplatsen, med Klas Österman och Josefin Blomberg kvar tydligt för igenkänning och sökbarhet.
 
 ## Prioritet 1 – publik och bokningar
 
@@ -108,21 +109,33 @@ Bygg ett sammanhängande system där Klas och Josefin har varsin personlig webbp
 
 ### Gemensam duoidentitet
 
+- [Beslutat] Duon heter **DUOVI**. Använd namnet som huvudrubrik och skriv **Klas Österman & Josefin Blomberg** tydligt under en övergångsperiod för igenkänning och sökbarhet.
 - Använd samma namn, presentation, bilder, videor och grafiska uttryck för duon på båda webbplatserna.
 - Visa samma repertoar, liveformat, offentliga duospelningar och bokningsinformation.
-- Ha en tydlig knapp med exempelvis **Boka Klas & Josefin**.
+- Ha en tydlig knapp med **Boka DUOVI**.
 - Strukturera duo-innehållet så att en ändring enkelt kan hållas synkroniserad mellan webbplatserna.
 
 ### Visitkort
 
-- Klas får ett dubbelsidigt kort: ena sidan Klas Österman och andra sidan Klas & Josefin Duo.
-- Josefin får ett dubbelsidigt kort: ena sidan Josefin Blomberg och andra sidan Klas & Josefin Duo.
-- Klas-sidans QR-kod leder till `klasosterman.se`.
+- [Påbörjat] Klas får ett dubbelsidigt kort: ena sidan Klas Österman och andra sidan DUOVI. Första premiumutkastet och tryckfiler med 3 mm utfall är framtagna; fysisk provskanning och provtryck återstår.
+- Josefin får ett dubbelsidigt kort: ena sidan Josefin Blomberg och andra sidan DUOVI.
+- [Genomfört] Klas-sidans QR-kod leder till `klasosterman.se`.
 - Josefins artist-QR leder till hennes startsida.
 - Duo-sidan på respektive kort leder till den permanenta duo-sidan på respektive artists webbplats.
 - Skriv alltid ut den korta webbadressen bredvid QR-koden så att kortet fungerar även utan skanning.
 - Använd spårbara men stabila länkar för att mäta besök från Klas respektive Josefins visitkort.
-- Provskanna alla QR-koder i flera telefoner och provtryck korten innan en större beställning.
+- [Påbörjat] Provskanna alla QR-koder i flera telefoner och provtryck korten innan en större beställning. Maskinell avkodning från de färdiga Klas- och DUOVI-sidorna är godkänd.
+
+### Flyers och lokala anslag
+
+- [Påbörjat] Skapa flyers för tillåtna anslagstavlor på exempelvis bibliotek, caféer, bygdegårdar, musikställen, kyrkor och eventlokaler. Första A4-utkasten och tryckfilerna är framtagna; provtryck och fysisk QR-testning återstår.
+- [Genomfört] Ta fram minst två tydliga varianter: en bokningsinriktad flyer för bröllop, fest, restaurang och företag samt en artistinriktad flyer för musik, spelningar och lokal publik.
+- Använd en stark bild, en kort rubrik, få rader text, tydlig kontaktinformation och en stor QR-kod som fungerar på avstånd.
+- Skriv alltid ut den korta webbadressen under QR-koden och överväg avrivningsremsor där formatet passar.
+- [Genomfört] Låt flygarnas QR-koder leda direkt till de enkla adresser som också står på papperet: `klasosterman.se` för artistflyern och `klasosterman.se/duo/` för DUOVI. Separata kampanjadresser väljs bort i första upplagan för ett enklare och mer transparent flöde; detaljerad kampanjmätning kan införas senare.
+- Samordna flyerns färger, bilder och typografi med visitkorten och webbplatsen.
+- Provskanna QR-koderna med flera telefoner från ungefär en till två meters avstånd och gör ett provtryck före större upplaga.
+- Kontrollera tillstånd, regler och eventuellt nedtagningsdatum för varje anslagstavla.
 
 ### Föreslagen arbetsordning
 
@@ -131,7 +144,8 @@ Bygg ett sammanhängande system där Klas och Josefin har varsin personlig webbp
 3. Bygg Josefins webbplats från samma tekniska grund.
 4. Säkerställ att duo-innehållet är konsekvent på båda webbplatserna.
 5. Skapa visitkorten och de spårbara QR-länkarna.
-6. Provtryck och testa innan slutlig beställning.
+6. Skapa flyers och separata spårbara flyerlänkar för bokningar och publik.
+7. Provtryck och testa allt tryckt material innan slutlig beställning eller större uppsättning.
 
 ## Material som kan stärka nästa etapp
 

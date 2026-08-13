@@ -5,7 +5,7 @@ window.SHOWS = [
     displayDate: "5 september 2026",
     title: "Dop",
     location: "Glanshammars kyrka",
-    act: "Klas Österman & Josefin Blomberg (duo)",
+    act: "DUOVI – Klas Österman & Josefin Blomberg",
     visibility: "private",
     format: "Duo"
   },
@@ -14,7 +14,7 @@ window.SHOWS = [
     displayDate: "29 augusti 2026",
     title: "Frukostmingel vid golftävling",
     location: "Roslagens GK",
-    act: "Klas Österman & Josefin Blomberg (duo)",
+    act: "DUOVI – Klas Österman & Josefin Blomberg",
     visibility: "private",
     format: "Duo"
   },
@@ -23,7 +23,7 @@ window.SHOWS = [
     displayDate: "15 augusti 2026",
     title: "Bröllop och vigsel",
     location: "Hille kyrka, Gävle",
-    act: "Klas Österman & Josefin Blomberg (duo)",
+    act: "DUOVI – Klas Österman & Josefin Blomberg",
     visibility: "private",
     format: "Duo"
   },
@@ -32,7 +32,7 @@ window.SHOWS = [
     displayDate: "8 augusti 2026",
     title: "Bröllop, mingel och vigsel",
     location: "Nyckelviken",
-    act: "Klas Österman & Josefin Blomberg (duo)",
+    act: "DUOVI – Klas Österman & Josefin Blomberg",
     visibility: "private",
     format: "Duo"
   },
@@ -41,7 +41,7 @@ window.SHOWS = [
     displayDate: "18 juli 2026",
     title: "Födelsedagsfest",
     location: "Rimbo",
-    act: "Klas Österman & Josefin Blomberg (duo)",
+    act: "DUOVI – Klas Österman & Josefin Blomberg",
     visibility: "private",
     format: "Duo"
   },
@@ -50,7 +50,7 @@ window.SHOWS = [
     displayDate: "16 juli 2026",
     title: "Live",
     location: "Ingmarsö Krog",
-    act: "Klas Österman & Josefin Blomberg",
+    act: "DUOVI – Klas Österman & Josefin Blomberg",
     visibility: "public",
     format: "Duo"
   },
@@ -59,7 +59,7 @@ window.SHOWS = [
     displayDate: "11 juli 2026",
     title: "Live med band",
     location: "Logen, Östra Lagnö",
-    act: "Klas Österman & Josefin Blomberg + band",
+    act: "DUOVI – Klas Österman & Josefin Blomberg + band",
     visibility: "public",
     format: "Fullt band"
   },
@@ -68,7 +68,7 @@ window.SHOWS = [
     displayDate: "27 juni 2026",
     title: "Privat bröllop",
     location: "Idöborg, Värmdö",
-    act: "Klas Österman & Josefin Blomberg",
+    act: "DUOVI – Klas Österman & Josefin Blomberg",
     visibility: "private",
     format: "Duo"
   },
@@ -77,7 +77,7 @@ window.SHOWS = [
     displayDate: "26 juni 2026",
     title: "Live",
     location: "Café Chocolat, Rimbo",
-    act: "Klas Österman & Josefin Blomberg",
+    act: "DUOVI – Klas Österman & Josefin Blomberg",
     visibility: "public",
     format: "Duo"
   },
@@ -86,7 +86,7 @@ window.SHOWS = [
     displayDate: "13 juni 2026",
     title: "Privat bröllop",
     location: "Fredriksborgs Hotell, Värmdö",
-    act: "Klas Österman & Josefin Blomberg",
+    act: "DUOVI – Klas Österman & Josefin Blomberg",
     visibility: "private",
     format: "Duo"
   },
@@ -95,7 +95,7 @@ window.SHOWS = [
     displayDate: "11 juni 2026",
     title: "Privat bröllop",
     location: "Rimbo kyrka",
-    act: "Klas Österman & Josefin Blomberg",
+    act: "DUOVI – Klas Österman & Josefin Blomberg",
     visibility: "private",
     format: "Duo"
   }
