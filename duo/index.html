@@ -395,7 +395,6 @@
         allow="autoplay; encrypted-media; picture-in-picture"
         allowfullscreen>
       </iframe>
-      <a id="lightbox-youtube-link" class="youtube-fallback-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Problem med spelaren? Öppna videon på YouTube</a>
     </div>
   </div>
 
@@ -403,11 +402,9 @@
   <script>
     const lightbox = document.getElementById("video-lightbox");
     const iframe = document.getElementById("lightbox-iframe");
-    const youtubeLink = document.getElementById("lightbox-youtube-link");
 
     function openVideo(videoId) {
       iframe.src = "https://www.youtube-nocookie.com/embed/" + videoId + "?autoplay=1&rel=0&playsinline=1";
-      youtubeLink.href = "https://www.youtube.com/watch?v=" + videoId;
       lightbox.classList.add("active");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";

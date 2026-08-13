@@ -1173,32 +1173,14 @@ body {
 .lightbox-content {
   width: 100%;
   max-width: 1100px;
-  display: grid;
-  gap: 14px;
+  aspect-ratio: 16 / 9;
 }
 
 .lightbox-content iframe {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
+  height: 100%;
   border-radius: 20px;
   border: none;
-}
-
-.youtube-fallback-link {
-  justify-self: center;
-  padding: 9px 15px;
-  border: 1px solid rgba(200, 164, 106, 0.55);
-  border-radius: 999px;
-  color: #f3efe7;
-  background: rgba(17, 17, 17, 0.9);
-  font-size: 14px;
-  text-decoration: none;
-}
-
-.youtube-fallback-link:hover {
-  color: var(--gold-hover);
-  border-color: var(--gold-hover);
 }
 
 .show-popup {
