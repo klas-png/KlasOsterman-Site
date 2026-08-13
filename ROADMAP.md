@@ -58,7 +58,6 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - [Genomfört] Lägg till två eller tre kundomdömen med godkända namn eller arrangörer.
 - [Påbörjat] Visa situationsbaserade exempel. Vigsel, mingel, restaurang och event finns; fullt band kan utvecklas vidare.
 - [Genomfört] Skapa ett digitalt presskit med presentation, pressbilder, musik, livevideor, teknisk information och kontaktuppgifter. En första permanent version finns på `/press/` och kan kompletteras med fotografnamn och mer detaljerad teknisk rider.
-- [Genomfört] Gör presskitet enkelt att hitta via en egen flik i huvudmenyn och en länk från DUOVI-sidan.
 - [Genomfört] Bildoptimera allt nytt material för mobil och dator före publicering.
 
 ## Prioritet 3 – musiksläpp och synlighet
