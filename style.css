@@ -2006,6 +2006,10 @@ footer:not(.site-footer) a {
   display: none;
 }
 
+.duo-press-link {
+  font-size: 14px;
+}
+
 .duo-page-hero {
   position: relative;
   isolation: isolate;
@@ -2449,6 +2453,10 @@ footer:not(.site-footer) a {
     padding: 8px 14px;
     font-size: 14px;
     line-height: 1;
+  }
+
+  .duo-press-link {
+    display: none;
   }
 
   .duo-artist-link {
