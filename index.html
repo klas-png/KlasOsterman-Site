@@ -178,7 +178,7 @@
       <p class="section-intro">Ett urval av musikvideor, livekänsla och visuella berättelser.</p>
 
       <div class="video-grid">
-        <button class="video-card" type="button" onclick="openLocalVideo('assets/videos/dar-anglar-hor-720p.mp4', 'iS0_Bc853Bc')">
+        <button class="video-card" type="button" onclick="openVideo('iS0_Bc853Bc')">
           <img src="https://img.youtube.com/vi/iS0_Bc853Bc/hqdefault.jpg" alt="Där änglar hör" loading="lazy" decoding="async">
           <span>Där änglar hör</span>
         </button>
@@ -203,7 +203,7 @@
           <span>Hummeldal</span>
         </button>
 
-        <button class="video-card" type="button" onclick="openLocalVideo('assets/videos/blood-moon-live-720p.mp4', 'LKZUf40ns8o')">
+        <button class="video-card" type="button" onclick="openVideo('LKZUf40ns8o')">
           <img src="https://img.youtube.com/vi/LKZUf40ns8o/hqdefault.jpg" alt="Blood Moon" loading="lazy" decoding="async">
           <span>Blood Moon</span>
         </button>
@@ -697,8 +697,6 @@
         allow="autoplay; encrypted-media; picture-in-picture"
         allowfullscreen>
       </iframe>
-      <video id="lightbox-local-video" controls playsinline preload="metadata" hidden></video>
-      <a id="lightbox-youtube-view" class="youtube-view-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Se även på YouTube</a>
     </div>
   </div>
 
@@ -753,35 +751,8 @@
       document.body.style.overflow = "hidden";
     }
 
-    function openLocalVideo(videoPath, youtubeId) {
-      stopSpotify();
-
-      const lightbox = document.getElementById("video-lightbox");
-      const iframe = document.getElementById("lightbox-iframe");
-      const video = document.getElementById("lightbox-local-video");
-      const youtubeLink = document.getElementById("lightbox-youtube-view");
-
-      iframe.src = "";
-      iframe.hidden = true;
-      video.src = videoPath;
-      video.hidden = false;
-      youtubeLink.href = "https://www.youtube.com/watch?v=" + youtubeId;
-      youtubeLink.hidden = false;
-      lightbox.classList.add("active");
-      document.body.style.overflow = "hidden";
-      video.play().catch(() => {});
-    }
-
     function closeVideo() {
-      const iframe = document.getElementById("lightbox-iframe");
-      const video = document.getElementById("lightbox-local-video");
-      iframe.src = "";
-      iframe.hidden = false;
-      video.pause();
-      video.removeAttribute("src");
-      video.load();
-      video.hidden = true;
-      document.getElementById("lightbox-youtube-view").hidden = true;
+      document.getElementById("lightbox-iframe").src = "";
       document.getElementById("video-lightbox").classList.remove("active");
       document.body.style.overflow = "";
     }
