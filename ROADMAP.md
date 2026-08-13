@@ -57,7 +57,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - [Påbörjat] Presentera solo, duo och fullt band med egna bilder, korta videor och tydligare innehåll. Solo, duo och event har stärkts; fullt band avvaktar tills en representativ bandbild eller ett starkare liveklipp finns.
 - [Genomfört] Lägg till två eller tre kundomdömen med godkända namn eller arrangörer.
 - [Påbörjat] Visa situationsbaserade exempel. Vigsel, mingel, restaurang och event finns; fullt band kan utvecklas vidare.
-- Skapa ett digitalt presskit med presentation, pressbilder, musik, livevideor, teknisk information och kontaktuppgifter.
+- [Genomfört] Skapa ett digitalt presskit med presentation, pressbilder, musik, livevideor, teknisk information och kontaktuppgifter. En första permanent version finns på `/press/` och kan kompletteras med fotografnamn och mer detaljerad teknisk rider.
 - [Genomfört] Bildoptimera allt nytt material för mobil och dator före publicering.
 
 ## Prioritet 3 – musiksläpp och synlighet
