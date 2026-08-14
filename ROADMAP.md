@@ -40,7 +40,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 
 ## Prioritet 1 – publik och bokningar
 
-- [Påbörjat] Koppla mejllisteanmälan till en riktig utskickstjänst. Direkt insamling via Formspree är klar; val av tjänst för utskick, avregistrering och listhantering återstår.
+- [Att göra denna vecka – Klas] Skapa ett gratis Brevo-konto, skapa listan **Klas Österman – mejllista** och ett registreringsformulär med GDPR-fält och double opt-in. Skicka därefter formulärets inbäddningskod för integration i webbplatsens befintliga design. Formspree behålls för bokningsförfrågningar.
 - [Genomfört] Håll anmälan enkel och be till en början bara om e-postadress.
 - Ge möjlighet att senare välja ort eller område för lokalt relevanta utskick.
 - [Genomfört] Märk varje spelning som offentlig eller privat och förbered märkning för fri entré, biljettbelagd och slutsåld.
