@@ -2135,6 +2135,31 @@ footer:not(.site-footer) a {
   transform: translateY(-1px);
 }
 
+.hero-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hero-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  margin: 0;
+}
+
+.hero-news-button .fa-envelope {
+  color: var(--gold);
+}
+
+.hero-social-icons {
+  margin-top: 24px;
+}
+
 .duo-format-cards .card p {
   font-size: 16px;
 }
