@@ -63,7 +63,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 
 ## Prioritet 3 – musiksläpp och synlighet
 
-- [Påbörjat] Registrera domänen i Google Search Console, verifiera den via DNS, skicka in sitemap och begär indexering av artist- och duo-sidan.
+- [Genomfört] Registrera domänen i Google Search Console, verifiera den via DNS och skicka in sitemap. Den 14 augusti 2026 bekräftade Search Console att både artist- och DUOVI-sidan är indexerade, att sitemap har behandlats utan fel och att giltig profildata respektive breadcrumb hittas.
 - Skapa en enkel sida eller sektion för varje större musiksläpp.
 - Kombinera Spotify-länk, musikvideo, bakgrund till låten, bilder och mejlanmälan.
 - Använd mejllistan före, under och efter ett släpp utan att skicka för ofta.
