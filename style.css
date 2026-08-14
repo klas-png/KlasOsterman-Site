@@ -2459,9 +2459,9 @@ footer:not(.site-footer) a {
   }
 
   .duo-page-nav {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
   }
 
   .duo-page-nav .nav-cta {
@@ -2474,14 +2474,17 @@ footer:not(.site-footer) a {
 
 
   .duo-artist-link {
-    order: 2;
+    order: 0;
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding-right: 5px;
-    color: rgba(243,239,231,0.62) !important;
-    font-size: 10px;
-    line-height: 1.2;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    border: 1px solid rgba(243,239,231,0.24);
+    border-radius: 50%;
+    color: rgba(243,239,231,0.88) !important;
+    font-size: 15px;
   }
 
   .duo-artist-link-desktop {
@@ -2489,7 +2492,7 @@ footer:not(.site-footer) a {
   }
 
   .duo-artist-link-mobile {
-    display: inline;
+    display: none;
   }
 
   .duo-page-hero {
@@ -2694,6 +2697,26 @@ footer:not(.site-footer) a {
 
   .testimonial-card blockquote p {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .duo-page .nav {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .duo-page .logo img {
+    height: 36px;
+  }
+
+  .duo-page-nav {
+    gap: 8px;
+  }
+
+  .duo-page-nav .nav-cta {
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }
 
