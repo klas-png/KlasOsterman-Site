@@ -2595,7 +2595,10 @@ footer:not(.site-footer) a {
   }
 
   .hero-news-link {
-    margin-top: 16px;
+    position: absolute;
+    right: 20px;
+    bottom: calc(max(14px, env(safe-area-inset-bottom)) + 60px);
+    margin-top: 0;
     padding: 8px 12px;
     font-size: 12px;
     text-align: left;
