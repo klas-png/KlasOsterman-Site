@@ -822,8 +822,23 @@ body {
   text-align: center;
 }
 
-.form-status:not(:empty) {
+.form-status--loading {
   color: var(--gold) !important;
+}
+
+.form-status--success {
+  color: #b9d7b3 !important;
+}
+
+.form-status--error {
+  color: #f0a6ae !important;
+}
+
+.booking-form .main-button:disabled,
+.newsletter-form .main-button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+  transform: none;
 }
 
 .newsletter-section {

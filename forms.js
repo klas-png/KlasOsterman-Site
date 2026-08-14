@@ -7,12 +7,22 @@
   });
 
   document.querySelectorAll(".direct-form").forEach(form => {
+    const status = form.querySelector(".form-status");
+
+    const setStatus = (message, state) => {
+      if (!status) return;
+
+      status.textContent = message;
+      status.classList.remove("form-status--loading", "form-status--success", "form-status--error");
+      if (state) status.classList.add(`form-status--${state}`);
+      status.setAttribute("role", state === "error" ? "alert" : "status");
+    };
+
     form.addEventListener("submit", async event => {
       event.preventDefault();
 
       if (!form.reportValidity()) return;
 
-      const status = form.querySelector(".form-status");
       const button = form.querySelector('button[type="submit"]');
       const originalButtonText = button ? button.textContent : "";
       const data = new FormData(form);
@@ -21,9 +31,8 @@
       data.append("Formulär", form.dataset.formType || "Kontakt");
       data.append("Sida", window.location.href);
 
-      if (status) {
-        status.textContent = "Skickar …";
-      }
+      setStatus("Skickar …", "loading");
+      form.setAttribute("aria-busy", "true");
 
       if (button) {
         button.disabled = true;
@@ -40,14 +49,11 @@
         if (!response.ok) throw new Error("Form submission failed");
 
         form.reset();
-        if (status) {
-          status.textContent = form.dataset.success || "Tack! Ditt meddelande är skickat.";
-        }
+        setStatus(form.dataset.success || "Tack! Ditt meddelande är skickat.", "success");
       } catch (error) {
-        if (status) {
-          status.textContent = "Det gick inte att skicka just nu. Försök igen eller mejla info@klasosterman.se.";
-        }
+        setStatus("Det gick inte att skicka just nu. Försök igen eller mejla info@klasosterman.se.", "error");
       } finally {
+        form.removeAttribute("aria-busy");
         if (button) {
           button.disabled = false;
           button.textContent = originalButtonText;

@@ -49,7 +49,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - [Genomfört] Lägg till ett kort bokningsformulär för datum, ort, lokal, evenemang, liveformat, antal gäster och kontaktuppgifter.
 - [Genomfört] Skicka bokningsförfrågningar direkt på sidan via Formspree och visa tydliga tack- och felmeddelanden.
 - [Genomfört] Verifiera leveransen från samtliga fyra publicerade formulär. Den 14 augusti 2026 accepterade Formspree nya testinskick från Klas bokning, Klas mejllista, DUOVI bokning och DUOVI mejllista; samtliga mejlaviseringar bekräftades mottagna.
-- [Påbörjat] Kontrollera den visuella formulärupplevelsen på fysisk mobil och dator. Formulären används på båda, men en sista systematisk genomgång av validering, laddningsläge och tackmeddelande återstår.
+- [Genomfört] Kontrollera formulärens responsiva layout, validering, laddningsläge samt lyckade och misslyckade svar. Mobilfälten staplas i en kolumn med textstorlek som undviker automatisk inzoomning; vänteläge, tackmeddelande och felmeddelande har egna tydliga visuella lägen och tillgängliga statusmeddelanden.
 - [Avvaktar] Gör `info@klasosterman.se` till synlig avsändaradress när Klas svarar på bokningar. Första alternativet är att be administratören för `moonsplash.se` aktivera externa SMTP-servrar i Google Workspace. Om det inte går och bokningarna växer, uppgraderas LoopiaDNS med en riktig e-postlåda och SMTP för `info@klasosterman.se`. Tills vidare skickas svar från `klas@moonsplash.se` med `info@klasosterman.se` som svarsadress och i signaturen.
 
 ## Prioritet 2 – material och förtroende
