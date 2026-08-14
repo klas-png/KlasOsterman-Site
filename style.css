@@ -2872,4 +2872,26 @@ textarea {
     font-size: 15px;
     line-height: 1.55;
   }
+
+  .hero-actions {
+    display: none;
+  }
+
+  .hero-social-icons {
+    align-self: flex-end;
+    grid-template-columns: repeat(4, 46px);
+    gap: 10px;
+    width: max-content;
+    margin-top: 28px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    background: rgba(12, 12, 11, 0.34);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
+  }
+
+  .hero-social-icons a:nth-child(5) {
+    grid-column: 2;
+  }
 }
