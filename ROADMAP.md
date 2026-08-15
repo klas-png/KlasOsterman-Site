@@ -29,9 +29,9 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - Duo-sidan visar tre omdömen från olika brudpar i en generell kundsektion som kan uppdateras med fler typer av evenemang.
 - Duo-sidan visar separata exempel för bröllop och andra event, med bilder från bröllopsmingel och Ingmarsö krog.
 - Duo-sidan har en utvald livevideo för Blood Moon och en samlad videosektion med fungerande externa länkar där inbäddning inte tillåts.
-- Mejllistorna har förenklats till e-postadress, samtycke och en tydlig knapp, med genväg redan från sidornas topp.
+- Mejllistorna har förenklats till e-postadress, samtycke och en tydlig knapp. Klas-sidan har en genväg i hero-sektionen på större skärmar, medan mobilens hero hålls fri från extra knappar.
 - Klas-sidan har fått en tydligare, mobilanpassad artistbiografi med en varm solobild som stärker den personliga artistidentiteten.
-- Startsidan har fått två tydliga huvudval i toppen: lyssna eller boka live. Musikvideor ligger kvar som en diskret sekundär länk.
+- Startsidan har fått en renare hero: den dubblerade bokningsknappen under presentationstexten är borttagen på alla skärmstorlekar, nyhetsbrevsknappen döljs på mobil och sociala medier visas i en balanserad mobilgrupp. Bokning nås fortsatt tydligt via toppnavigationen och den fasta bokningsknappen längst ner.
 - Spelningslistan visar som standard högst tre kommande spelningar. Övriga kommande och hela historiken nås via en knapp; om kommande spelningar saknas visas de tre senaste.
 - Sidtiteln har förtydligats för både besökare och sökmotorer till artist, låtskrivare och livemusik.
 - Spotify-sektionen har fått en tydlig knapp som öppnar artistprofilen i Spotify-appen för bättre ljudkvalitet.
