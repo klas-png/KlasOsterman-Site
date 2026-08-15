@@ -25,7 +25,7 @@ Målet är att webbplatsen både ska bygga en publik och generera fler bokningar
 - Mejllisteanmälan på båda sidorna skickas direkt via Formspree och samlar tills vidare adresserna som tydligt märkta inskick.
 - Duo-sidan har fått ett mobilanpassat bokningsflöde i tre tydliga steg före förfrågningsformuläret.
 - Huvudsidan presenterar solo, duo och fullt band som tre tydliga mobilanpassade val.
-- Duo-sidan använder utvalda, mobiloptimerade bilder från ett riktigt bröllopsmingel.
+- Duo-sidan använder utvalda, mobiloptimerade bilder från riktiga bröllop och vigslar, inklusive den aktuella miljöbilden med Klas, Josefin, gitarr och piano i Hille kyrka.
 - Duo-sidan visar tre omdömen från olika brudpar i en generell kundsektion som kan uppdateras med fler typer av evenemang.
 - Duo-sidan visar separata exempel för bröllop och andra event, med bilder från bröllopsmingel och Ingmarsö krog.
 - Duo-sidan har en utvald livevideo för Blood Moon och en samlad videosektion med fungerande externa länkar där inbäddning inte tillåts.

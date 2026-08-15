@@ -2250,7 +2250,7 @@ footer:not(.site-footer) a {
 
 .wedding-story-section {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  grid-template-columns: minmax(320px, 0.78fr) minmax(0, 1.22fr);
   gap: clamp(34px, 6vw, 72px);
   max-width: 1180px;
   align-items: center;
@@ -2265,7 +2265,9 @@ footer:not(.site-footer) a {
 }
 
 .event-story-media {
+  max-width: none;
   aspect-ratio: 4 / 3;
+  justify-self: stretch;
 }
 
 .event-story-media img {
@@ -2274,8 +2276,11 @@ footer:not(.site-footer) a {
 
 .wedding-story-media {
   display: block;
+  width: 100%;
+  max-width: 460px;
   min-width: 0;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 5;
+  justify-self: center;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 26px;
