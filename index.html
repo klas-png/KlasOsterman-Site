@@ -1184,21 +1184,18 @@ var lenis = null;
     slot.innerHTML = '';
     var f = document.createElement('iframe');
     var safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&playsinline=0&enablejsapi=1&rel=0&modestbranding=1'
-      + (safari ? '&mute=1' : '') + '&origin=' + encodeURIComponent(location.origin);
+    f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&playsinline=0&rel=0&modestbranding=1'
+      + (safari ? '&mute=1' : '');
     f.title = titel || 'Video';
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
     f.setAttribute('allowfullscreen', '');
-    f.addEventListener('load', function(){
-      try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*'); } catch (e) {}
-      if (safari) {
-        try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*'); } catch (e) {}
-      }
-    });
     slot.appendChild(f);
     lb.classList.add('pa');
     if (lenis) lenis.stop();
-    helskarm();
+    /* Safari stoppar ofta en nyskapad YouTube-iframe om dess förälder samtidigt går
+       till helskärm. Där öppnas den stora lådan direkt och filmen får börja spela;
+       övriga webbläsare går till helskärm i samma klick. */
+    if (!safari) helskarm();
     st.focus();
   }
   function stang(){
