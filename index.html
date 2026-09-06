@@ -607,7 +607,7 @@ html[data-typrov] .typrov{display:flex}
 <!-- ============================ HERO ============================ -->
 <div class="hero linje" id="top">
   <div class="bg">
-    <video autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+    <video autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
       <!-- hero-montage-2.mp4 (2026-09-04): samma klipp omkodat till H.264 High yuv420p, faststart.
            Originalet är High 4:4:4 Predictive/yuv444p — Chrome avkodar det i mjukvara, Safari
            (macOS och iOS) vägrar och visar bara postern. Klas: "videon startar inte i Safari". -->
@@ -1156,13 +1156,17 @@ var lenis = null;
     tystaSpotify();
     slot.innerHTML = '';
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&playsinline=0&enablejsapi=1&rel=0&modestbranding=1&origin=' + encodeURIComponent(location.origin);
     f.title = titel || 'Video';
-    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
     f.setAttribute('allowfullscreen', '');
+    f.addEventListener('load', function(){
+      try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*'); } catch (e) {}
+    });
     slot.appendChild(f);
     lb.classList.add('pa');
     if (lenis) lenis.stop();
+    helskarm();
     st.focus();
   }
   function stang(){
@@ -1194,6 +1198,25 @@ var lenis = null;
    ingen egen kod — den litar på attributen. Första beröringen/tangenten är en användargest:
    då spelas varje tyst video som syns i vyn och står still. Nollkostnad där autoplay redan
    fungerar (paused är false, ingenting händer). Duovi: duken får samma hjälp. */
+(function(){
+  var hero = document.querySelector('.hero .bg video');
+  if (!hero) return;
+  hero.defaultMuted = true;
+  hero.muted = true;
+  function spela(){
+    hero.muted = true;
+    var p;
+    try { p = hero.play(); } catch (e) { return; }
+    if (p && p.catch) p.catch(function(){});
+  }
+  if (hero.readyState >= 2) spela();
+  else hero.addEventListener('canplay', spela, { once: true });
+  addEventListener('pageshow', spela);
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) spela(); });
+})();
+
+/* Väckning på iPhone. Första beröringen/tangenten är en användargest; då spelas varje
+   tyst video som syns i vyn och står still. Nollkostnad där autoplay redan fungerar. */
 (function(){
   var vackt = false;
   function vack(){

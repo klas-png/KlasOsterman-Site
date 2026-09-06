@@ -1011,13 +1011,17 @@ var lenis = null;
     tystaSpotify();
     slot.innerHTML = '';
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&playsinline=0&enablejsapi=1&rel=0&modestbranding=1&origin=' + encodeURIComponent(location.origin);
     f.title = titel || 'Video';
-    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
     f.setAttribute('allowfullscreen', '');
+    f.addEventListener('load', function(){
+      try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*'); } catch (e) {}
+    });
     slot.appendChild(f);
     lb.classList.add('pa');
     if (lenis) lenis.stop();
+    helskarm();
     st.focus();
   }
   function stang(){
