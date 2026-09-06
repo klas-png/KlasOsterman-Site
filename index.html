@@ -1,1176 +1,1385 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- byggd ur mockups/kvall_m3.html · m3 · 2026-09-04T09:48:14.511Z -->
+<!-- ============================================================================
+     G — KVÄLLEN
+     Namnet är kvällen den byggdes: 2026-09-02, på Joachims ord "Om du hade fria
+     händer att göra om vad som helst på den här sidan ... hundra procent allt
+     ... den ska vara den du är nöjd med som slutprodukt." Den första versionen
+     var ett enda varmt mörker som följde hans bilder från solnedgång till
+     skymning. Den idén finns inte längre i filen; samma kväll bad han om F:s
+     växling mellan papper och film, och den vann. Kvar av namnet är bara namnet.
+
+     VAD SIDAN ÄR NU, i en mening: F:s papper-och-film-rytm och F:s färger, i
+     Fraunces, med Klas som huvudperson och med allt som bara förklarade sidan
+     bortskuret.
+
+     BESLUTEN, alla Joachims 2026-09-02, i den ordning de togs:
+       · Sidan handlar främst om Klas som artist. Ordningen är Lyssna · Videor ·
+         Live · Om · Duovi · Boka. Duovi är ett kort kapitel — bild, en mening,
+         Boka och Läs mer — som pekar på egen sida (mockups/duovi.html). Josefin
+         får en egen sida som länkar dit på samma sätt. Fallen, citaten, de sex
+         videorna och Duovis spelningar bor DÄR, en gång.
+       · Papper & film som F, F:s färger ordagrant (se :root). Hero film ·
+         Lyssna papper · Videor film · Live papper · Om papper · Duovi film ·
+         Boka papper · fot film. En .pap-klass vänder tokens; komponenterna har
+         inga egna pappersregler.
+       · Bruset bortskuret: formaten sägs bara i Liveformat, inga etiketter som
+         dubblerar rubriken, inga ingresser om mekaniken, bion tre meningar.
+       · Listornas första kant borta (rubriklinjen räcker), Tidigare svagare;
+         text-wrap:balance på rubriker; "Se" blev "Videor".
+       · Lyssna: Spotify-plattan är sektionen, kanalerna en tyst rad under.
+       · Livesessionen ur Duovi (dubblett av Blood Moon i Videor, svart på svart).
+       · Foten: nyhetsbrevet borta tills det finns en lista, Lyssna-kolumnen
+         borta (dubblett), "Integritetspolicy" borta tills sidan finns.
+       · Bokningen fem fält: Namn · E-post · När och var · Liveformat · Berätta.
+
+     MITT, som skiljer G från A–F: Newsreader + Archivo (lokala; Fraunces var G:s
+     eget snitt till 2026-09-03, kvar bakom ?ty=fr — se 15 i stilen),
+     namnet i gemener på en rad, videorna i ett stilla rutnät med ett stort kort
+     i stället för remsa och scroll-lås, tidigare spelningar synliga i två spalter.
+
+     MATERIALET ÄR OFÖRÄNDRAT: samma tillgångar, länkar, citat, handskrivna
+     spelningslista och data-publik-mekanik. Ingen ny bild, inget påhittat.
+     Texterna är mina, men varje sakpåstående står redan i bion eller listan.
+     Öppet hos Klas: en liggande Löpsedel-bild, hur den slutna spelningen ska
+     stå i listan, om han vill ha ett nyhetsbrev, och en mening i hans egen röst.
+
+     DEV-KONTRAKTET längst ner är obligatoriskt: ?jump=<y> landar förscrollat
+     och settlat, window.__ready sätts allra sist.
+     Checken körs med   MALFIL=mockups/kvall.html node scripts/check.js
+============================================================================ -->
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Klas Österman — Singer-songwriter</title>
+<meta name="description" content="Klas Österman — singer-songwriter. Låtar nära livet. Lyssna, se videor och boka en spelning: solo, Duovi eller band.">
+<link rel="canonical" href="https://klasosterman.se/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e0b09'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='23' fill='%23efe7d9' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/fonts-b.css">
+<style>
+/* ===========================================================================
+   1. GRUNDEN
+   =========================================================================== */
+:root{
+  /* PAPPER & FILM — F:s färger, F:s växling. Joachim 2026-09-02: "Kombinationen
+     av vita och svarta sektioner är väldigt ren, och jag gillar färgerna. Kan vi
+     rikta vår sida mer åt det?" Talen nedan är F:s (mockups/omslag.html) ordagrant:
+     varmt papper, varmt bläck, filmsvärta, och Klas egen terrakotta i två lägen —
+     --ackd mätt ur duovi-scen.jpg (på film), --ack samma kulörton mörkad tills
+     den bär text på papper.
 
-  <title>Klas Österman | Artist, låtskrivare &amp; livemusik</title>
-  <meta
-    name="description"
-    content="Klas Österman – svensk singer-songwriter. Lyssna på musik, se videor, hitta spelningar och boka solo, duo eller band."
-  >
+     Filmen är förvalet (body). En sektion med klassen .pap vänder tokens till
+     papper — se regeln under .sek. Komponenterna använder bara tokens, så samma
+     CSS ritar båda. Undantaget är Spotify-plattan, som är svart på båda. */
+  --mork:#0c0a08;
+  --natt:var(--mork);
+  --natt2:#161210;
+  --ljusf:#f1ece4;                  /* film-ljuset, vänds aldrig (plattan) */
+  --ljus:var(--ljusf);
+  --ljus2:rgba(241,236,228,.62);
+  --ljus3:rgba(241,236,228,.42);
+  --lin:rgba(241,236,228,.18);
+  --lin2:rgba(241,236,228,.09);
+  --ackd:#b4786c;
+  --glod:var(--ackd);
 
-  <link rel="canonical" href="https://klasosterman.se/">
-  <link rel="alternate" hreflang="sv-SE" href="https://klasosterman.se/">
-  <link rel="icon" type="image/png" href="/logo-header-gold.png">
-  <link rel="preload" as="image" href="/hero.jpg" fetchpriority="high">
-  <meta name="theme-color" content="#0b0b0a">
+  --pap:#f1ece4;
+  --pap2:#e8e1d6;
+  --ink:#17130f;
+  --ink2:rgba(23,19,15,.66);
+  --ink3:rgba(23,19,15,.6);   /* F har .44 — 2,84:1 på papper; .6 bär 10,5 px */
+  --linp:rgba(23,19,15,.16);
+  --linp2:rgba(23,19,15,.09);
+  --linp3:rgba(23,19,15,.065);      /* Tidigare-listans radlinjer: tio på ett ställe, ett steg svagare */
+  --ack:#a0442f;
 
-  <meta property="og:locale" content="sv_SE">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Klas Österman">
-  <meta property="og:title" content="Klas Österman | Artist, låtskrivare &amp; livemusik">
-  <meta property="og:description" content="Personliga låtar i gränslandet mellan akustiskt, beats och berättande. Lyssna, se videor och hitta kommande spelningar.">
-  <meta property="og:url" content="https://klasosterman.se/">
-  <meta property="og:image" content="https://klasosterman.se/hero.jpg">
-  <meta property="og:image:width" content="1146">
-  <meta property="og:image:height" content="700">
-  <meta property="og:image:alt" content="Klas Österman går med gitarren vid havet">
+  --disp:'Newsreader',Georgia,'Times New Roman',serif;   /* B:s snitt, förval sedan 2026-09-03 */
+  --blk:'Archivo Black','Archivo',Impact,sans-serif;
+  --ui:'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif;
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Klas Österman | Artist, låtskrivare &amp; livemusik">
-  <meta name="twitter:description" content="Personliga låtar i gränslandet mellan akustiskt, beats och berättande.">
-  <meta name="twitter:image" content="https://klasosterman.se/hero.jpg">
-  <meta name="twitter:image:alt" content="Klas Österman går med gitarren vid havet">
+  --max:1240px;
+  --gut:clamp(20px,5.4vw,72px);
+  --kant:max(var(--gut),calc((100vw - var(--max)) / 2 + var(--gut)));
+  --skarv:clamp(60px,6.5vw,104px);
+  --hdr:64px;
+}
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://klasosterman.se/#website",
-        "url": "https://klasosterman.se/",
-        "name": "Klas Österman",
-        "inLanguage": "sv-SE"
-      },
-      {
-        "@type": "ProfilePage",
-        "@id": "https://klasosterman.se/#webpage",
-        "url": "https://klasosterman.se/",
-        "name": "Klas Österman | Artist, låtskrivare & livemusik",
-        "description": "Klas Österman är en svensk singer-songwriter, artist och låtskrivare.",
-        "inLanguage": "sv-SE",
-        "isPartOf": { "@id": "https://klasosterman.se/#website" },
-        "mainEntity": { "@id": "https://klasosterman.se/#klas-osterman" },
-        "primaryImageOfPage": {
-          "@type": "ImageObject",
-          "url": "https://klasosterman.se/hero.jpg",
-          "width": 1146,
-          "height": 700
-        }
-      },
-      {
-        "@type": "Person",
-        "@id": "https://klasosterman.se/#klas-osterman",
-        "name": "Klas Österman",
-        "url": "https://klasosterman.se/",
-        "image": "https://klasosterman.se/assets/images/klas-guitar-shoulder.jpg",
-        "jobTitle": "Artist, låtskrivare och producent",
-        "description": "Svensk singer-songwriter med personliga låtar i gränslandet mellan akustiskt, beats och berättande.",
-        "sameAs": [
-          "https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt",
-          "https://www.youtube.com/@KlasOstermanMusic",
-          "https://www.instagram.com/klasostermanmusic/",
-          "https://www.tiktok.com/@klasosterman",
-          "https://www.facebook.com/KlasOstermanMusic",
-          "https://music.apple.com/se/artist/klas-österman/1201085087",
-          "https://link.deezer.com/s/33kyknYXZ2SQVEx1ijzKj"
-        ]
-      }
-    ]
-  }
-  </script>
+*{box-sizing:border-box}
+/* Nativa hash-hopp (reduced motion, duovi → kvall.html#boka) ska inte landa under den fasta headern. */
+section[id]{scroll-margin-top:var(--hdr)}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--natt);color:var(--ljus);
+  font:400 16px/1.7 var(--ui);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+img,video{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+::selection{background:var(--glod);color:var(--natt)}
+:focus-visible{outline:2px solid var(--glod);outline-offset:3px}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;family=DM+Sans:wght@400;500;600;700&amp;display=swap">
-  <link rel="stylesheet" href="style.css?v=20260814-9">
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
-  <style>
-    .past-show {
-      opacity: 0.45;
-      filter: grayscale(30%);
-    }
+/* Korn: rasterad bricka, inget blend-mode — samma skäl som i F, jankgrinden. */
+.korn{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-    .past-show .show-date,
-    .past-show .show-info h3 {
-      text-decoration: line-through;
-      text-decoration-thickness: 2px;
-      text-decoration-color: rgba(255,255,255,0.45);
-    }
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.sek{padding:var(--skarv) 0}
+/* PAPPERSSEKTIONEN. Vänder tokens; ingen komponent behöver egna pappersregler. */
+.pap{--natt:var(--pap);--natt2:var(--pap2);--ljus:var(--ink);--ljus2:var(--ink2);
+  --ljus3:var(--ink3);--lin:var(--linp);--lin2:var(--linp2);--glod:var(--ack);
+  background:var(--natt);color:var(--ljus)}
+.pap ::selection{background:var(--ink);color:var(--pap)}
+/* Två pappersark efter varandra (Live → Om, som F:s Bio → Boka) skiljs av en hårlinje. */
+.pap + .pap{border-top:1px solid var(--linp)}
 
-    .past-show:hover {
-      transform: none;
-    }
-  </style>
+/* ===========================================================================
+   2. TYPOGRAFISKA ROLLER
+   Fraunces bär rubriker, namn, citat och ingresser. Archivo bär allt som ska
+   göras: menyn, etiketter, brödtext, knappar. Kursiven är Fraunces enda
+   betoning och används en gång per rubrik, aldrig i löptext.
+   =========================================================================== */
+.et{display:block;font:500 11px/1 var(--ui);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ljus3)}
+.rub{margin:.3em 0 0;font:200 clamp(40px,5.8vw,78px)/1.02 var(--disp);letter-spacing:-.02em;
+  text-wrap:balance}   /* "Samma låtar, / tre uppsättningar" — inte "tre / uppsättningar" */
+.rub em{font-style:italic;font-weight:200}
+.ing{margin:0;font:300 clamp(18px,1.5vw,21px)/1.5 var(--disp);color:var(--ljus2);max-width:44ch;
+  text-wrap:balance}
+.shd{display:grid;grid-template-columns:1fr minmax(240px,.7fr);gap:18px clamp(24px,4vw,64px);
+  align-items:end;padding-bottom:clamp(24px,3vw,40px);border-bottom:1px solid var(--lin)}
+.shd .ing{padding-bottom:.35em}
+
+/* ===========================================================================
+   3. HEADER
+   =========================================================================== */
+#hdr{position:fixed;top:0;left:0;right:0;z-index:70;height:var(--hdr);
+  display:flex;align-items:center;gap:20px;padding:0 var(--gut);   /* kanten, inte spalten — Klas 2026-09-04: texten ner till vänster som i A */
+  border-bottom:1px solid transparent;
+  transition:background .5s ease,border-color .5s ease}
+/* F:s regel: papper över allt efter heron — även över filmbanden. */
+#hdr.fast{background:var(--pap);color:var(--ink);border-bottom-color:var(--linp)}
+#hdr .m{font:600 12px/1 var(--ui);letter-spacing:.2em;text-transform:uppercase;
+  margin-right:auto;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .45s ease}
+#hdr.fast .m{opacity:1;pointer-events:auto}
+#hdr nav{display:flex;align-items:center;gap:clamp(14px,2vw,32px)}
+#hdr nav a{position:relative;font:500 11.5px/1 var(--ui);letter-spacing:.17em;
+  text-transform:uppercase;opacity:.7;transition:opacity .25s}
+#hdr nav a:hover,#hdr nav a.pa{opacity:1}
+#hdr nav a.pa::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:1px;background:var(--ackd)}
+#hdr.fast nav a.pa::after{background:var(--ack)}
+#hdr .bok{border:1px solid currentColor;padding:10px 18px;opacity:1;
+  transition:background .35s,color .35s,border-color .35s}
+#hdr .bok::after{display:none}
+#hdr .bok:hover{background:var(--ljusf);color:var(--mork)}
+#hdr.fast .bok:hover{background:var(--ink);color:var(--pap)}
+@media(max-width:820px){#hdr nav a:not(.bok){display:none}}
+/* Hamburgermenyn — bara under 820 px (Klas 2026-09-04: "På mobilen: hur gör vi med meny? Kanske en
+   hamburgermeny?"). Knappen Meny står bredvid Boka; lagret är sidans mörka ton med samma länkar i
+   Newsreader, klonade ur headern så listan har EN källa. Stänger på länk, kryss och Esc. */
+#hdr .meny{display:none;align-items:center;gap:10px;height:44px;padding:0 4px;
+  font:500 11.5px/1 var(--ui);letter-spacing:.17em;text-transform:uppercase;
+  background:none;border:0;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#hdr .meny i{display:block;width:18px;height:9px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor}
+@media(max-width:820px){#hdr .meny{display:inline-flex}}
+.lager{position:fixed;inset:0;z-index:90;display:none;flex-direction:column;background:var(--natt);color:var(--ljus);
+  padding:0 var(--gut) 40px;overflow:auto}
+.lager.pa{display:flex}
+html.meny-oppen{overflow:hidden}
+.lager .ltopp{display:flex;align-items:center;justify-content:space-between;height:var(--hdr);flex:none}
+.lager .lm{font:600 12px/1 var(--ui);letter-spacing:.2em;text-transform:uppercase;color:inherit;white-space:nowrap}
+.lager .lstang{display:inline-flex;align-items:center;gap:9px;height:44px;padding:0 4px;
+  font:500 11.5px/1 var(--ui);letter-spacing:.17em;text-transform:uppercase;
+  background:none;border:0;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.lager .lstang svg{width:14px;height:14px;display:block}
+.lager nav{display:flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:clamp(28px,8vh,64px)}
+.lager nav a{font:300 clamp(34px,9vw,48px)/1.15 var(--disp);letter-spacing:-.02em;color:inherit;padding:6px 0}
+.lager nav a.bok{margin-top:clamp(24px,6vh,44px);font:500 12px/1 var(--ui);letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid rgba(239,231,217,.6);padding:14px 22px}
+
+/* ===========================================================================
+   4. KNAPPAR OCH LÄNKAR
+   =========================================================================== */
+.knapp{display:inline-flex;align-items:center;gap:.7em;font:600 11.5px/1 var(--ui);
+  letter-spacing:.18em;text-transform:uppercase;padding:16px 28px;
+  border:1px solid var(--ljus);color:var(--ljus);
+  transition:background .3s,color .3s,border-color .3s}
+.knapp.fyll{background:var(--ljus);color:var(--natt)}
+.knapp.fyll:hover{background:transparent;color:var(--ljus)}
+.knapp:not(.fyll):hover{background:var(--ljus);color:var(--natt)}
+.tlink{display:inline-flex;align-items:center;gap:.55em;font:600 11px/1 var(--ui);
+  letter-spacing:.17em;text-transform:uppercase;padding-bottom:6px;
+  border-bottom:1px solid var(--lin);transition:color .3s,border-color .3s}
+.tlink:hover{color:var(--glod);border-bottom-color:var(--glod)}
+.pil{display:inline-block;transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+a:hover .pil,button:hover .pil{transform:translateX(5px)}
+
+/* ===========================================================================
+   5. HERO — solnedgången
+   Namnet på en rad i gemener, payoffen i kursiv under. Två handlingar och
+   inget mer: lyssna eller boka. NÄSTA-notisen till höger finns i markupen men
+   tar bort sig själv när ingen rad i spelningslistan är data-publik="ja" —
+   samma mekanik som A och F, se skriptet.
+   =========================================================================== */
+.hero{position:relative;height:100vh;height:100svh;min-height:620px;display:flex;align-items:flex-end;
+  overflow:hidden;background:var(--natt)}
+.hero .bg{position:absolute;inset:-5%}
+.hero .bg video,.hero .bg img{width:100%;height:100%;object-fit:cover}
+/* Ken Burns bara på stillbild. Mätt 2026-09-04 med hero-montage-2 (yuv420p): zoomen på VIDEON gav en
+   bildruta om 50–63 ms per svep i heron (max 17,9 utan; omslaget med will-change hjälpte inte; den gamla
+   yuv444-filen klarade sig för att Chrome avkodar den i mjukvara utanför videolagret). Duovi har img. */
+.hero .bg img{animation:kb 44s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(rgba(12,10,8,.34),rgba(12,10,8,.3) 45%,rgba(12,10,8,.82) 82%,var(--natt) 99%)}
+.hero .in{position:relative;z-index:3;width:100%;padding:0 var(--gut) clamp(44px,7vh,84px);   /* A:s luft (helhet4:s bottom ordagrant), förval 2026-09-04 */
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px clamp(24px,4vw,64px);align-items:end}
+.hero .et{color:var(--ljus2);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+/* Två rader, efternamnet kursivt — B:s .hnamn/.hnamn em ordagrant (vikt, spärr, radavstånd,
+   kursivens -.02em). Klas via Joachim 2026-09-03: "gillar att Klas Österman visade på två
+   rader, kursivt på en rad, precis som i B-versionen." Graden är G:s. Duovi har inget em. */
+.hero h1 em{display:block;font-style:italic;font-weight:200;margin-left:-.02em}
+/* 10 px-golvet: på mobil (52 px) blev .1em 5 px, kickern nuddade nästan K:et. */
+.hero h1{margin:max(.1em,10px) 0 0;font:200 clamp(52px,8.6vw,126px)/.92 var(--disp);letter-spacing:-.032em;
+  text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.hero .front{margin:.45em 0 0;font:300 clamp(19px,1.9vw,27px)/1.35 var(--disp);font-style:italic;
+  color:var(--ljus2);max-width:30ch;text-wrap:balance;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(28px,3.2vw,44px)}
+.hero .knapp{background:rgba(12,10,8,.24);border-color:rgba(239,231,217,.6)}
+.hero .knapp:hover{background:var(--ljus);color:var(--natt);border-color:var(--ljus)}
+.hero .knapp.fyll{background:var(--ljus);color:var(--natt);border-color:var(--ljus)}
+.hero .knapp.fyll:hover{background:transparent;color:var(--ljus)}
+.hero .notis{text-align:right;padding-bottom:6px;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.hero .notis .n1{display:block;margin-bottom:8px;font:500 10px/1 var(--ui);letter-spacing:.32em;
+  text-transform:uppercase;color:var(--glod)}
+.hero .notis .n2{display:block;font:300 clamp(17px,1.5vw,21px)/1.3 var(--disp)}
+.hero .notis .n3{display:block;margin-top:4px;font:400 12.5px/1.4 var(--ui);color:var(--ljus3)}
+/* A:s hero-layout, Joachim 2026-09-03: "samma layout som A-versionen, med lyssna-knappen
+   till höger, och återställ det övriga innehållet." Tre band som i helhet4: namn + notis,
+   en linje, payoff till vänster och knappen till höger. Måtten är A:s (.hr, .topp, .under);
+   payoffen i A:s grad och i Archivo, som A:s Switzer — liten text på rörlig video ska inte
+   vara tunn serif. Bara Klas sida bär .linje; Duovi-sidans hero är oförändrad. */
+.hero.linje .in{display:block}
+.hero .topp{display:flex;justify-content:space-between;align-items:flex-end;gap:28px}
+.hero .hr{border:0;border-top:1px solid rgba(239,231,217,.28);margin:16px 0 9px;transform-origin:left}
+.hero .under{display:flex;justify-content:space-between;align-items:flex-start;gap:28px;flex-wrap:wrap}
+/* Payoffen i B:s sättning (.hmeta .front ordagrant: Newsreader 300, 16–20 px, ljus2) sedan
+   2026-09-03 — sessionens rekommendation, Joachim: "Ja, jag vill gärna se det." Archivo,
+   som den var, ligger kvar bakom ?payoff=ui; ?payoff=prov ger väljaren. Vid 14 px blev
+   tunn text otydlig på video i A:s historia; vid B:s grad håller den. */
+.hero .under .front{margin:0;font:300 clamp(16px,1.45vw,20px)/1.5 var(--disp);font-style:normal;
+  letter-spacing:0;color:var(--ljus2);max-width:56ch;text-wrap:pretty}
+html[data-payoff="ui"] .hero .under .front{font:400 clamp(13px,1.25vw,14.5px)/1.45 var(--ui);
+  letter-spacing:.01em;max-width:60ch}
+.typrov.payprov{bottom:64px}
+/* Heroväljaren 2026-09-04. Klas: texten "ner till vänster som i A". Mätt: foten står redan
+   inom 13 px från A:s (76 mot 63 vid 900 px höjd), det som skiljer är blockets HÖJD — A:s namn
+   är en tät platta, G:s Newsreader-namn är högt, så blocket börjar ovanför bildens mitt.
+   Förvalet sedan 2026-09-04 (Joachim: "Tredje knappen som förval"): A:s luft under blocket
+   (44–84 px efter skärmhöjd, helhet4:s regel ordagrant) + tätare block: namnet .1em under
+   kickern, linjen 16 px under namnet. Mätt vid 1440: kicker→K-ets överkant ~14 px, luft kvar.
+   ?hero=luft: A:s luft med de gamla avstånden (.22em, 26 px). ?hero=fore: som före 09-04
+   (luften följde bredden, 76 px). ?hero=prov väljaren (&h= förväljer). Bara Klas sida. */
+html[data-hero="luft"] .hero h1,html[data-hero="fore"] .hero h1{margin-top:.22em}
+html[data-hero="luft"] .hero .hr,html[data-hero="fore"] .hero .hr{margin-top:26px}
+html[data-hero="fore"] .hero .in{padding-bottom:clamp(40px,5.5vw,76px)}
+.typrov.heroprov{top:calc(var(--hdr) + 16px);bottom:auto}
+.hero .under .cta{margin-top:5px;margin-left:auto;justify-content:flex-end}
+@media(max-width:820px){
+  .hero .in{grid-template-columns:1fr}
+  .hero .notis{text-align:left}
+  .hero .topp{flex-direction:column;align-items:flex-start;gap:18px}
+}
+
+/* ===========================================================================
+   6. LYSSNA — spelaren i en lyft platta, kanalerna som en rad
+   =========================================================================== */
+/* Plattan ÄR sektionen. Joachim 2026-09-02: vänsterspalten med fyra
+   företagsnamn i rubrikstorlek var sidans svagaste yta — utgångar satta som
+   innehåll. Nu: rubrik, plattan i full bredd, kanalerna som en tyst rad under.
+   Spotify-inbäddningen är hans beslut; det enda som ändrats är vad som står
+   runt den. */
+.splat{background:var(--mork);color:var(--ljusf);padding:clamp(16px,1.8vw,22px);
+  margin-top:clamp(28px,3.4vw,48px)}
+.spwrap{height:352px}
+.spwrap iframe{width:100%;height:100%;border:0;display:block}
+.tyst{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:22px}
+.tyst a{font:400 13px/1 var(--ui);color:var(--ljus3);padding-bottom:3px;
+  border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
+.tyst a:hover{color:var(--glod);border-bottom-color:var(--glod)}
+
+/* ===========================================================================
+   7. SE — rutnät med ett stort kort. Ingen remsa, inget lås.
+   =========================================================================== */
+.se .rut{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,30px) clamp(14px,1.8vw,26px);
+  margin-top:clamp(32px,4vw,56px)}
+.se .kort:first-child{grid-column:span 2;grid-row:span 2}
+@media(max-width:760px){
+  .se .rut{grid-template-columns:1fr 1fr}
+  .se .kort:first-child{grid-column:span 2;grid-row:auto}
+}
+@media(max-width:480px){.se .rut{grid-template-columns:1fr}.se .kort:first-child{grid-column:auto}}
+.kort{position:relative;display:block;text-align:left}
+.kort .ram{display:block;position:relative;overflow:hidden;background:#181410;aspect-ratio:16/9}
+/* Det stora kortet är en flexkolumn: ramen tar höjden som blir över när titeln
+   fått sin. aspect-ratio släpps — med height:100% räknade den fram en BREDD
+   (914 px i ett 720 px kort) och stack ut under grannarna. Mätt i skärmdump. */
+.se .kort:first-child{display:flex;flex-direction:column}
+.se .kort:first-child .ram{flex:1 1 auto;min-height:0;aspect-ratio:auto}
+.se .kort:first-child .kt{flex:none}
+.kort img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.3,1)}
+.kort:hover img{transform:scale(1.035)}
+.kort .ram::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(12,10,8,.7));opacity:0;transition:opacity .4s}
+.kort:hover .ram::after{opacity:1}
+.kort .sp{position:absolute;left:0;bottom:0;z-index:2;padding:16px 18px;
+  font:600 10.5px/1 var(--ui);letter-spacing:.22em;text-transform:uppercase;color:var(--ljus);
+  opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.kort:hover .sp{opacity:1;transform:none}
+/* Utan hover (telefon, surfplatta) finns ingen ruta att vara över — då står Spela och mörkningen alltid. */
+@media(hover:none){.kort .sp{opacity:1;transform:none}.kort .ram::after{opacity:1}}
+.kort .kt{display:block;margin-top:12px;font:300 clamp(16px,1.35vw,20px)/1.3 var(--disp);
+  transition:color .3s}
+.se .kort:first-child .kt{font-size:clamp(20px,2vw,28px)}
+.kort:hover .kt{color:var(--glod)}
+
+/* ===========================================================================
+   8. LIVE — nästa, tidigare, tre uppsättningar
+   =========================================================================== */
+.live .tva{margin-top:clamp(32px,4vw,56px)}
+.gig{display:grid;grid-template-columns:clamp(84px,8vw,110px) minmax(0,1fr);gap:4px 20px;
+  align-items:baseline;padding:14px 0;border-top:1px solid var(--lin2)}
+.gig .d{font:500 12px/1.5 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--ljus3);white-space:nowrap}
+.gig .v{font:300 clamp(18px,1.6vw,22px)/1.25 var(--disp);letter-spacing:-.01em}
+.gig .m{grid-column:2;font:400 12.5px/1.45 var(--ui);color:var(--ljus3)}
+.gig.next{grid-template-columns:1fr;gap:10px;padding:0 0 clamp(24px,3vw,40px);border-top:0;
+  border-bottom:1px solid var(--lin)}
+.gig.next .chip{display:inline-block;margin-bottom:6px;font:600 10px/1 var(--ui);letter-spacing:.3em;
+  text-transform:uppercase;color:var(--glod)}
+/* Datumet i bläck, inte grått: det enda i raden besökaren behöver ska inte vara
+   det svagaste. Joachim 2026-09-02 ("Gör det första steget"), i stället för B:s
+   fyllda bricka och färgade datum. */
+.gig.next .d{font:300 clamp(18px,1.6vw,22px)/1.2 var(--disp);letter-spacing:0;text-transform:none;color:var(--ljus)}
+.gig.next .v{font-size:clamp(30px,3.6vw,50px);line-height:1.05;letter-spacing:-.022em}
+.gig.next .m{grid-column:1;font-size:13px}
+.tidigare{margin-top:clamp(28px,3.4vw,48px)}
+.tidigare .et{margin-bottom:12px}
+.tidigare .lista{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(28px,4vw,64px)}
+@media(max-width:700px){.tidigare .lista{grid-template-columns:1fr}}
+/* Tidigare: linjen under raden, inte över — första raden får ingen egen kant mot
+   rubriken. Och ett steg svagare: tio rader i två spalter är tjugo linjer. */
+.tidigare .gig{padding:10px 0;border-top:0;border-bottom:1px solid var(--linp3)}
+.tidigare .gig .v{font-size:clamp(16px,1.35vw,19px);color:var(--ljus2)}
+/* Tidigare: fyra + "Visa alla" är förvalet sedan 2026-09-03 kväll (Joachim: "Kör fyra +
+   visa alla som förval"). ?tidigare=alla|stangd de andra, ?tidigare=prov väljaren (&tid=).
+   Joachim 2026-09-03: "tidigare spelningar inte ska vara utvecklat från början". Klas
+   sa samma dag att "Var vi spelat" blir fel med Nästa under. Fyra, inte tre: listan är två
+   spalter, tre lämnar ett hål. Knappen är .tlink som "Läs mer om Duovi" och försvinner
+   och växlar: fäller ut och fäller ihop igen (Joachim: "man måste kunna trycka
+   tillbaka den in också"). */
+.tidmer{display:none;background:none;color:inherit;cursor:pointer;margin-top:14px}
+html[data-tidigare="fyra"] .tidigare:not(.oppen) .lista .gig:nth-child(n+5){display:none}
+html[data-tidigare="stangd"] .tidigare:not(.oppen) .lista,
+html[data-tidigare="stangd"] .tidigare:not(.oppen) .et{display:none}
+html[data-tidigare="stangd"] .tidigare:not(.oppen) .tidmer{margin-top:0}
+html[data-tidigare] .tidigare .tidmer{display:inline-flex}
+.tidigare.oppen .tidmer .pil.ned{transform:rotate(180deg)}
+.tidigare.oppen .tidmer:hover .pil.ned{transform:rotate(180deg) translateY(4px)}
+.tidmer:hover .pil.ned{transform:translateY(4px)}
+.typrov.tidprov{bottom:112px}
+.tomspel{display:none;padding:clamp(24px,3vw,40px);border:1px solid var(--lin)}
+.tomspel p{margin:0 0 20px;font:300 clamp(19px,1.9vw,25px)/1.4 var(--disp);max-width:34ch}
+.live.tom .gig.next{display:none}
+.live.tom .tomspel{display:block}
+
+.fmt{margin-top:clamp(64px,8vw,120px)}
+.fmt .rad{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.4vw,56px);
+  margin-top:clamp(28px,3.4vw,48px)}
+@media(max-width:760px){.fmt .rad{grid-template-columns:1fr}}
+.frad{padding-top:22px}   /* kolumnernas övre kant borta — rubriklinjen räcker */
+.frad .no{display:block;font:500 11px/1 var(--ui);letter-spacing:.22em;color:var(--ljus3)}
+.frad h4{margin:.9em 0 .5em;font:300 clamp(26px,2.6vw,36px)/1.08 var(--disp);letter-spacing:-.018em}
+.frad p{margin:0;font:400 15px/1.66 var(--ui);color:var(--ljus2);max-width:34ch;text-wrap:pretty}
+
+/* ===========================================================================
+   9. DUOVI — scenen. Öppen. Bara de extra videorna är hopfällda.
+   =========================================================================== */
+.duovi{background:var(--mork);color:var(--ljusf)}
+.duohero{position:relative;min-height:clamp(420px,58vh,620px);display:flex;align-items:flex-end;overflow:hidden}
+.duohero .bg{position:absolute;inset:0}
+.duohero .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.duohero .skym{position:absolute;inset:0;
+  background:linear-gradient(180deg,var(--natt) 0%,rgba(12,10,8,.15) 34%,rgba(12,10,8,.3) 60%,var(--natt) 100%)}
+.duohin{position:relative;width:100%;padding:clamp(80px,12vw,160px) var(--kant) clamp(28px,3vw,44px)}
+/* Rubriken i samma skala som Lyssna/Se/Live — inte större än namnet i heron.
+   Joachim 2026-09-02: sidan är Klas, Duovi är ett kapitel. */
+.duohin h2{margin:.3em 0 0;font:200 clamp(40px,5.8vw,78px)/1.02 var(--disp);letter-spacing:-.02em}
+.duoin{padding:clamp(28px,3vw,44px) var(--kant) clamp(60px,6.5vw,104px)}
+.duoin .lead{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);
+  align-items:end}
+@media(max-width:860px){.duoin .lead{grid-template-columns:1fr}}
+.duoin .lead p{margin:0;font:300 clamp(22px,2.3vw,32px)/1.32 var(--disp);letter-spacing:-.012em;max-width:26ch;text-wrap:balance}
+.duoin .lead .akt{display:flex;gap:12px 24px;align-items:center;flex-wrap:wrap;justify-content:flex-start}
+@media(min-width:861px){.duoin .lead .akt{justify-content:flex-end}}
+
+.duofilm{margin-top:clamp(40px,5vw,72px)}
+/* Duken (duovi.html) är ett stort .kort sedan 2026-09-02 — reglerna ligger i
+   den filens eget stilblock. Text i bilden, gradient och "Se hela videon" är borta. */
+
+/* ===========================================================================
+   10. OM — skymningen. En bild, tre stycken.
+   =========================================================================== */
+.om .tva{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,88px);align-items:center}
+@media(max-width:820px){.om .tva{grid-template-columns:1fr}}
+.om .ph{display:block;overflow:hidden;background:#181410}
+.om .ph img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%}
+.om .rub{margin-bottom:.5em}
+.om .stor{margin:0 0 1em;font:300 clamp(21px,2.1vw,29px)/1.4 var(--disp);letter-spacing:-.01em;max-width:32ch;text-wrap:balance}
+.om p{font:400 15.5px/1.72 var(--ui);color:var(--ljus2);max-width:46ch;text-wrap:pretty;margin:0 0 1em}
+
+/* ===========================================================================
+   11. BOKA — papperet. Sidans enda ljusa yta, för det enda man ska göra.
+   =========================================================================== */
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,2.8vw,38px) clamp(24px,3.4vw,48px);
+  margin-top:clamp(32px,4vw,56px)}
+@media(max-width:700px){.fgrid{grid-template-columns:1fr}}
+.fgrid .full{grid-column:1/-1}
+.fgrid label{display:block;font:600 10.5px/1 var(--ui);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:11px}
+.fgrid input,.fgrid select,.fgrid textarea{width:100%;background:transparent;border:0;
+  border-bottom:1px solid var(--linp);padding:10px 0;font:400 16.5px/1.5 var(--ui);color:var(--ink);
+  border-radius:0;transition:border-color .3s}
+.fgrid textarea{resize:vertical}
+.fgrid select{-webkit-appearance:none;appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ink3) 50%),linear-gradient(135deg,var(--ink3) 50%,transparent 50%);
+  background-position:calc(100% - 9px) calc(50% + 1px),calc(100% - 4px) calc(50% + 1px);
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.fgrid input:focus,.fgrid select:focus,.fgrid textarea:focus{outline:0;border-bottom-color:var(--ink)}
+.fslut{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.fine{font:400 12.5px/1.5 var(--ui);color:var(--ink3)}
+
+/* ===========================================================================
+   12. FOTEN
+   =========================================================================== */
+footer{padding:clamp(56px,7vw,104px) 0 34px}
+/* Foten skuren 2026-09-02 (Joachim: "Skär det"): Lyssna-kolumnen borta (samma fyra länkar
+   står under Spotify-plattan), "Integritetspolicy" borta tills sidan finns.
+   NYHETSBREVET TILLBAKA 2026-09-03 på Joachims ord: Klas "planerar att skicka ut den vid
+   varje släpp och större offentliga spelningar". B:s .mailrow i G:s tokens; heroknappen
+   pekar hit (#nyheter). Fältet har ingen tjänst bakom sig ännu — som i A och B. */
+.mailrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.92fr);
+  gap:26px clamp(28px,4vw,64px);align-items:end;
+  padding-bottom:clamp(38px,4.4vw,58px);border-bottom:1px solid var(--lin)}
+@media(max-width:800px){.mailrow{grid-template-columns:1fr}}
+.mailrow h4{margin:.3em 0 .5em;font:200 clamp(28px,3.4vw,46px)/1.06 var(--disp);letter-spacing:-.022em}
+.mailrow p{margin:0;font:400 14.5px/1.6 var(--ui);color:var(--ljus2);max-width:40ch}
+.mrow{display:flex;gap:12px;flex-wrap:wrap}
+.mrow input{flex:1 1 200px;background:transparent;border:0;border-bottom:1px solid var(--lin);
+  padding:13px 0;font:400 15px/1.4 var(--ui);color:var(--ljus);border-radius:0}
+.mrow input::placeholder{color:var(--ljus3)}
+.mrow input:focus{outline:0;border-bottom-color:var(--glod)}
+.fcols{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:34px clamp(28px,4vw,64px);
+  padding:0 0 clamp(38px,4.4vw,58px)}
+.mailrow + .fcols{padding-top:clamp(38px,4.4vw,58px)}
+.fcols > :last-child{grid-column:-2}
+@media(max-width:760px){.fcols{grid-template-columns:1fr 1fr}}
+.fm{font:300 clamp(24px,2.2vw,32px)/1 var(--disp);letter-spacing:-.015em}
+.fmrad{margin-top:10px;font:400 13px/1.5 var(--ui);color:var(--ljus3)}
+.fcols h5{margin:0 0 16px;font:600 10.5px/1 var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--ljus3)}
+.soc{display:flex;flex-direction:column;gap:9px}
+.soc a{font:400 14px/1.4 var(--ui);color:var(--ljus2);transition:color .25s}
+.soc a:hover{color:var(--glod)}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;
+  border-top:1px solid var(--lin);font:400 12px/1.5 var(--ui);color:var(--ljus3)}
+
+/* ===========================================================================
+   13. SPELAREN — öppnar i lådan, helskärm på knappen. Joachim 2026-09-04: "Kör lådan
+   som förval" (vänder 09-03:s "ska det öppnas upp i helskärm" — Klas hittade inte ut).
+   Skälen: helskärm är något man ber om; lådan är det enda som ser lika ut på iPhone
+   (ingen helskärm för div), på dator och när begäran nekas. Esc/Minimera i helskärm
+   ger lådan tillbaka, Esc eller Stäng i lådan stänger.
+   =========================================================================== */
+.lb{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+  background:rgba(8,6,5,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.lb.pa{display:flex}
+/* Lådan lämnar 140 px av höjden: knapparna står 56 px ovanför duken, och med 92vh hamnade de
+   OVANFÖR vyn på en bred skärm (mätt i Brave 1568×769: y = −31). Det var Klas "inget sätt att
+   stänga" när helskärmen nekats — den gamla Stäng-texten låg utanför bilden. */
+.lb .duk3{position:relative;width:min(92vw,calc((100vh - 140px) * 16 / 9));aspect-ratio:16/9;background:#000}
+/* Ramen fylls absolut. Mätt 2026-09-03: med height:100% mot #lbslot, som saknar höjd,
+   föll ramen till förvalets 150 px och videon blev en remsa på 267×150 upptill — Joachims
+   "visas på ett konstigt sätt". Fanns även i 92 %-lådan före helskärmen. */
+.lb iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+/* Knapparna: Helskärm/Minimera och Stäng — 44 px höga (touch), ikon + ord, alltid synliga.
+   Klas via Joachim 2026-09-04: "inget sätt att stänga dem eller lämna helskärm" — den gamla
+   Stäng-texten var 10,5 px ovanför lådan och försvann. I lådan ligger raden ovanför duken till
+   höger; i helskärm (.ifs) mitt upptill, där YouTubes egna ikoner (titel till vänster, dela/
+   senare till höger) inte ligger. .utan-fs: helskärm saknas för div (iOS Safari) — bara Stäng. */
+.lb .knappar{position:absolute;top:-56px;right:0;display:flex;gap:8px;z-index:2}
+.lb .knappar button{display:inline-flex;align-items:center;gap:9px;height:44px;padding:0 16px;
+  font:600 11px/1 var(--ui);letter-spacing:.18em;text-transform:uppercase;color:var(--ljus);
+  background:rgba(14,11,9,.72);border:1px solid rgba(239,231,217,.55);cursor:pointer;
+  -webkit-tap-highlight-color:transparent;transition:background .2s,color .2s,border-color .2s}
+.lb .knappar button:hover,.lb .knappar button:focus-visible{background:var(--ljus);color:var(--natt);border-color:var(--ljus);outline:0}
+.lb .knappar svg{width:14px;height:14px;display:block;flex:none}
+.lb .knappar .fsx{display:none}
+.lb.ifs .knappar .fsi{display:none}
+.lb.ifs .knappar .fsx{display:block}
+.lb.utan-fs .knappar .fs{display:none}
+.lb .duk3:fullscreen{width:100%;height:100%;aspect-ratio:auto}
+.lb .duk3:-webkit-full-screen{width:100%;height:100%;aspect-ratio:auto}
+.lb.ifs .knappar{top:14px;right:auto;left:50%;transform:translateX(-50%)}
+
+/* Smal skärm: rubrikraderna på en spalt. */
+@media(max-width:820px){
+  .shd{grid-template-columns:1fr;align-items:start;gap:14px}
+}
+
+/* ===========================================================================
+   14. RÖRELSE — startlägen. Sluttillståndet sätts alltid med .to().
+   =========================================================================== */
+.rv{opacity:0}
+html.ingen-rorelse .rv{opacity:1}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1!important;transform:none!important}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+/* ===========================================================================
+   15. TYPSNITTSPROVET — B:s snitt i G. Klas 2026-09-03: "Tyckte B var nice i
+   fonten." Joachim: "ta font från version B och lägga in den i den senaste",
+   och samma dag "Kör Newsreader som förval i G". Därför är grunden (:root
+   --disp, vikterna 200 på de stora raderna) numera B:s; Fraunces finns kvar
+   bara som jämförelse. Layouten rörs inte — bara snittet och dess vikter:
+     ?ty=fr   Fraunces, som G var till 2026-09-03 (vikt 300/400).
+     ?ty=bbb  B:s tre roller ordagrant: dessutom Archivo Black på wordmarken,
+              datumen, kapitelnumren och namnet i foten (B:s --blk).
+   ?ty=prov ger väljaren, &snitt=<läge> förväljer. ?ty=b = förvalet (gammal länk).
+   Tokens ligger i html[data-ty] så att .pap-växlingen fungerar oförändrad.
+   =========================================================================== */
+html[data-ty="fr"]{--disp:'Fraunces',Georgia,'Times New Roman',serif}
+html[data-ty="fr"] .hero h1{font-weight:400;letter-spacing:-.028em}
+html[data-ty="fr"] .hero h1 em{font-weight:400}
+html[data-ty="fr"] .rub,html[data-ty="fr"] .rub em,html[data-ty="fr"] .duohin h2{font-weight:300}
+/* B:s tal: wordmark, datum, kapitelnummer, foten — B:s egna mått, radernas plats G:s. */
+html[data-ty="bbb"] #hdr .m{font:400 13px/1 var(--blk);letter-spacing:.13em}
+html[data-ty="bbb"] .gig .d{font:400 clamp(15px,1.35vw,19px)/1 var(--blk);letter-spacing:.01em;color:var(--ljus)}
+html[data-ty="bbb"] .gig.next .d{font:300 clamp(18px,1.6vw,22px)/1.2 var(--disp);letter-spacing:0}
+html[data-ty="bbb"] .frad .no{font:400 clamp(20px,2.1vw,30px)/1 var(--blk);letter-spacing:-.02em;color:var(--lin)}
+html[data-ty="bbb"] .fm{font:400 clamp(18px,1.7vw,23px)/1 var(--blk);letter-spacing:.09em;text-transform:uppercase}
+
+/* Väljaren. Ritas aldrig ut utan ?ty=prov. */
+.typrov{position:fixed;left:16px;bottom:16px;z-index:120;display:none;gap:8px;
+  padding:10px 12px;background:rgba(14,11,9,.92);border:1px solid rgba(239,231,217,.22);
+  font:500 10px/1 var(--ui);letter-spacing:.18em;text-transform:uppercase;
+  color:#efe7d9;align-items:center}
+html[data-typrov] .typrov{display:flex}
+.typrov b{font-weight:600;opacity:.55;margin-right:4px}
+.typrov button{font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;
+  padding:7px 11px;background:transparent;color:#efe7d9;border:1px solid rgba(239,231,217,.3)}
+.typrov button[aria-pressed="true"]{background:#efe7d9;color:#0e0b09;border-color:#efe7d9}
+</style>
 </head>
-
 <body>
-  <div class="scroll-progress"></div>
 
-  <header class="hero">
-    <nav class="nav" aria-label="Huvudmeny">
-      <a class="logo" href="#" aria-label="Klas Österman startsida">
-        <img src="logo-header-gold.png" alt="Klas Österman logotyp" width="640" height="177">
-      </a>
+<div class="korn" aria-hidden="true"></div>
 
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-label="Öppna meny"
-        aria-expanded="false"
-        onclick="toggleMenu()"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+<header id="hdr">
+  <a class="m" href="#top">Klas Österman</a>
+  <nav>
+    <a href="#lyssna" data-sek="lyssna">Lyssna</a>
+    <a href="#videor" data-sek="videor">Videor</a>
+    <a href="#live" data-sek="live">Live</a>
+    <a href="#om" data-sek="om">Om</a>
+    <a href="#duovi" data-sek="duovi">Duovi</a>
+    <a class="bok" href="#boka">Boka</a>
+  </nav>
+  <button class="meny" id="meny" type="button" aria-expanded="false" aria-controls="lager"><i aria-hidden="true"></i>Meny</button>
+</header>
+<div class="lager" id="lager" role="dialog" aria-modal="true" aria-label="Meny">
+  <div class="ltopp"><button class="lstang" type="button" aria-label="Stäng menyn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>Stäng</button></div>
+  <nav></nav>
+</div>
 
-      <div class="nav-links">
-        <a href="#music">Lyssna</a>
-        <a href="#videos">Videor</a>
-        <a href="#live">Live</a>
-        <a href="duo/">Duo</a>
-        <a href="#bio">Bio</a>
-        <a class="nav-cta" href="#contact">Boka</a>
+<!-- ============================ HERO ============================ -->
+<div class="hero linje" id="top">
+  <div class="bg">
+    <video autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+      <!-- hero-montage-2.mp4 (2026-09-04): samma klipp omkodat till H.264 High yuv420p, faststart.
+           Originalet är High 4:4:4 Predictive/yuv444p — Chrome avkodar det i mjukvara, Safari
+           (macOS och iOS) vägrar och visar bara postern. Klas: "videon startar inte i Safari". -->
+      <source src="assets/hero-montage-2.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="in">
+    <div class="topp">
+      <div>
+        <span class="et h-et">Singer-songwriter</span>
+        <h1 class="h-namn">Klas<em>Österman</em></h1>
       </div>
-    </nav>
-
-    <div class="hero-content">
-      <h1>Klas Österman</h1>
-      <p>Personliga låtar i gränslandet mellan akustiskt, beats och berättande.</p>
-
-      <div class="buttons hero-actions">
-        <a class="button-secondary hero-news-button" href="#newsletter">
-          <i class="fas fa-envelope" aria-hidden="true"></i>
-          <span class="hero-news-label-desktop">Få nyheter om släpp och speldatum</span>
-          <span class="hero-news-label-mobile">Få nyheter via mejl</span>
-        </a>
-      </div>
-
-      <div class="social-icons hero-social-icons" aria-label="Sociala medier">
-        <a href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-          <i class="fab fa-spotify" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.youtube.com/@KlasOstermanMusic" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-          <i class="fab fa-youtube" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.instagram.com/klasostermanmusic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <i class="fab fa-instagram" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.tiktok.com/@klasosterman" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-          <i class="fab fa-tiktok" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.facebook.com/KlasOstermanMusic" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <i class="fab fa-facebook-f" aria-hidden="true"></i>
-        </a>
-        <a href="https://music.apple.com/se/artist/klas-%C3%B6sterman/1201085087" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
-          <i class="fab fa-apple" aria-hidden="true"></i>
-        </a>
-        <a href="https://link.deezer.com/s/33kyknYXZ2SQVEx1ijzKj" target="_blank" rel="noopener noreferrer" aria-label="Deezer">
-          <i class="fas fa-music" aria-hidden="true"></i>
-        </a>
-      </div>
-
-    </div>
-  </header>
-
-  <main>
-    <section id="music" class="section">
-      <h2><i class="fas fa-headphones"></i> Lyssna</h2>
-
-      <iframe
-        id="spotify-player"
-        style="border-radius:12px"
-        src="https://open.spotify.com/embed/artist/5YfH3tH3YRKdskP1CHgadt?utm_source=generator"
-        width="100%"
-        height="352"
-        frameborder="0"
-        allowfullscreen
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-      </iframe>
-
-      <div class="spotify-actions">
-        <a
-          class="main-button spotify-button"
-          href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt"
-          target="_blank"
-          rel="noopener noreferrer">
-          <i class="fab fa-spotify" aria-hidden="true"></i>
-          Öppna i Spotify – bättre ljud
-        </a>
-      </div>
-    </section>
-
-    <section id="videos" class="section section-band section-band-soft">
-      <h2><i class="fas fa-play"></i> Musikvideor</h2>
-      <p class="section-intro">Ett urval av musikvideor, livekänsla och visuella berättelser.</p>
-
-      <div class="video-grid">
-        <button class="video-card" type="button" onclick="openVideo('iS0_Bc853Bc')">
-          <img src="https://img.youtube.com/vi/iS0_Bc853Bc/hqdefault.jpg" alt="Där änglar hör" loading="lazy" decoding="async">
-          <span>Där änglar hör</span>
-        </button>
-
-        <button class="video-card" type="button" onclick="openVideo('CaXVYGNNGY0')">
-          <img src="https://img.youtube.com/vi/CaXVYGNNGY0/hqdefault.jpg" alt="Min filosofi" loading="lazy" decoding="async">
-          <span>Min filosofi</span>
-        </button>
-
-        <button class="video-card" type="button" onclick="openVideo('SVQvr4itZno')">
-          <img src="https://img.youtube.com/vi/SVQvr4itZno/hqdefault.jpg" alt="Löpsedel" loading="lazy" decoding="async">
-          <span>Löpsedel</span>
-        </button>
-
-        <button class="video-card" type="button" onclick="openVideo('bdJ6qrHlZ34')">
-          <img src="https://img.youtube.com/vi/bdJ6qrHlZ34/hqdefault.jpg" alt="Paradise" loading="lazy" decoding="async">
-          <span>Paradise</span>
-        </button>
-
-        <button class="video-card" type="button" onclick="openVideo('jyEEpuWH82c')">
-          <img src="https://img.youtube.com/vi/jyEEpuWH82c/hqdefault.jpg" alt="Hummeldal" loading="lazy" decoding="async">
-          <span>Hummeldal</span>
-        </button>
-
-        <button class="video-card" type="button" onclick="openVideo('LKZUf40ns8o')">
-          <img src="https://img.youtube.com/vi/LKZUf40ns8o/hqdefault.jpg" alt="Blood Moon" loading="lazy" decoding="async">
-          <span>Blood Moon</span>
-        </button>
-      </div>
-    </section>
-
-    <section id="live" class="section">
-      <h2><i class="fas fa-calendar-days"></i> Spelningar</h2>
-
-      <div class="shows-list">
-        <div
-          class="show-item"
-          data-show-date="2026-09-05"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('5 september 2026', 'Dop', 'Glanshammars kyrka', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          onkeydown="handleShowKey(event, '5 september 2026', 'Dop', 'Glanshammars kyrka', 'DUOVI – Klas Österman & Josefin Blomberg')"
-        >
-          <div class="show-date">5 september 2026</div>
-          <div class="show-info">
-            <h3>Glanshammars kyrka</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om dopet i Glanshammars kyrka"
-            onclick="event.stopPropagation(); openShowInfo('5 september 2026', 'Dop', 'Glanshammars kyrka', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-
-        <div
-          class="show-item"
-          data-show-date="2026-08-29"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('29 augusti 2026', 'Frukostmingel vid golftävling', 'Roslagens GK', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          onkeydown="handleShowKey(event, '29 augusti 2026', 'Frukostmingel vid golftävling', 'Roslagens GK', 'DUOVI – Klas Österman & Josefin Blomberg')"
-        >
-          <div class="show-date">29 augusti 2026</div>
-          <div class="show-info">
-            <h3>Roslagens GK</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om frukostminglet på Roslagens GK"
-            onclick="event.stopPropagation(); openShowInfo('29 augusti 2026', 'Frukostmingel vid golftävling', 'Roslagens GK', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-
-        <div
-          class="show-item"
-          data-show-date="2026-08-15"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('15 augusti 2026', 'Bröllop och vigsel', 'Hille kyrka, Gävle', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          onkeydown="handleShowKey(event, '15 augusti 2026', 'Bröllop och vigsel', 'Hille kyrka, Gävle', 'DUOVI – Klas Österman & Josefin Blomberg')"
-        >
-          <div class="show-date">15 augusti 2026</div>
-          <div class="show-info">
-            <h3>Hille kyrka, Gävle</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om bröllopet i Hille kyrka"
-            onclick="event.stopPropagation(); openShowInfo('15 augusti 2026', 'Bröllop och vigsel', 'Hille kyrka, Gävle', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-
-        <div
-          class="show-item"
-          data-show-date="2026-08-08"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('8 augusti 2026', 'Bröllop, mingel och vigsel', 'Nyckelviken', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          onkeydown="handleShowKey(event, '8 augusti 2026', 'Bröllop, mingel och vigsel', 'Nyckelviken', 'DUOVI – Klas Österman & Josefin Blomberg')"
-        >
-          <div class="show-date">8 augusti 2026</div>
-          <div class="show-info">
-            <h3>Nyckelviken</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om bröllopet i Nyckelviken"
-            onclick="event.stopPropagation(); openShowInfo('8 augusti 2026', 'Bröllop, mingel och vigsel', 'Nyckelviken', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-
-        <div
-          class="show-item"
-          data-show-date="2026-07-18"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('18 juli 2026', 'Födelsedagsfest', 'Rimbo', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          onkeydown="handleShowKey(event, '18 juli 2026', 'Födelsedagsfest', 'Rimbo', 'DUOVI – Klas Österman & Josefin Blomberg')"
-        >
-          <div class="show-date">18 juli 2026</div>
-          <div class="show-info">
-            <h3>Rimbo</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om födelsedagsfesten i Rimbo"
-            onclick="event.stopPropagation(); openShowInfo('18 juli 2026', 'Födelsedagsfest', 'Rimbo', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-
-        <div
-          class="show-item"
-          data-show-date="2026-07-16"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('16 juli 2026', 'Live', 'Ingmarsö Krog', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          onkeydown="handleShowKey(event, '16 juli 2026', 'Live', 'Ingmarsö Krog', 'DUOVI – Klas Österman & Josefin Blomberg')"
-        >
-          <div class="show-date">16 juli 2026</div>
-          <div class="show-info">
-            <h3>Ingmarsö Krog</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om spelningen på Ingmarsö Krog"
-            onclick="event.stopPropagation(); openShowInfo('16 juli 2026', 'Live', 'Ingmarsö Krog', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-
-        <p class="section-intro past-shows-heading" style="margin-top: 24px;">Tidigare spelningar</p>
-
-        <div
-          class="show-item"
-          data-show-date="2026-07-11"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('11 juli 2026', 'Live med band', 'Logen, Östra Lagnö', 'DUOVI – Klas Österman & Josefin Blomberg + band')"
-          onkeydown="handleShowKey(event, '11 juli 2026', 'Live med band', 'Logen, Östra Lagnö', 'DUOVI – Klas Österman & Josefin Blomberg + band')"
-        >
-          <div class="show-date">11 juli 2026</div>
-          <div class="show-info">
-            <h3>Logen, Östra Lagnö</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg + band</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om spelningen på Logen"
-            onclick="event.stopPropagation(); openShowInfo('11 juli 2026', 'Live med band', 'Logen, Östra Lagnö', 'DUOVI – Klas Österman & Josefin Blomberg + band')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-
-        <div
-          class="show-item"
-          data-show-date="2026-06-27"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('27 juni 2026', 'Privat bröllop', 'Idöborg, Värmdö', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          onkeydown="handleShowKey(event, '27 juni 2026', 'Privat bröllop', 'Idöborg, Värmdö', 'DUOVI – Klas Österman & Josefin Blomberg')"
-        >
-          <div class="show-date">27 juni 2026</div>
-          <div class="show-info">
-            <h3>Idöborg, Värmdö</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om spelningen på Idöborg"
-            onclick="event.stopPropagation(); openShowInfo('27 juni 2026', 'Privat bröllop', 'Idöborg, Värmdö', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-
-        <div
-          class="show-item"
-          data-show-date="2026-06-26"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('26 juni 2026', 'Live', 'Café Chocolat, Rimbo', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          onkeydown="handleShowKey(event, '26 juni 2026', 'Live', 'Café Chocolat, Rimbo', 'DUOVI – Klas Österman & Josefin Blomberg')"
-        >
-          <div class="show-date">26 juni 2026</div>
-          <div class="show-info">
-            <h3>Café Chocolat, Rimbo</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om spelningen på Café Chocolat"
-            onclick="event.stopPropagation(); openShowInfo('26 juni 2026', 'Live', 'Café Chocolat, Rimbo', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-
-        <div
-          class="show-item"
-          data-show-date="2026-06-13"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('13 juni 2026', 'Privat bröllop', 'Fredriksborgs Hotell, Värmdö', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          onkeydown="handleShowKey(event, '13 juni 2026', 'Privat bröllop', 'Fredriksborgs Hotell, Värmdö', 'DUOVI – Klas Österman & Josefin Blomberg')"
-        >
-          <div class="show-date">13 juni 2026</div>
-          <div class="show-info">
-            <h3>Fredriksborgs Hotell, Värmdö</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om spelningen på Fredriksborgs Hotell"
-            onclick="event.stopPropagation(); openShowInfo('13 juni 2026', 'Privat bröllop', 'Fredriksborgs Hotell, Värmdö', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-
-        <div
-          class="show-item"
-          data-show-date="2026-06-11"
-          role="button"
-          tabindex="0"
-          onclick="openShowInfo('11 juni 2026', 'Privat bröllop', 'Rimbo kyrka', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          onkeydown="handleShowKey(event, '11 juni 2026', 'Privat bröllop', 'Rimbo kyrka', 'DUOVI – Klas Österman & Josefin Blomberg')"
-        >
-          <div class="show-date">11 juni 2026</div>
-          <div class="show-info">
-            <h3>Rimbo kyrka</h3>
-            <p>DUOVI – Klas Österman & Josefin Blomberg</p>
-          </div>
-          <button
-            class="show-info-button"
-            type="button"
-            aria-label="Mer information om spelningen i Rimbo kyrka"
-            onclick="event.stopPropagation(); openShowInfo('11 juni 2026', 'Privat bröllop', 'Rimbo kyrka', 'DUOVI – Klas Österman & Josefin Blomberg')"
-          >
-            <i class="fas fa-info"></i>
-          </button>
-        </div>
-      </div>
-
-      <button class="shows-toggle" type="button" aria-expanded="false" hidden>
-        Visa alla spelningar
-      </button>
-    </section>
-
-    <section class="section live-format-section section-band section-band-warm">
-      <p class="section-eyebrow">Välj känsla och storlek</p>
-      <h2><i class="fas fa-microphone-lines"></i> Liveformat</h2>
-      <p class="section-intro">Från nära och avskalat till ett större scenuttryck – vi hittar ett format som passar tillfället.</p>
-
-      <div class="cards live-format-cards">
-        <article class="card live-format-card">
-          <span class="live-format-icon" aria-hidden="true"><i class="fas fa-guitar"></i></span>
-          <p class="live-format-label">Avskalat</p>
-          <h3>Solo</h3>
-          <p>Sång och gitarr med närhet till texten – för mindre konserter och personliga tillfällen.</p>
-          <a href="#contact" data-booking-format="Solo">Fråga om solo</a>
-        </article>
-
-        <article class="card live-format-card live-format-card-featured">
-          <span class="live-format-icon" aria-hidden="true"><i class="fas fa-user-group"></i></span>
-          <p class="live-format-label">Två röster</p>
-          <h3>Duo</h3>
-          <p>DUOVI – Klas Österman och Josefin Blomberg med piano och gitarr.</p>
-          <a href="duo/">Upptäck DUOVI</a>
-        </article>
-
-        <article class="card live-format-card">
-          <span class="live-format-icon" aria-hidden="true"><i class="fas fa-drum"></i></span>
-          <p class="live-format-label">Större energi</p>
-          <h3>Band</h3>
-          <p>Klas Österman live med fullt band – egna låtar med närvaro, energi och känsla.</p>
-          <a href="#contact" data-booking-format="Fullt band">Fråga om band</a>
-        </article>
-      </div>
-    </section>
-
-    <section id="duo" class="section highlight duo-preview">
-      <h2><i class="fas fa-user-group"></i> DUOVI</h2>
-      <p class="section-intro">
-        Två röster, piano och gitarr — ett varmt och nära liveformat för bröllop, konserter,
-        mingel och privata evenemang.
-      </p>
-
-      <div class="video-grid">
-        <button class="video-card" type="button" onclick="openVideo('epgLor8Q7ns')">
-          <img src="https://img.youtube.com/vi/epgLor8Q7ns/hqdefault.jpg" alt="Det eviga intets land" loading="lazy" decoding="async">
-          <span>Det eviga intets land</span>
-        </button>
-
-        <button class="video-card" type="button" onclick="openVideo('1yt9LfNf8ZM')">
-          <img src="https://img.youtube.com/vi/1yt9LfNf8ZM/hqdefault.jpg" alt="Om du lämnade mig nu" loading="lazy" decoding="async">
-          <span>Om du lämnade mig nu</span>
-        </button>
-
-      </div>
-
-      <div class="duo-preview-actions">
-        <a class="main-button hero-booking-button" href="duo/">Upptäck DUOVI</a>
-        <a class="main-button button-secondary" href="duo/#booking">Boka DUOVI</a>
-      </div>
-    </section>
-
-    <section id="bio" class="section bio-section section-band section-band-soft">
-      <div class="bio-layout">
-        <div class="bio-media">
-          <img
-            src="assets/images/klas-guitar-shoulder.jpg"
-            alt="Klas Österman med gitarren över axeln vid vattnet"
-            loading="lazy"
-            decoding="async"
-          >
-        </div>
-
-        <div class="bio-content">
-          <p class="section-eyebrow">Artist & låtskrivare</p>
-          <h2><i class="fas fa-feather-pointed"></i> Klas Österman</h2>
-
-          <p>
-            Klas Österman är en svensk singer-songwriter, artist och låtskrivare med rötter i
-            hiphopens textvärld och ett starkt fokus på berättande, melodier och personligt uttryck.
-          </p>
-
-          <p>
-            Med texter som rör sig nära livet och musik som spänner från avskalat akustiskt till
-            större, atmosfäriska produktioner skapar han ett eget sound där ärlighet, känsla och
-            starka melodier står i centrum.
-          </p>
-
-          <p>
-            Efter många år som låtskrivare och producent, och en längre period borta från musiken,
-            hittade Klas tillbaka till sitt skapande, sin röst och viljan att stå på scen.
-          </p>
-
-          <p class="bio-quote">För Klas är musik inte ett val. Det är ett behov.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="newsletter" class="section newsletter-section compact-newsletter-section">
-      <p class="section-eyebrow">Mejllista</p>
-      <h2>Ny musik & spelningar</h2>
-      <p class="section-intro">Få ett kort mejl när jag släpper musik eller annonserar en offentlig spelning.</p>
-
-      <form class="direct-form newsletter-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-subject="Anmälan till Klas Östermans mejllista" data-form-type="Mejllista – Klas Österman" data-success="Tack! Du är nu anmäld till mejllistan.">
-        <div class="newsletter-signup-row">
-          <div class="form-field">
-            <label for="newsletter-email">Din e-postadress</label>
-            <input id="newsletter-email" name="email" type="email" autocomplete="email" required placeholder="namn@exempel.se">
-          </div>
-          <button class="main-button" type="submit">Håll mig uppdaterad</button>
-        </div>
-        <label class="consent-field">
-          <input name="consent" type="checkbox" required>
-          <span>Jag vill få nyheter om musik och spelningar. Jag kan avsluta när jag vill.</span>
-        </label>
-        <p class="form-note">Din adress används endast för nyheter om musik och spelningar.</p>
-        <p class="form-status" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-
-    <section id="contact" class="section contact-section">
-      <h2><i class="fas fa-envelope"></i> Boka Klas Österman</h2>
-
-      <p>
-        För bokningar, samarbeten eller frågor kring konserter, bröllop, privata event,
-        duoformat eller fullt band.
-      </p>
-      <p class="booking-reassurance">Du behöver inte ha alla detaljer klara – skicka det du vet, så hittar vi resten tillsammans.</p>
-
-      <form class="direct-form booking-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-subject="Bokningsförfrågan via klasosterman.se" data-form-type="Bokning – Klas Österman" data-success="Tack! Din bokningsförfrågan är skickad. Jag återkommer så snart jag kan.">
-        <div class="form-grid">
-          <div class="form-field">
-            <label for="booking-name">Namn</label>
-            <input id="booking-name" name="Namn" type="text" autocomplete="name" required>
-          </div>
-          <div class="form-field">
-            <label for="booking-email">E-post</label>
-            <input id="booking-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="form-field">
-            <label for="booking-date">Önskat datum</label>
-            <input id="booking-date" name="Önskat datum" type="date">
-          </div>
-          <div class="form-field">
-            <label for="booking-location">Ort eller lokal</label>
-            <input id="booking-location" name="Ort eller lokal" type="text" autocomplete="address-level2">
-          </div>
-          <div class="form-field">
-            <label for="booking-event">Typ av evenemang</label>
-            <select id="booking-event" name="Typ av evenemang">
-              <option value="">Välj gärna</option>
-              <option>Bröllop eller vigsel</option>
-              <option>Konsert</option>
-              <option>Företagsevent eller mingel</option>
-              <option>Privat fest</option>
-              <option>Annat</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="booking-format">Önskat liveformat</label>
-            <select id="booking-format" name="Önskat liveformat">
-              <option value="">Vet inte ännu</option>
-              <option>Solo</option>
-              <option>Duo med Josefin</option>
-              <option>Fullt band</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="booking-guests">Ungefärligt antal gäster</label>
-            <input id="booking-guests" name="Ungefärligt antal gäster" type="number" min="1" inputmode="numeric">
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="booking-message">Berätta kort om evenemanget</label>
-          <textarea id="booking-message" name="Meddelande" rows="5" required></textarea>
-        </div>
-        <button class="main-button" type="submit">Skicka bokningsförfrågan</button>
-        <p class="form-note">Uppgifterna skickas säkert via Formspree till info@klasosterman.se.</p>
-        <p class="form-status" role="status" aria-live="polite"></p>
-      </form>
-      <p class="contact-email">info@klasosterman.se</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-copy">
-        <p>Klas Österman · Singer-songwriter · Stockholm</p>
-        <p><a href="mailto:info@klasosterman.se">info@klasosterman.se</a></p>
-      </div>
-
-      <div class="social-icons" aria-label="Sociala medier">
-        <a href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-          <i class="fab fa-spotify"></i>
-        </a>
-        <a href="https://www.youtube.com/@KlasOstermanMusic" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-          <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://www.instagram.com/klasostermanmusic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.tiktok.com/@klasosterman" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-          <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="https://www.facebook.com/KlasOstermanMusic" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://music.apple.com/se/artist/klas-österman/1201085087" target="_blank" rel="noopener noreferrer" aria-label="Apple Music">
-          <i class="fab fa-apple"></i>
-        </a>
-        <a href="https://link.deezer.com/s/33kyknYXZ2SQVEx1ijzKj" target="_blank" rel="noopener noreferrer" aria-label="Deezer">
-          <i class="fas fa-music"></i>
-        </a>
+      <div class="notis h-notis">
+        <span class="n1">Nästa spelning</span>
+        <span class="n2"></span>
+        <span class="n3"></span>
       </div>
     </div>
-  </footer>
+    <hr class="hr h-hr">
+    <div class="under">
+      <!-- Payoffen är A:s rad, återställd på Joachims ord 2026-09-03 ("återställ det
+           övriga innehållet"). "Låtar nära livet" togs bort 2026-09-02; den här är
+           helhet4:s och står tills Klas har en mening i egna ord. -->
+      <p class="front h-front">Personliga låtar i gränslandet mellan akustiskt, beats och berättande.</p>
+      <div class="cta h-cta">
+        <!-- Lyssna (fylld) + nyhetsbrevet (kontur), som A:s Boka + nyheter. Nyhets-
+             knappen tillbaka 2026-09-03 på Joachims ord; namnet valt av honom samma dag
+             bland fyra: "Kör 'Nytt om släpp & spelningar', lås den." Boka står i headern
+             hela vägen ner. -->
+        <a class="knapp fyll" href="#lyssna">Lyssna</a>
+        <a class="knapp nyhet" href="#nyheter">Nytt om släpp &amp; spelningar</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div id="video-lightbox" class="video-lightbox" onclick="closeVideo()">
-    <button class="close-video" type="button" aria-label="Stäng video" onclick="closeVideo()">×</button>
+<!-- ============================ LYSSNA ============================ -->
+<section class="sek pap lyssna" id="lyssna">
+  <div class="wrap">
+    <div class="shd">
+      <div>
+        <h2 class="rub rv">Lyssna</h2>
+      </div>
+    </div>
 
-    <div class="lightbox-content" onclick="event.stopPropagation()">
-      <iframe
-        id="lightbox-iframe"
-        src=""
-        title="YouTube-video"
-        frameborder="0"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allow="autoplay; encrypted-media; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+    <div class="splat rv">
+      <div class="spwrap">
+        <iframe title="Spotify — Klas Österman"
+          src="https://open.spotify.com/embed/artist/5YfH3tH3YRKdskP1CHgadt?utm_source=generator&amp;theme=0"
+          loading="lazy" allow="encrypted-media"></iframe>
+      </div>
+    </div>
+    <!-- Kanalerna, tyst: lyssningstjänsterna först, sedan de sociala. Joachim
+         2026-09-03: "vissa socialmedielänkar saknas här" — de stod bara i foten. -->
+    <div class="tyst rv">
+      <a href="https://open.spotify.com/artist/5YfH3tH3YRKdskP1CHgadt" target="_blank" rel="noopener">Spotify</a>
+      <a href="https://music.apple.com/se/artist/klas-%C3%B6sterman/1201085087" target="_blank" rel="noopener">Apple Music</a>
+      <a href="https://link.deezer.com/s/33kyknYXZ2SQVEx1ijzKj" target="_blank" rel="noopener">Deezer</a>
+      <a href="https://www.youtube.com/@KlasOstermanMusic" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.instagram.com/klasostermanmusic/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@klasosterman" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.facebook.com/KlasOstermanMusic" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ VIDEOR ============================
+     Sex musikvideor, Klas egna miniatyrer. Alla spelar på sidan. -->
+<section class="sek se" id="videor">
+  <div class="wrap">
+    <div class="shd">
+      <div>
+        <h2 class="rub rv">Videor</h2>
+      </div>
+    </div>
+
+    <div class="rut">
+      <button class="kort rv" type="button" data-yt="iS0_Bc853Bc" data-t="Där änglar hör" aria-label="Spela Där änglar hör">
+        <span class="ram"><img src="assets/anglar.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+        <span class="kt">Där änglar hör</span>
+      </button>
+      <button class="kort rv" type="button" data-yt="CaXVYGNNGY0" data-t="Min filosofi" aria-label="Spela Min filosofi">
+        <span class="ram"><img src="assets/filosofi-scen-b.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+        <span class="kt">Min filosofi</span>
+      </button>
+      <button class="kort rv" type="button" data-yt="jyEEpuWH82c" data-t="Hummeldal" aria-label="Spela Hummeldal">
+        <span class="ram"><img src="assets/hummeldal.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+        <span class="kt">Hummeldal</span>
+      </button>
+      <button class="kort rv" type="button" data-yt="LKZUf40ns8o" data-t="Blood Moon" aria-label="Spela Blood Moon">
+        <span class="ram"><img src="assets/bloodmoon.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+        <span class="kt">Blood Moon</span>
+      </button>
+      <button class="kort rv" type="button" data-yt="SVQvr4itZno" data-t="Löpsedel" aria-label="Spela Löpsedel">
+        <span class="ram"><img src="assets/lopsedel.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+        <span class="kt">Löpsedel</span>
+      </button>
+      <button class="kort rv" type="button" data-yt="bdJ6qrHlZ34" data-t="Paradise" aria-label="Spela Paradise">
+        <span class="ram"><img src="assets/paradise.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+        <span class="kt">Paradise</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LIVE ============================ -->
+<section class="sek pap live" id="live">
+  <div class="wrap">
+    <div class="shd">
+      <div>
+        <h2 class="rub rv">Live</h2>
+      </div>
+    </div>
+
+    <div class="tva">
+      <div>
+        <div class="gigs" id="gigs">
+          <!-- HANDSKRIVEN LISTA, flyttas för hand. data-publik styr heronotisen:
+               "nej" så länge spelningen är ett slutet sällskap. -->
+          <div class="gig next rv" data-publik="nej">
+            <span class="chip">Nästa</span>
+            <span class="d">5 september</span>
+            <span class="v">Glanshammars kyrka</span>
+            <span class="m">Örebro · Duovi</span>
+          </div>
+        </div>
+        <div class="tomspel rv">
+          <p>Inga datum är spikade just nu. Hör av dig så hittar vi ett.</p>
+          <a class="knapp" href="#boka">Boka en spelning</a>
+        </div>
+      </div>
+
+      <div class="tidigare rv">
+        <span class="et">Tidigare</span>
+        <div class="lista">
+        <div class="gig"><span class="d">29 aug</span><span class="v">Roslagens GK</span><span class="m">Norrtälje · Duovi</span></div>
+        <div class="gig"><span class="d">15 aug</span><span class="v">Hille kyrka</span><span class="m">Gävle · Duovi</span></div>
+        <div class="gig"><span class="d">8 aug</span><span class="v">Nyckelviken</span><span class="m">Nacka · Duovi</span></div>
+        <div class="gig"><span class="d">18 jul</span><span class="v">Rimbo</span><span class="m">Norrtälje · Duovi</span></div>
+        <div class="gig"><span class="d">16 jul</span><span class="v">Ingmarsö Krog</span><span class="m">Stockholms skärgård · Duovi</span></div>
+        <div class="gig"><span class="d">11 jul</span><span class="v">Logen, Östra Lagnö</span><span class="m">Roslagen · Duovi + band</span></div>
+        <div class="gig"><span class="d">27 jun</span><span class="v">Idöborg</span><span class="m">Värmdö · Duovi</span></div>
+        <div class="gig"><span class="d">26 jun</span><span class="v">Café Chocolat</span><span class="m">Rimbo · Duovi</span></div>
+        <div class="gig"><span class="d">13 jun</span><span class="v">Fredriksborgs Hotell</span><span class="m">Värmdö · Duovi</span></div>
+        <div class="gig"><span class="d">11 jun</span><span class="v">Rimbo kyrka</span><span class="m">Norrtälje · Duovi</span></div>
+        </div>
+        <button class="tlink tidmer" type="button">Visa alla <span class="pil ned">↓</span></button>
+      </div>
+    </div>
+
+    <div class="fmt" id="format">
+      <div class="shd">
+        <div>
+          <span class="et rv">Liveformat</span>
+          <h2 class="rub rv">Samma låtar, <em>tre uppsättningar</em></h2>
+        </div>
+      </div>
+      <div class="rad">
+        <div class="frad rv">
+          <span class="no">01</span>
+          <h4>Solo</h4>
+          <!-- Liveformaten skrivna för den som bokar (Joachim 2026-09-02: "Jag vill
+               ha den"): instrumenten, sedan rummet, aldrig en tredje mening. Inga
+               adjektiv om musiken — låtarna finns en skärm upp. Rummen i Duovi är
+               listans (kyrkor, krogar); Band kortast eftersom listan visar en
+               bandspelning mot tio med Duovi. -->
+          <p>Röst och gitarr, ingenting emellan. Får plats i vilket rum som helst.</p>
+        </div>
+        <div class="frad rv">
+          <span class="no">02</span>
+          <h4>Duovi</h4>
+          <p>Piano, gitarr och två röster. För vigslar, kyrkor och krogar, där det ska vara nära.</p>
+        </div>
+        <div class="frad rv">
+          <span class="no">03</span>
+          <h4>Band</h4>
+          <p>Trummor, bas och klaviatur. För scener där låtarna ska ta plats.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ OM ============================ -->
+<section class="sek pap om" id="om">
+  <div class="wrap">
+    <div class="tva">
+      <span class="ph rv"><img src="assets/klas-guitar-shoulder.jpg" alt="Klas Österman med gitarren över axeln, vid vattnet i skymningen" width="1152" height="2047"></span>
+      <div>
+        <h2 class="rub rv">Artist &amp; <em>låtskrivare</em></h2>
+        <!-- Bion i full längd — B:s tre meningar ordagrant (= m0:s). Klas 2026-09-03:
+             "Bion vill jag ha tillbaka i sin fulla längd" och "jämför det nya med B så
+             ser du vad som saknas". Den kortade treradaren från 2026-09-02 är borta;
+             "åt andra" och "eget" var sessionens tillägg och står inte i originalet. -->
+        <p class="stor rv">Klas Österman är en svensk singer-songwriter, artist och låtskrivare med rötter i hiphopens textvärld och ett starkt fokus på berättande, melodier och personligt uttryck.</p>
+        <p class="rv">Med texter som rör sig nära livet och musik som spänner från avskalat akustiskt till större, atmosfäriska produktioner skapar han ett eget sound där ärlighet, känsla och starka melodier står i centrum.</p>
+        <p class="rv">Efter många år som låtskrivare och producent hittade Klas tillbaka till sitt skapande, sin röst och viljan att stå på scen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ DUOVI ============================
+     Kort kapitel. Allt utförligt om duon bor på mockups/duovi.html. -->
+<section class="duovi" id="duovi">
+  <div class="duohero">
+    <div class="bg">
+      <img src="assets/duovi-scen.jpg" alt="Duovi — Klas Österman och Josefin Blomberg på scen" width="1920" height="1080">
+    </div>
+    <div class="skym" aria-hidden="true"></div>
+    <div class="duohin">
+      <span class="et rv">Två röster · piano &amp; gitarr</span>
+      <h2 class="rv">Duovi</h2>
     </div>
   </div>
 
-  <div id="show-popup" class="show-popup" onclick="closeShowInfo()">
-    <div class="show-popup-content" onclick="event.stopPropagation()">
-      <button class="close-video" type="button" aria-label="Stäng information" onclick="closeShowInfo()">×</button>
-      <h2 id="popup-title"></h2>
-      <p id="popup-location"></p>
-      <p id="popup-act"></p>
-      <div id="popup-meta" class="show-meta"></div>
-      <div id="popup-actions" class="show-actions"></div>
-      <p id="popup-action-status" class="show-action-status" role="status" aria-live="polite"></p>
+  <div class="duoin">
+    <div class="lead">
+      <p class="rv">Med Josefin Blomberg. Från en stilla vigsel till en hel konsert.</p>
+      <div class="akt rv">
+        <a class="knapp fyll" href="#boka" data-form="Duovi">Boka Duovi</a>
+        <a class='tlink' href='/duovi'>Läs mer om Duovi <span class="pil">→</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ BOKA ============================ -->
+<section class="sek pap boka" id="boka">
+  <div class="wrap">
+    <div class="shd">
+      <div>
+        <h2 class="rub rv">Boka en spelning</h2>
+      </div>
+      <p class="ing rv">Skriv det du vet — datum, plats och ungefär vad det gäller. Resten löser vi tillsammans.</p>
+    </div>
+
+    <form class="fgrid rv js-direct-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-success="Tack! Din bokningsförfrågan är skickad. Jag återkommer så snart jag kan.">
+      <!-- Fem fält, inte åtta (Joachim 2026-09-02: "Korta formuläret"). Ingressen
+           lovar "skriv det du vet" — typ av evenemang och antal gäster är
+           fritextens jobb, datum och ort är en rad. Liveformatet står kvar
+           eftersom Duovi-sidan förväljer det (?form=Duovi). -->
+      <input type="hidden" name="_subject" value="Bokningsförfrågan via klasosterman.se">
+      <input type="hidden" name="Formulär" value="Bokning – Klas Österman">
+      <div><label for="f-namn">Namn</label><input id="f-namn" name="Namn" type="text" autocomplete="name" required></div>
+      <div><label for="f-post">E-post</label><input id="f-post" name="email" type="email" autocomplete="email" required></div>
+      <div><label for="f-nar">När och var</label><input id="f-nar" name="När och var" type="text"></div>
+      <div>
+        <label for="f-form">Liveformat</label>
+        <select id="f-form" name="Liveformat"><option>Vet inte ännu</option><option>Solo</option><option>Duovi</option><option>Fullt band</option></select>
+      </div>
+      <div class="full"><label for="f-txt">Berätta kort</label><textarea id="f-txt" name="Meddelande" rows="4"></textarea></div>
+      <div class="full fslut">
+        <button class="knapp fyll" type="submit">Skicka förfrågan</button>
+        <span class="fine">Skickas till info@klasosterman.se</span>
+        <span class="fine formstatus" role="status" aria-live="polite"></span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ FOTEN ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="mailrow" id="nyheter">
+      <div class="rv">
+        <h4>Ny musik &amp; spelningar</h4>
+        <p>Ett kort mejl när jag släpper musik eller annonserar en offentlig spelning. Inget annat.</p>
+      </div>
+      <form class="mrow rv js-direct-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-success="Tack! Du är nu anmäld till mejllistan.">
+        <input type="hidden" name="_subject" value="Anmälan till Klas Östermans mejllista">
+        <input type="hidden" name="Formulär" value="Mejllista – Klas Österman">
+        <input name="email" type="email" autocomplete="email" required placeholder="Din e-postadress" aria-label="Din e-postadress">
+        <button class="knapp fyll" type="submit">Håll mig uppdaterad</button>
+        <span class="fine formstatus" role="status" aria-live="polite"></span>
+      </form>
+    </div>
+    <div class="fcols">
+      <div class="rv"><div class="fm">Klas Österman</div><p class="fmrad">Singer-songwriter</p></div>
+      <div class="rv"><h5>Följ &amp; kontakt</h5><div class="soc">
+        <a href="https://www.instagram.com/klasostermanmusic/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@klasosterman" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.facebook.com/KlasOstermanMusic" target="_blank" rel="noopener">Facebook</a>
+        <a href="mailto:info@klasosterman.se">info@klasosterman.se</a>
+      </div></div>
+    </div>
+
+    <div class="legal">
+      <span>© 2026 Klas Österman · Alla rättigheter förbehållna</span>
     </div>
   </div>
+</footer>
 
-  <script src="shows.js?v=20260813-1"></script>
-  <script src="forms.js?v=20260814-1" defer></script>
-  <script>
-    function stopSpotify() {
-      const spotify = document.getElementById("spotify-player");
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Videospelare">
+  <div class="duk3">
+    <div class="knappar">
+      <button class="fs" id="lbfs" type="button" aria-label="Helskärm"><svg class="fsi" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg><svg class="fsx" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 2v4H2M10 2v4h4M6 14v-4H2M10 14v-4h4"/></svg><span>Helskärm</span></button>
+      <button class="st" id="lbst" type="button" aria-label="Stäng"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg><span>Stäng</span></button>
+    </div>
+    <div id="lbslot"></div>
+  </div>
+</div>
 
-      if (!spotify) return;
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script>
+(function(){
+'use strict';
 
-      const spotifySection = document.getElementById("music");
-      spotify.remove();
+/* DEV-KONTRAKTET — scripts/verify.js vägrar fotografera utan det. */
+var Q = new URLSearchParams(location.search);
+var JUMP = Q.get('jump');
+if (JUMP !== null) history.scrollRestoration = 'manual';
+window.__ready = false;
+function klar(){
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ window.__ready = true; }); });
+}
+var doc = document.documentElement;
+var stillsam = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      const newSpotify = document.createElement("iframe");
-      newSpotify.id = "spotify-player";
-      newSpotify.style.borderRadius = "12px";
-      newSpotify.src = "https://open.spotify.com/embed/artist/5YfH3tH3YRKdskP1CHgadt?utm_source=generator";
-      newSpotify.width = "100%";
-      newSpotify.height = "352";
-      newSpotify.frameBorder = "0";
-      newSpotify.allowFullscreen = true;
-      newSpotify.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
-      newSpotify.loading = "lazy";
+/* Typsnittsprovet (se 15 i stilen): ?ty=b|bbb, ?ty=prov(&snitt=) ger väljaren.
+   Sätts före allt annat så att tidslinjen mäter rätt bredder. Läget följer med
+   i länkarna mellan Klas sida och Duovi-sidan, så att båda ses i samma snitt. */
+var TY = Q.get('ty');
+function sattSnitt(v){
+  if (/^(fr|bbb)$/.test(v || '')) doc.setAttribute('data-ty', v); else doc.removeAttribute('data-ty');
+  if (!TY) return;
+  var nu = doc.getAttribute('data-ty');
+  Array.prototype.forEach.call(document.querySelectorAll('a[href^="duovi.html"],a[href^="kvall.html"]'), function(a){
+    var h = a.getAttribute('href').split('#'), bas = h[0].split('?')[0], q = new URLSearchParams(h[0].split('?')[1] || '');
+    q.set('ty', TY === 'prov' ? 'prov' : (nu || TY));
+    if (TY === 'prov') { if (nu) q.set('snitt', nu); else q.delete('snitt'); }
+    a.setAttribute('href', bas + '?' + q.toString() + (h[1] ? '#' + h[1] : ''));
+  });
+}
+sattSnitt(TY === 'prov' ? Q.get('snitt') : TY);
 
-      spotifySection.appendChild(newSpotify);
-    }
-
-    function openVideo(videoId) {
-      stopSpotify();
-
-      const lightbox = document.getElementById("video-lightbox");
-      const iframe = document.getElementById("lightbox-iframe");
-
-      iframe.src = "https://www.youtube.com/embed/" + videoId
-        + "?autoplay=1&rel=0&playsinline=1"
-        + "&origin=https%3A%2F%2Fklasosterman.se"
-        + "&widget_referrer=https%3A%2F%2Fklasosterman.se%2F";
-      lightbox.classList.add("active");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeVideo() {
-      document.getElementById("lightbox-iframe").src = "";
-      document.getElementById("video-lightbox").classList.remove("active");
-      document.body.style.overflow = "";
-    }
-
-    const showLabels = {
-      public: "Offentlig",
-      private: "Privat",
-      free: "Fri entré",
-      ticketed: "Biljett krävs",
-      soldout: "Slutsåld"
-    };
-
-    function calendarUrl(show) {
-      const date = show.date.replaceAll("-", "");
-      const nextDay = new Date(show.date + "T12:00:00");
-      nextDay.setDate(nextDay.getDate() + 1);
-      const end = [nextDay.getFullYear(), String(nextDay.getMonth() + 1).padStart(2, "0"), String(nextDay.getDate()).padStart(2, "0")].join("");
-      const params = new URLSearchParams({
-        action: "TEMPLATE",
-        text: `${show.title} – ${show.act}`,
-        dates: `${date}/${end}`,
-        location: show.location,
-        details: "Aktuell information: https://klasosterman.se/#live"
-      });
-      return `https://calendar.google.com/calendar/render?${params}`;
-    }
-
-    function showShareUrl(show) {
-      const url = new URL("https://klasosterman.se/");
-      url.searchParams.set("show", show.date);
-      url.hash = "live";
-      return url.toString();
-    }
-
-    async function shareShow(show) {
-      const status = document.getElementById("popup-action-status");
-      const shareData = {
-        title: `${show.title} – ${show.act}`,
-        text: `${show.displayDate}: ${show.act} på ${show.location}`,
-        url: showShareUrl(show)
-      };
-
-      status.textContent = "";
-
-      if (navigator.share) {
-        try {
-          await navigator.share(shareData);
-          return;
-        } catch (error) {
-          if (error.name === "AbortError") return;
-        }
-      }
-
-      try {
-        await navigator.clipboard.writeText(shareData.url);
-        status.textContent = "Länken är kopierad.";
-      } catch (error) {
-        status.textContent = "Kopiera länken från webbläsarens adressfält.";
-      }
-    }
-
-    function openShowInfo(dateOrShow, title, location, act) {
-      const show = typeof dateOrShow === "object"
-        ? dateOrShow
-        : { displayDate: dateOrShow, title, location, act };
-      document.getElementById("popup-title").innerText = show.displayDate + " — " + show.title;
-      document.getElementById("popup-location").innerText = show.location;
-      document.getElementById("popup-act").innerText = show.act;
-
-      const meta = document.getElementById("popup-meta");
-      meta.replaceChildren();
-      [show.visibility, show.admission, show.format].filter(Boolean).forEach(value => {
-        const badge = document.createElement("span");
-        badge.className = `show-badge show-badge-${value}`;
-        badge.textContent = showLabels[value] || value;
-        meta.appendChild(badge);
-      });
-
-      const actions = document.getElementById("popup-actions");
-      actions.replaceChildren();
-      document.getElementById("popup-action-status").textContent = "";
-      if (show.visibility === "public") {
-        const calendar = document.createElement("a");
-        calendar.className = "show-action";
-        calendar.href = calendarUrl(show);
-        calendar.target = "_blank";
-        calendar.rel = "noopener noreferrer";
-        calendar.textContent = "Lägg i kalender";
-        actions.appendChild(calendar);
-
-        const share = document.createElement("button");
-        share.className = "show-action";
-        share.type = "button";
-        share.textContent = "Dela spelningen";
-        share.addEventListener("click", () => shareShow(show));
-        actions.appendChild(share);
-      }
-      if (show.ticketUrl && show.admission !== "soldout") {
-        const ticket = document.createElement("a");
-        ticket.className = "show-action show-action-primary";
-        ticket.href = show.ticketUrl;
-        ticket.target = "_blank";
-        ticket.rel = "noopener noreferrer";
-        ticket.textContent = "Biljetter";
-        actions.appendChild(ticket);
-      }
-      document.getElementById("show-popup").classList.add("active");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeShowInfo() {
-      document.getElementById("show-popup").classList.remove("active");
-      document.body.style.overflow = "";
-    }
-
-    function handleShowKey(event, date, title, location, act) {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openShowInfo(date, title, location, act);
-      }
-    }
-
-    function createShowItem(show) {
-      const item = document.createElement("div");
-      item.className = "show-item";
-      item.dataset.showDate = show.date;
-      item.setAttribute("role", "button");
-      item.tabIndex = 0;
-
-      const open = () => openShowInfo(show);
-
-      item.addEventListener("click", open);
-      item.addEventListener("keydown", event => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          open();
-        }
-      });
-
-      const date = document.createElement("div");
-      date.className = "show-date";
-      date.textContent = show.displayDate;
-
-      const info = document.createElement("div");
-      info.className = "show-info";
-
-      const location = document.createElement("h3");
-      location.textContent = show.location;
-
-      const act = document.createElement("p");
-      act.textContent = show.act;
-
-      const meta = document.createElement("div");
-      meta.className = "show-meta";
-      [show.visibility, show.admission, show.format].filter(Boolean).forEach(value => {
-        const badge = document.createElement("span");
-        badge.className = `show-badge show-badge-${value}`;
-        badge.textContent = showLabels[value] || value;
-        meta.appendChild(badge);
-      });
-
-      const button = document.createElement("button");
-      button.className = "show-info-button";
-      button.type = "button";
-      button.setAttribute("aria-label", `Mer information om ${show.title.toLowerCase()} – ${show.location}`);
-      button.innerHTML = '<i class="fas fa-info" aria-hidden="true"></i>';
-      button.addEventListener("click", event => {
-        event.stopPropagation();
-        open();
-      });
-
-      info.append(location, act, meta);
-      item.append(date, info, button);
-      return item;
-    }
-
-    function renderShows() {
-      const showsList = document.querySelector(".shows-list");
-      const toggle = document.querySelector(".shows-toggle");
-
-      if (!showsList || !Array.isArray(window.SHOWS)) return;
-
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      const shows = [...window.SHOWS];
-      const upcoming = shows
-        .filter(show => new Date(show.date + "T00:00:00") >= today)
-        .sort((a, b) => a.date.localeCompare(b.date));
-      const past = shows
-        .filter(show => new Date(show.date + "T00:00:00") < today)
-        .sort((a, b) => b.date.localeCompare(a.date));
-
-      showsList.replaceChildren();
-
-      upcoming.forEach((show, index) => {
-        const item = createShowItem(show);
-        if (index >= 3) {
-          item.classList.add("show-extra");
-          item.hidden = true;
-        }
-        showsList.appendChild(item);
-      });
-
-      if (past.length) {
-        const heading = document.createElement("p");
-        heading.className = "section-intro past-shows-heading";
-        heading.textContent = "Tidigare spelningar";
-        if (upcoming.length) {
-          heading.classList.add("show-extra");
-          heading.hidden = true;
-        }
-        showsList.appendChild(heading);
-
-        past.forEach((show, index) => {
-          const item = createShowItem(show);
-          item.classList.add("past-show");
-          if (upcoming.length || index >= 3) {
-            item.classList.add("show-extra");
-            item.hidden = true;
-          }
-          showsList.appendChild(item);
-        });
-      }
-
-      const hasExtras = upcoming.length > 3 || past.length > (upcoming.length ? 0 : 3);
-      if (toggle) {
-        toggle.hidden = !hasExtras;
-        toggle.setAttribute("aria-expanded", "false");
-        toggle.textContent = "Visa alla spelningar";
-      }
-    }
-
-    function toggleShows() {
-      const toggle = document.querySelector(".shows-toggle");
-      const showsList = document.querySelector(".shows-list");
-      if (!toggle || !showsList) return;
-
-      const expanded = showsList.classList.toggle("shows-expanded");
-      showsList.querySelectorAll(".show-extra").forEach(item => {
-        item.hidden = !expanded;
-      });
-      toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-      toggle.textContent = expanded ? "Visa färre spelningar" : "Visa alla spelningar";
-    }
-
-    function updatePastShows() {
-      const showsList = document.querySelector(".shows-list");
-      const heading = document.querySelector(".past-shows-heading");
-      const shows = [...document.querySelectorAll(".show-item[data-show-date]")];
-
-      if (!showsList || !heading || !shows.length) return;
-
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-
-      shows.forEach(show => {
-        const showDate = new Date(show.dataset.showDate + "T00:00:00");
-        show.classList.toggle("past-show", showDate < today);
-      });
-
-      const firstPastShow = shows.find(show => show.classList.contains("past-show"));
-
-      if (firstPastShow) {
-        showsList.insertBefore(heading, firstPastShow);
-        heading.hidden = false;
-      } else {
-        heading.hidden = true;
-      }
-    }
-
-    function openLinkedShow() {
-      const showDate = new URLSearchParams(window.location.search).get("show");
-      if (!showDate || !Array.isArray(window.SHOWS)) return;
-
-      const show = window.SHOWS.find(item => item.date === showDate && item.visibility === "public");
-      if (show) openShowInfo(show);
-    }
-
-    function toggleMenu() {
-      const navLinks = document.querySelector(".nav-links");
-      const menuToggle = document.querySelector(".menu-toggle");
-      const isOpen = navLinks.classList.toggle("open");
-
-      menuToggle.classList.toggle("open", isOpen);
-      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    }
-
-    function closeMenu() {
-      const navLinks = document.querySelector(".nav-links");
-      const menuToggle = document.querySelector(".menu-toggle");
-
-      navLinks.classList.remove("open");
-      menuToggle.classList.remove("open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    }
-
-    renderShows();
-    openLinkedShow();
-
-    document.querySelector(".shows-toggle")?.addEventListener("click", toggleShows);
-
-    document.addEventListener("click", function(event) {
-      const navLinks = document.querySelector(".nav-links");
-      const menuToggle = document.querySelector(".menu-toggle");
-
-      if (
-        navLinks.classList.contains("open") &&
-        !navLinks.contains(event.target) &&
-        !menuToggle.contains(event.target)
-      ) {
-        closeMenu();
-      }
+/* Payoffväljaren: ?payoff=ui visar Archivo, ?payoff=prov väljaren. Bara Klas sida har raden. */
+(function(){
+  var PO = Q.get('payoff');
+  if (!document.querySelector('.hero .under .front')) return;
+  function satt(v){ if (v === 'ui') doc.setAttribute('data-payoff', 'ui'); else doc.removeAttribute('data-payoff'); }
+  satt(PO === 'prov' ? Q.get('lage') : PO);
+  if (PO !== 'prov') return;
+  doc.setAttribute('data-typrov', '1');
+  var p = document.createElement('div');
+  p.className = 'typrov payprov';
+  p.innerHTML = '<b>Payoffen</b><button data-v="">Newsreader · B</button><button data-v="ui">Archivo · förut</button>';
+  document.body.appendChild(p);
+  var knappar = Array.prototype.slice.call(p.querySelectorAll('button'));
+  var mark = function(){
+    var nu = doc.getAttribute('data-payoff') || '';
+    knappar.forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === nu)); });
+  };
+  knappar.forEach(function(b){ b.addEventListener('click', function(){ satt(b.getAttribute('data-v')); mark(); }); });
+  mark();
+})();
+/* Heroväljaren: ?hero=luft|fore direkt, ?hero=prov väljaren (&h= förväljer). Se CSS-kommentaren. */
+(function(){
+  var HE = Q.get('hero');
+  if (!document.querySelector('.hero.linje')) return;
+  function satt(v){ if (v === 'luft' || v === 'fore') doc.setAttribute('data-hero', v); else doc.removeAttribute('data-hero'); }
+  satt(HE === 'prov' ? Q.get('h') : HE);
+  if (HE !== 'prov') return;
+  doc.setAttribute('data-typrov', '1');
+  var p = document.createElement('div');
+  p.className = 'typrov heroprov';
+  p.innerHTML = '<b>Heron</b><button data-v="">Tät · förval</button><button data-v="luft">A:s luft, gamla avstånd</button><button data-v="fore">Som förut</button>';
+  document.body.appendChild(p);
+  var knappar = Array.prototype.slice.call(p.querySelectorAll('button'));
+  var mark = function(){
+    var nu = doc.getAttribute('data-hero') || '';
+    knappar.forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === nu)); });
+  };
+  knappar.forEach(function(b){ b.addEventListener('click', function(){ satt(b.getAttribute('data-v')); mark(); }); });
+  mark();
+})();
+/* Tidigare-listan: förvalet fyra + Visa alla; ?tidigare=alla|stangd, ?tidigare=prov
+   väljaren (&tid= förväljer). Läget följer länkarna kvall↔duovi som snittet gör. */
+(function(){
+  var TID = Q.get('tidigare');
+  var tidigare = document.querySelector('.tidigare');
+  if (!tidigare) return;
+  var knapp = tidigare.querySelector('.tidmer');
+  function satt(v){
+    if (v === 'alla') doc.removeAttribute('data-tidigare'); else doc.setAttribute('data-tidigare', v === 'stangd' ? 'stangd' : 'fyra');
+    tidigare.classList.remove('oppen');
+    text();
+    if (!TID) return;
+    var nu = doc.getAttribute('data-tidigare') || 'alla';
+    Array.prototype.forEach.call(document.querySelectorAll('a[href^="duovi.html"],a[href^="kvall.html"]'), function(a){
+      var h = a.getAttribute('href').split('#'), bas = h[0].split('?')[0], q = new URLSearchParams(h[0].split('?')[1] || '');
+      q.set('tidigare', TID === 'prov' ? 'prov' : nu);
+      if (TID === 'prov') q.set('tid', nu);
+      a.setAttribute('href', bas + '?' + q.toString() + (h[1] ? '#' + h[1] : ''));
     });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", closeMenu);
+  }
+  function text(){
+    if (!knapp) return;
+    var oppen = tidigare.classList.contains('oppen'), stangd = doc.getAttribute('data-tidigare') === 'stangd';
+    knapp.firstChild.nodeValue = oppen ? (stangd ? 'Fäll ihop ' : 'Visa färre ') : (stangd ? 'Tidigare spelningar ' : 'Visa alla ');
+  }
+  function matOm(){ if (window.ScrollTrigger) ScrollTrigger.refresh(); if (lenis) lenis.resize(); }   /* lenis är closure-variabeln, inte window.lenis (granskningen 2026-09-04) */
+  satt(TID === 'prov' ? Q.get('tid') : TID);   /* null → fyra */
+  if (knapp) knapp.addEventListener('click', function(){ tidigare.classList.toggle('oppen'); text(); matOm(); });
+  if (TID !== 'prov') return;
+  doc.setAttribute('data-typrov', '1');
+  var p = document.createElement('div');
+  p.className = 'typrov tidprov';
+  p.innerHTML = '<b>Tidigare</b><button data-v="alla">Alla</button><button data-v="fyra">Fyra + visa alla · nu</button><button data-v="stangd">Hopfällt</button>';
+  document.body.appendChild(p);
+  var knappar = Array.prototype.slice.call(p.querySelectorAll('button'));
+  var mark = function(){
+    var nu = doc.getAttribute('data-tidigare') || 'alla';
+    knappar.forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === nu)); });
+  };
+  knappar.forEach(function(b){ b.addEventListener('click', function(){ satt(b.getAttribute('data-v')); mark(); matOm(); }); });
+  mark();
+})();
+(function(){
+  if (TY !== 'prov') return;
+  doc.setAttribute('data-typrov', '1');
+  var p = document.createElement('div');
+  p.className = 'typrov';
+  p.innerHTML = '<b>Snittet</b>'
+    + '<button data-v="">Newsreader · nu</button>'
+    + '<button data-v="fr">Fraunces</button>'
+    + '<button data-v="bbb">B:s tre roller</button>';
+  document.body.appendChild(p);
+  var knappar = Array.prototype.slice.call(p.querySelectorAll('button'));
+  var mark = function(){
+    var nu = doc.getAttribute('data-ty') || '';
+    knappar.forEach(function(k){ k.setAttribute('aria-pressed', String(k.getAttribute('data-v') === nu)); });
+  };
+  knappar.forEach(function(k){
+    k.addEventListener('click', function(){
+      sattSnitt(k.getAttribute('data-v'));
+      mark();
+      /* Snittbytet ändrar radbredder och kan ändra sidhöjden — mät om, och låt
+         Lenis veta. Utan andra ledet klipper den mot en gammal sidhöjd. */
+      ScrollTrigger.refresh();
+      if (lenis) lenis.resize();
     });
+  });
+  mark();
+})();
 
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") {
-        closeVideo();
-        closeShowInfo();
-        closeMenu();
-      }
+/* Tomläget styrs av datan. ?tomt=1 tar bort raderna. */
+(function(){
+  var live = document.getElementById('live'), gigs = document.getElementById('gigs');
+  if (!live || !gigs) return;
+  if (Q.get('tomt') === '1') gigs.innerHTML = '';
+  if (!gigs.querySelector('.gig')) live.classList.add('tom');
+})();
+
+/* NÄSTA-notisen i heron lyder under listan: bara en rad med data-publik="ja". */
+(function(){
+  var notis = document.querySelector('.hero .notis');
+  if (!notis) return;
+  var lista = document.getElementById('gigs');
+  var publik = lista && lista.querySelector('.gig[data-publik="ja"]');
+  if (!publik) { notis.remove(); return; }
+  var d = publik.querySelector('.d'), v = publik.querySelector('.v'), m = publik.querySelector('.m');
+  var n2 = notis.querySelector('.n2'), n3 = notis.querySelector('.n3');
+  if (n2 && d && v) n2.textContent = d.textContent.trim() + ' · ' + v.textContent.trim();
+  if (n3 && m) n3.textContent = m.textContent.trim();
+})();
+
+/* Bokningsformatet förväljs: ?form=Duovi (från Duovi-sidan) eller en länk med
+   data-form. Formuläret byter inte utseende — bara ett val står redan rätt. */
+(function(){
+  var sel = document.getElementById('f-form');
+  if (!sel) return;
+  function valj(v){
+    if (!v) return;
+    for (var i = 0; i < sel.options.length; i++) if (sel.options[i].text === v) { sel.selectedIndex = i; return; }
+  }
+  valj(Q.get('form'));
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('[data-form]');
+    if (a) valj(a.getAttribute('data-form'));
+  });
+})();
+
+/* "Duovi har spelat på" — ur sidans egna rader, kommande och tidigare. */
+(function(){
+  var block = document.querySelector('.duospel'), lista = block && block.querySelector('.lista');
+  if (!lista) return;
+  var sedda = {}, platser = [];
+  Array.prototype.forEach.call(document.querySelectorAll('#live .gig'), function(g){
+    var m = g.querySelector('.m'), v = g.querySelector('.v');
+    if (!m || !v || m.textContent.toLowerCase().indexOf('duovi') === -1) return;
+    var namn = v.textContent.trim();
+    if (sedda[namn]) return;
+    sedda[namn] = 1; platser.push(namn);
+  });
+  if (!platser.length) { block.remove(); return; }
+  platser.forEach(function(p){ var s = document.createElement('span'); s.textContent = p; lista.appendChild(s); });
+})();
+
+/* SPELAREN */
+var lenis = null;
+(function(){
+  var lb = document.getElementById('lb'), slot = document.getElementById('lbslot'), st = document.getElementById('lbst');
+  if (!lb || !slot || !st) return;
+  var duk = lb.querySelector('.duk3');
+  var forra = null;
+  /* Helskärm/Minimera-knappen. Finns ingen helskärm för div (iOS Safari) göms den — lådan
+     är golvet. Att lämna helskärmen (knappen, Esc, systemgesten) ger alltid lådan tillbaka. */
+  var fsk = document.getElementById('lbfs');
+  if (!(duk.requestFullscreen || duk.webkitRequestFullscreen)) lb.classList.add('utan-fs');
+  function uppd(){
+    var i = !!iHelskarm();
+    lb.classList.toggle('ifs', i);
+    if (fsk) { fsk.querySelector('span').textContent = i ? 'Minimera' : 'Helskärm'; fsk.setAttribute('aria-label', i ? 'Minimera' : 'Helskärm'); }
+  }
+  function lamnaHelskarm(){
+    var ut = document.exitFullscreen || document.webkitExitFullscreen;
+    if (!ut) return;
+    try { var p = ut.call(document); if (p && p.catch) p.catch(function(){}); } catch (e) {}
+  }
+
+  /* Spotify-plattan tystnar när en video öppnas. Joachim 2026-09-03: "det ena
+     ljudet inte överlappa. nu går dom över varandra." Inbäddningen lyssnar på
+     samma postMessage som Spotifys eget iframe-api skickar; mätt 2026-09-03:
+     {command:'pause'} ger playback_update med isPaused:true. Ingen extern
+     skriptfil. Åt andra hållet behövs inget: spelaren täcker sidan, och när
+     den stängs rivs YouTube-ramen. Sidor utan platta: tom lista, inget händer. */
+  function tystaSpotify(){
+    var ramar = document.querySelectorAll('.spwrap iframe');
+    for (var i = 0; i < ramar.length; i++) {
+      try { ramar[i].contentWindow.postMessage({ command: 'pause' }, '*'); } catch (e) {}
+    }
+  }
+  function iHelskarm(){ return document.fullscreenElement || document.webkitFullscreenElement || null; }
+  function helskarm(){
+    var fs = duk && (duk.requestFullscreen || duk.webkitRequestFullscreen);
+    if (!fs) return;
+    try { var p = fs.call(duk); if (p && p.catch) p.catch(function(){}); } catch (e) {}
+  }
+  function oppna(id, titel, kalla){
+    if (!id) return;
+    forra = kalla || null;
+    tystaSpotify();
+    slot.innerHTML = '';
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1';
+    f.title = titel || 'Video';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
+    f.setAttribute('allowfullscreen', '');
+    slot.appendChild(f);
+    lb.classList.add('pa');
+    if (lenis) lenis.stop();
+    st.focus();
+  }
+  function stang(){
+    lb.classList.remove('pa');
+    slot.innerHTML = '';
+    if (iHelskarm()) lamnaHelskarm();
+    if (lenis) lenis.start();
+    if (forra && forra.focus) forra.focus();
+  }
+  /* In eller ut ur helskärm: bara knappens etikett och ikon byts, lådan står kvar. */
+  function vidByte(){ uppd(); }
+  if (fsk) fsk.addEventListener('click', function(){ if (iHelskarm()) lamnaHelskarm(); else helskarm(); });
+  document.addEventListener('fullscreenchange', vidByte);
+  document.addEventListener('webkitfullscreenchange', vidByte);
+  document.addEventListener('click', function(e){
+    var k = e.target.closest && e.target.closest('[data-yt]');
+    if (!k) return;
+    e.preventDefault();
+    oppna(k.getAttribute('data-yt'), k.getAttribute('data-t'), k);
+  });
+  st.addEventListener('click', stang);
+  lb.addEventListener('click', function(e){ if (e.target === lb) stang(); });
+  /* Esc i helskärm sköter webbläsaren (tillbaka till lådan); Esc i lådan stänger. */
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('pa') && !iHelskarm()) stang(); });
+})();
+
+/* Väckning på iPhone (2026-09-04). iOS spelar inte autoplay-video i strömsparläge eller
+   lågdataläge; i stället visas en play-glyf som inte gör något utan controls. Heron har
+   ingen egen kod — den litar på attributen. Första beröringen/tangenten är en användargest:
+   då spelas varje tyst video som syns i vyn och står still. Nollkostnad där autoplay redan
+   fungerar (paused är false, ingenting händer). Duovi: duken får samma hjälp. */
+(function(){
+  var vackt = false;
+  function vack(){
+    if (vackt) return;
+    var videor = document.querySelectorAll('video[muted]'), n = 0;
+    for (var i = 0; i < videor.length; i++) {
+      var v = videor[i], r = v.getBoundingClientRect();
+      if (!v.paused || r.bottom <= 0 || r.top >= innerHeight) continue;
+      v.muted = true;
+      try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
+      n++;
+    }
+    if (n === 0 || videor.length === 0) vackt = true;
+  }
+  ['touchstart', 'pointerdown', 'keydown', 'scroll'].forEach(function(h){
+    document.addEventListener(h, vack, { passive: true });
+  });
+})();
+
+/* Hamburgermenyn (se CSS-kommentaren). Länkarna och wordmarken klonas ur headern. Lagret
+   ligger över headern (z 90 mot 70); stänger på länk, kryss, Esc. Ankarhoppet sköts sedan av
+   det vanliga klicklyssnaren på a[href^="#"] — lagrets lyssnare kör först och släpper Lenis. */
+(function(){
+  var knapp = document.getElementById('meny'), lager = document.getElementById('lager'), hdr = document.getElementById('hdr');
+  if (!knapp || !lager || !hdr) return;
+  var nav = lager.querySelector('nav'), topp = lager.querySelector('.ltopp'), st = lager.querySelector('.lstang');
+  var m = hdr.querySelector('.m');
+  if (m) { var lm = m.cloneNode(true); lm.className = 'lm'; topp.insertBefore(lm, st); }
+  Array.prototype.forEach.call(hdr.querySelectorAll('nav a'), function(a){
+    var k = a.cloneNode(true); k.classList.remove('pa'); k.removeAttribute('data-sek'); nav.appendChild(k);
+  });
+  function oppna(){
+    lager.classList.add('pa'); doc.classList.add('meny-oppen'); knapp.setAttribute('aria-expanded', 'true');
+    if (lenis) lenis.stop();
+    st.focus();
+  }
+  function stangMeny(){
+    if (!lager.classList.contains('pa')) return;
+    lager.classList.remove('pa'); doc.classList.remove('meny-oppen'); knapp.setAttribute('aria-expanded', 'false');
+    if (lenis) lenis.start();
+  }
+  knapp.addEventListener('click', oppna);
+  st.addEventListener('click', function(){ stangMeny(); knapp.focus(); });
+  lager.addEventListener('click', function(e){ if (e.target.closest && e.target.closest('a')) stangMeny(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') stangMeny(); });
+})();
+
+/* Dukens video spelar bara medan den syns. */
+(function(){
+  var v = document.querySelector('.duk video');
+  if (!v || stillsam || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(rader){
+    rader.forEach(function(r){
+      if (r.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+      else v.pause();
     });
+  }, { threshold: .35 }).observe(v);
+})();
 
-    const sections = document.querySelectorAll(".section");
+/* UTAN RÖRELSE — kontraktet måste ändå uppfyllas. */
+if (stillsam || !window.gsap || !window.ScrollTrigger || !window.Lenis) {
+  doc.classList.add('ingen-rorelse');
+  if (JUMP !== null) window.scrollTo(0, +JUMP || 0);
+  klar();
+  return;
+}
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, { threshold: 0.15 });
+/* ===========================================================================
+   RÖRELSEN
+   =========================================================================== */
+gsap.registerPlugin(ScrollTrigger);
+lenis = new Lenis({ lerp: .09, smoothWheel: true });
+window.__lenis = lenis;
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
+gsap.ticker.lagSmoothing(0);
 
-    sections.forEach(section => {
-      section.classList.add("fade-section");
-      observer.observe(section);
+/* Heron: etikett, namn, notis, linjen, payoff, knappen — i tur och ordning. Linjen
+   (.h-hr) finns bara på Klas sida; utan vakten varnar GSAP om tomt mål på Duovi. */
+/* Notisen (.h-notis) tas bort när ingen rad är data-publik="ja" — samma vakt som linjen. */
+var harNotis = !!document.querySelector('.h-notis');
+gsap.set('.h-et,.h-cta,.h-front' + (harNotis ? ',.h-notis' : ''), { opacity: 0, y: 16 });
+gsap.set('.h-namn', { opacity: 0, y: 30 });
+var harLinje = !!document.querySelector('.h-hr');
+if (harLinje) gsap.set('.h-hr', { scaleX: 0 });
+var intro = gsap.timeline({ defaults: { ease: 'power4.out' } })
+  .to('.h-et', { opacity: 1, y: 0, duration: 1.1 }, .3)
+  .to('.h-namn', { opacity: 1, y: 0, duration: 1.5 }, '<.2');
+if (harNotis) intro.to('.h-notis', { opacity: 1, y: 0, duration: 1.0 }, '<.3');
+if (harLinje) intro.to('.h-hr', { scaleX: 1, duration: 1.1, ease: 'power3.inOut' }, '<.2');
+intro.to('.h-front,.h-cta', { opacity: 1, y: 0, duration: 1.0, stagger: .1 }, '<.4');
+
+/* Intoningen — IntersectionObserver, inte ScrollTrigger.batch. Skälet är mätt
+   i F: batchen får aldrig sitt onEnter när scrollen hoppar förbi startpunkten
+   i ett steg (?jump=, ankarlänkar). IO svarar på var elementen faktiskt är. */
+var rv = gsap.utils.toArray('.rv');
+gsap.set(rv, { opacity: 0, y: 22 });
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function(rader){
+    var kommer = [];
+    rader.forEach(function(r){
+      if (r.isIntersecting) { kommer.push(r.target); io.unobserve(r.target); }
+      else if (r.boundingClientRect.top < 0) { gsap.set(r.target, { opacity: 1, y: 0 }); io.unobserve(r.target); }
     });
+    if (kommer.length) gsap.to(kommer, { opacity: 1, y: 0, duration: 1.05, stagger: .07, ease: 'power3.out' });
+  }, { rootMargin: '0px 0px -9% 0px' });
+  rv.forEach(function(e){ io.observe(e); });
+  window.__ioObservera = function(el){ io.observe(el); };
+} else {
+  gsap.set(rv, { opacity: 1, y: 0 });
+}
 
-    const navMenuLinks = document.querySelectorAll(".nav-links a");
-    const pageSections = document.querySelectorAll("section[id]");
+/* Duovi-bilden: långsam parallax i sin egen ram. (Finns inte på duovi.html.) */
+if (document.querySelector('.duohero .bg img')) gsap.fromTo('.duohero .bg img', { yPercent: -6 }, {
+  yPercent: 6, ease: 'none',
+  scrollTrigger: { trigger: '.duohero', start: 'top bottom', end: 'bottom top', scrub: true }
+});
 
-    window.addEventListener("scroll", () => {
-      let current = "";
+/* Header: genomskinlig över heron, mörk platta därefter. */
+(function(){
+  var hdr = document.getElementById('hdr');
+  if (!hdr) return;
+  ScrollTrigger.create({
+    trigger: '.hero', start: 'bottom top+=64', end: 'bottom top+=64',
+    onEnter: function(){ hdr.classList.add('fast'); },
+    onLeaveBack: function(){ hdr.classList.remove('fast'); }
+  });
+})();
 
-      pageSections.forEach(section => {
-        const sectionTop = section.offsetTop - 180;
+/* Navet markerar var man är. */
+(function(){
+  Array.prototype.forEach.call(document.querySelectorAll('#hdr nav a[data-sek]'), function(a){
+    var sek = document.getElementById(a.getAttribute('data-sek'));
+    if (!sek) return;
+    ScrollTrigger.create({ trigger: sek, start: 'top 42%', end: 'bottom 42%',
+      onToggle: function(self){ a.classList.toggle('pa', self.isActive); } });
+  });
+})();
 
-        if (window.scrollY >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
+/* Ankarlänkar går via Lenis. */
+document.addEventListener('click', function(e){
+  var a = e.target.closest && e.target.closest('a[href^="#"]');
+  if (!a) return;
+  var id = a.getAttribute('href').slice(1);
+  if (!id) return;
+  var el = document.getElementById(id);
+  if (!el) return;
+  e.preventDefault();
+  lenis.scrollTo(el, { duration: 1.5, offset: -64 });
+});
 
-      navMenuLinks.forEach(link => {
-        link.classList.remove("active");
+/* SIST: layouten räknas om, Lenis mäter om FÖRE hoppet (mätt bugg i F:
+   scrollTo klipper annars mot gammal sidhöjd), därefter __ready. */
+function settle(){
+  ScrollTrigger.refresh();
+  if (typeof lenis.resize === 'function') lenis.resize();
+  if (JUMP !== null) lenis.scrollTo(+JUMP || 0, { immediate: true });
+  klar();
+}
+document.querySelectorAll('.js-direct-form').forEach(function(form){
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var knapp = form.querySelector('button[type="submit"]');
+    var status = form.querySelector('.formstatus');
+    var original = knapp.textContent;
+    knapp.disabled = true;
+    knapp.textContent = 'Skickar…';
+    status.textContent = '';
+    try {
+      var svar = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      if (!svar.ok) throw new Error('send failed');
+      form.reset();
+      status.textContent = form.dataset.success;
+    } catch (_) {
+      status.textContent = 'Något gick fel. Försök igen eller mejla info@klasosterman.se.';
+    } finally {
+      knapp.disabled = false;
+      knapp.textContent = original;
+    }
+  });
+});
 
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
-        }
-      });
+if (document.readyState === 'complete') settle();
+else addEventListener('load', settle);
 
-      const progressBar = document.querySelector(".scroll-progress");
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
-
-      progressBar.style.width = progress + "%";
-    });
-  </script>
-
-  <a
-    href="#contact"
-    class="floating-listen"
-    aria-label="Gå till bokning och kontakt"
-  >
-    <i class="fas fa-calendar-check"></i>
-    Boka
-  </a>
+})();
+</script>
 </body>
 </html>
