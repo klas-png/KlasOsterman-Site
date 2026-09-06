@@ -1145,6 +1145,13 @@ var lenis = null;
       try { ramar[i].contentWindow.postMessage({ command: 'pause' }, '*'); } catch (e) {}
     }
   }
+  /* Spotify får fortsätta genom all vanlig scrollning och navigering på Klas sida.
+     Det pausas först när besökaren väljer Duovi eller startar en musikvideo, så att
+     två ljudkällor aldrig konkurrerar. */
+  document.addEventListener('click', function(e){
+    var val = e.target.closest && e.target.closest('#duovi, a[href="#duovi"], a[href^="/duovi"], a[href^="duovi"]');
+    if (val) tystaSpotify();
+  });
   function iHelskarm(){ return document.fullscreenElement || document.webkitFullscreenElement || null; }
   function helskarm(){
     var fs = duk && (duk.requestFullscreen || duk.webkitRequestFullscreen);
