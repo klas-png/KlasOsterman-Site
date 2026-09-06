@@ -607,11 +607,11 @@ html[data-typrov] .typrov{display:flex}
 <!-- ============================ HERO ============================ -->
 <div class="hero linje" id="top">
   <div class="bg">
-    <video autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+    <video autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" webkit-playsinline="true" preload="auto" disablepictureinpicture poster="assets/hero-poster.jpg">
       <!-- hero-montage-2.mp4 (2026-09-04): samma klipp omkodat till H.264 High yuv420p, faststart.
            Originalet är High 4:4:4 Predictive/yuv444p — Chrome avkodar det i mjukvara, Safari
            (macOS och iOS) vägrar och visar bara postern. Klas: "videon startar inte i Safari". -->
-      <source src="assets/hero-montage-2.mp4" type="video/mp4">
+      <source src="assets/hero-montage-2.mp4?v=2" type="video/mp4">
     </video>
   </div>
   <div class="in">
@@ -1156,12 +1156,17 @@ var lenis = null;
     tystaSpotify();
     slot.innerHTML = '';
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&playsinline=0&enablejsapi=1&rel=0&modestbranding=1&origin=' + encodeURIComponent(location.origin);
+    var safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&playsinline=0&enablejsapi=1&rel=0&modestbranding=1'
+      + (safari ? '&mute=1' : '') + '&origin=' + encodeURIComponent(location.origin);
     f.title = titel || 'Video';
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
     f.setAttribute('allowfullscreen', '');
     f.addEventListener('load', function(){
       try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*'); } catch (e) {}
+      if (safari) {
+        try { f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*'); } catch (e) {}
+      }
     });
     slot.appendChild(f);
     lb.classList.add('pa');
@@ -1203,6 +1208,9 @@ var lenis = null;
   if (!hero) return;
   hero.defaultMuted = true;
   hero.muted = true;
+  hero.setAttribute('muted', '');
+  hero.setAttribute('playsinline', '');
+  hero.setAttribute('webkit-playsinline', '');
   function spela(){
     hero.muted = true;
     var p;
@@ -1211,8 +1219,10 @@ var lenis = null;
   }
   if (hero.readyState >= 2) spela();
   else hero.addEventListener('canplay', spela, { once: true });
+  hero.addEventListener('loadeddata', spela, { once: true });
   addEventListener('pageshow', spela);
   document.addEventListener('visibilitychange', function(){ if (!document.hidden) spela(); });
+  [250, 1000, 3000].forEach(function(ms){ setTimeout(spela, ms); });
 })();
 
 /* Väckning på iPhone. Första beröringen/tangenten är en användargest; då spelas varje
