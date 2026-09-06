@@ -305,8 +305,27 @@ html[data-hero="fore"] .hero .in{padding-bottom:clamp(40px,5.5vw,76px)}
    runt den. */
 .splat{background:var(--mork);color:var(--ljusf);padding:clamp(16px,1.8vw,22px);
   margin-top:clamp(28px,3.4vw,48px)}
-.spwrap{height:352px}
-.spwrap iframe{width:100%;height:100%;border:0;display:block}
+.spwrap{min-height:352px;display:flex;flex-direction:column}
+.splathuvud{display:flex;align-items:end;justify-content:space-between;gap:24px;
+  padding:8px 4px 20px;border-bottom:1px solid var(--lin)}
+.splathuvud strong{font:300 clamp(25px,2.5vw,36px)/1.05 var(--disp);letter-spacing:-.02em}
+.splathuvud span{font:500 10px/1 var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--ljus3)}
+.sparlista{list-style:none;margin:0;padding:0}
+.sparlista li{border-bottom:1px solid var(--lin2)}
+.sparlista a{display:grid;grid-template-columns:38px minmax(0,1fr) auto;align-items:center;gap:14px;
+  min-height:55px;padding:8px 4px;transition:background .25s,color .25s}
+.sparlista a:hover,.sparlista a:focus-visible{background:rgba(241,236,228,.055)}
+.sparnr{font:400 11px/1 var(--ui);letter-spacing:.14em;color:var(--ljus3)}
+.spartitel{font:400 clamp(15px,1.25vw,17px)/1.3 var(--ui);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sparut{display:flex;align-items:center;gap:10px;font:500 10px/1 var(--ui);letter-spacing:.17em;
+  text-transform:uppercase;color:var(--ljus3)}
+.sparut::after{content:'\2197';font-size:15px;transition:transform .25s}
+.sparlista a:hover .sparut::after{transform:translate(2px,-2px)}
+@media(max-width:560px){
+  .spwrap{min-height:0}.splathuvud{align-items:flex-start;flex-direction:column;gap:8px}
+  .sparlista a{grid-template-columns:28px minmax(0,1fr) auto;gap:9px;min-height:58px}
+  .sparut{font-size:0}.sparut::after{font-size:15px}
+}
 .tyst{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:22px}
 .tyst a{font:400 13px/1 var(--ui);color:var(--ljus3);padding-bottom:3px;
   border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
@@ -655,9 +674,17 @@ html[data-typrov] .typrov{display:flex}
 
     <div class="splat rv">
       <div class="spwrap">
-        <iframe title="Spotify — Klas Österman"
-          src="https://open.spotify.com/embed/artist/5YfH3tH3YRKdskP1CHgadt?utm_source=generator&amp;theme=0"
-          loading="lazy" allow="encrypted-media"></iframe>
+        <div class="splathuvud">
+          <strong>Populärt på Spotify</strong>
+          <span>Klas Österman</span>
+        </div>
+        <ol class="sparlista" aria-label="Populära låtar på Spotify">
+          <li><a href="https://open.spotify.com/track/583xOyq4AIXrk01YcYAtlA" target="_blank" rel="noopener"><span class="sparnr">01</span><span class="spartitel">Min filosofi</span><span class="sparut">Spotify</span></a></li>
+          <li><a href="https://open.spotify.com/track/2oaNweZ4mfcqEadKPI42E5" target="_blank" rel="noopener"><span class="sparnr">02</span><span class="spartitel">Där änglar hör</span><span class="sparut">Spotify</span></a></li>
+          <li><a href="https://open.spotify.com/track/5JXFRaptLZlGllCm7aDcCA" target="_blank" rel="noopener"><span class="sparnr">03</span><span class="spartitel">Det eviga intets land (Vid myren)</span><span class="sparut">Spotify</span></a></li>
+          <li><a href="https://open.spotify.com/track/2sNQfU8UqxizyafT97UeaZ" target="_blank" rel="noopener"><span class="sparnr">04</span><span class="spartitel">Vaken</span><span class="sparut">Spotify</span></a></li>
+          <li><a href="https://open.spotify.com/track/1HxH5umIAcjPrRCrcotnGd" target="_blank" rel="noopener"><span class="sparnr">05</span><span class="spartitel">Hummeldal</span><span class="sparut">Spotify</span></a></li>
+        </ol>
       </div>
     </div>
     <!-- Kanalerna, tyst: lyssningstjänsterna först, sedan de sociala. Joachim
