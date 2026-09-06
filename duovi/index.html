@@ -551,6 +551,11 @@ html[data-typrov] .typrov{display:flex}
 .duoord p{margin:0 0 16px;font:300 clamp(18px,1.6vw,23px)/1.5 var(--disp);text-wrap:pretty}
 .duoord cite{margin-top:auto;font:400 11.5px/1.5 var(--ui);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--ljus3)}
 .duogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,30px) clamp(14px,1.8vw,26px);margin-top:clamp(32px,4vw,56px)}
+.duogrid .extra{display:none}
+.duogrid.oppen .extra{display:block}
+.videomer{display:inline-flex;align-items:center;gap:10px;margin-top:24px;color:var(--ljus2)}
+.videomer .pil{transition:transform .25s ease}
+.duogrid.oppen + .videomer .pil{transform:rotate(180deg)}
 @media(max-width:760px){.duogrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.duogrid{grid-template-columns:1fr}}
 .videor .duofilm{margin-top:clamp(32px,4vw,56px)}
@@ -687,13 +692,20 @@ html[data-typrov] .typrov{display:flex}
         <span class="ram"><img src="../assets/duovid-lamnade.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span><span class="kt">Om du lämnade mig nu</span></button>
       <button class="kort rv" type="button" data-yt="KqaZP5e_FeY" data-t="Maid of the River" aria-label="Spela Maid of the River">
         <span class="ram"><img src="../assets/duovid-maid.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span><span class="kt">Maid of the River</span></button>
-      <button class="kort rv" type="button" data-yt="w5T6a0E-rKA" data-t="San Francisco" aria-label="Spela San Francisco">
+      <button class="kort rv" type="button" data-yt="vKopEF7jo7k" data-t="För dig" aria-label="Spela För dig">
+        <span class="ram"><img src="../assets/duovid-for-dig.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span><span class="kt">För dig</span></button>
+      <button class="kort rv" type="button" data-yt="MLWqvK_ldqw" data-t="Josefin" aria-label="Spela Josefin">
+        <span class="ram"><img src="../assets/duovid-josefin.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span><span class="kt">Josefin</span></button>
+      <button class="kort rv" type="button" data-yt="OTCFXBb_DKw" data-t="Änglavakt" aria-label="Spela Änglavakt">
+        <span class="ram"><img src="../assets/duovid-anglavakt.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span><span class="kt">Änglavakt</span></button>
+      <button class="kort rv extra" type="button" data-yt="w5T6a0E-rKA" data-t="San Francisco" aria-label="Spela San Francisco">
         <span class="ram"><img src="../assets/duovid-sanfran.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span><span class="kt">San Francisco</span></button>
-      <button class="kort rv" type="button" data-yt="quZoqEIczVs" data-t="Living comes with dying" aria-label="Spela Living comes with dying">
+      <button class="kort rv extra" type="button" data-yt="quZoqEIczVs" data-t="Living comes with dying" aria-label="Spela Living comes with dying">
         <span class="ram"><img src="../assets/duovid-living.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span><span class="kt">Living comes with dying</span></button>
-      <button class="kort rv" type="button" data-yt="ypPF4HfDf0k" data-t="Santeria" aria-label="Spela Santeria">
+      <button class="kort rv extra" type="button" data-yt="ypPF4HfDf0k" data-t="Santeria" aria-label="Spela Santeria">
         <span class="ram"><img src="../assets/duovid-santeria.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span><span class="kt">Santeria</span></button>
     </div>
+    <button class="tlink videomer" type="button" aria-expanded="false">Visa fler <span class="pil">↓</span></button>
   </div>
 </section>
 
@@ -1112,6 +1124,19 @@ var lenis = null;
       else v.pause();
     });
   }, { threshold: .35 }).observe(v);
+})();
+
+/* Tre extra musikvideor fälls ut på begäran. */
+(function(){
+  var grid = document.querySelector('.duogrid'), knapp = document.querySelector('.videomer');
+  if (!grid || !knapp) return;
+  knapp.addEventListener('click', function(){
+    var oppen = grid.classList.toggle('oppen');
+    knapp.firstChild.nodeValue = oppen ? 'Visa färre ' : 'Visa fler ';
+    knapp.setAttribute('aria-expanded', String(oppen));
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+    if (lenis && typeof lenis.resize === 'function') lenis.resize();
+  });
 })();
 
 /* UTAN RÖRELSE — kontraktet måste ändå uppfyllas. */
