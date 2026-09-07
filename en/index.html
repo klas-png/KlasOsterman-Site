@@ -48,19 +48,19 @@
      och settlat, window.__ready sätts allra sist.
      Checken körs med   MALFIL=mockups/kvall.html node scripts/check.js
 ============================================================================ -->
-<html lang="sv">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Klas Österman — Singer-songwriter</title>
-<meta name="description" content="Klas Österman — singer-songwriter. Låtar nära livet. Lyssna, se videor och boka en spelning: solo, Duovi eller band.">
-<link rel="canonical" href="https://klasosterman.se/">
+<title>Klas Österman — Swedish singer-songwriter</title>
+<meta name="description" content="Klas Österman — Swedish singer-songwriter. Listen, watch videos and book a live performance: solo, Duovi or full band.">
+<link rel="canonical" href="https://klasosterman.se/en/">
 <link rel="alternate" hreflang="sv" href="https://klasosterman.se/">
 <link rel="alternate" hreflang="en" href="https://klasosterman.se/en/">
 <link rel="alternate" hreflang="x-default" href="https://klasosterman.se/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230e0b09'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='23' fill='%23efe7d9' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="fonts/fonts-b.css">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../fonts/fonts-b.css">
 <style>
 /* ===========================================================================
    1. GRUNDEN
@@ -386,7 +386,7 @@ html[data-hero="fore"] .hero .in{padding-bottom:clamp(40px,5.5vw,76px)}
    visa alla som förval"). ?tidigare=alla|stangd de andra, ?tidigare=prov väljaren (&tid=).
    Joachim 2026-09-03: "tidigare spelningar inte ska vara utvecklat från början". Klas
    sa samma dag att "Var vi spelat" blir fel med Nästa under. Fyra, inte tre: listan är två
-   spalter, tre lämnar ett hål. Knappen är .tlink som "Läs mer om Duovi" och försvinner
+   spalter, tre lämnar ett hål. Knappen är .tlink som "Discover Duovi" och försvinner
    och växlar: fäller ut och fäller ihop igen (Joachim: "man måste kunna trycka
    tillbaka den in också"). */
 .tidmer{display:none;background:none;color:inherit;cursor:pointer;margin-top:14px}
@@ -607,18 +607,18 @@ html[data-typrov] .typrov{display:flex}
 <header id="hdr">
   <a class="m" href="#top">Klas Österman</a>
   <nav>
-    <a href="#lyssna" data-sek="lyssna">Lyssna</a>
-    <a href="#videor" data-sek="videor">Videor</a>
+    <a href="#lyssna" data-sek="lyssna">Listen</a>
+    <a href="#videor" data-sek="videor">Videos</a>
     <a href="#live" data-sek="live">Live</a>
-    <a href="#om" data-sek="om">Om</a>
+    <a href="#om" data-sek="om">About</a>
     <a href="#duovi" data-sek="duovi">Duovi</a>
-    <a class="bok" href="#boka">Boka</a>
+    <a class="bok" href="#boka">Book</a>
   </nav>
-  <a class="sprak" href="/en/" lang="en" hreflang="en" aria-label="View this page in English"><span class="flagga" aria-hidden="true">🇬🇧</span>EN</a>
-  <button class="meny" id="meny" type="button" aria-expanded="false" aria-controls="lager"><i aria-hidden="true"></i>Meny</button>
+  <a class="sprak" href="/" lang="sv" hreflang="sv" aria-label="Visa sidan på svenska"><span class="flagga" aria-hidden="true">🇸🇪</span>SV</a>
+  <button class="meny" id="meny" type="button" aria-expanded="false" aria-controls="lager"><i aria-hidden="true"></i>Menu</button>
 </header>
-<div class="lager" id="lager" role="dialog" aria-modal="true" aria-label="Meny">
-  <div class="ltopp"><button class="lstang" type="button" aria-label="Stäng menyn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>Stäng</button></div>
+<div class="lager" id="lager" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="ltopp"><button class="lstang" type="button" aria-label="Close menu"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg>Close</button></div>
   <nav></nav>
 </div>
 
@@ -629,7 +629,7 @@ html[data-typrov] .typrov{display:flex}
       <!-- hero-montage-2.mp4 (2026-09-04): samma klipp omkodat till H.264 High yuv420p, faststart.
            Originalet är High 4:4:4 Predictive/yuv444p — Chrome avkodar det i mjukvara, Safari
            (macOS och iOS) vägrar och visar bara postern. Klas: "videon startar inte i Safari". -->
-      <source src="assets/hero-montage-2.mp4?v=2" type="video/mp4">
+      <source src="../assets/hero-montage-2.mp4?v=2" type="video/mp4">
     </video>
   </div>
   <div class="in">
@@ -639,7 +639,7 @@ html[data-typrov] .typrov{display:flex}
         <h1 class="h-namn">Klas<em>Österman</em></h1>
       </div>
       <div class="notis h-notis">
-        <span class="n1">Nästa spelning</span>
+        <span class="n1">Next show</span>
         <span class="n2"></span>
         <span class="n3"></span>
       </div>
@@ -649,14 +649,14 @@ html[data-typrov] .typrov{display:flex}
       <!-- Payoffen är A:s rad, återställd på Joachims ord 2026-09-03 ("återställ det
            övriga innehållet"). "Låtar nära livet" togs bort 2026-09-02; den här är
            helhet4:s och står tills Klas har en mening i egna ord. -->
-      <p class="front h-front">Personliga låtar i gränslandet mellan akustiskt, beats och berättande.</p>
+      <p class="front h-front">Personal songs where acoustic music, beats and storytelling meet.</p>
       <div class="cta h-cta">
         <!-- Lyssna (fylld) + nyhetsbrevet (kontur), som A:s Boka + nyheter. Nyhets-
              knappen tillbaka 2026-09-03 på Joachims ord; namnet valt av honom samma dag
              bland fyra: "Kör 'Nytt om släpp & spelningar', lås den." Boka står i headern
              hela vägen ner. -->
-        <a class="knapp fyll" href="#lyssna">Lyssna</a>
-        <a class="knapp nyhet" href="#nyheter">Nytt om släpp &amp; spelningar</a>
+        <a class="knapp fyll" href="#lyssna">Listen</a>
+        <a class="knapp nyhet" href="#nyheter">New releases &amp; live dates</a>
       </div>
     </div>
   </div>
@@ -667,7 +667,7 @@ html[data-typrov] .typrov{display:flex}
   <div class="wrap">
     <div class="shd">
       <div>
-        <h2 class="rub rv">Lyssna</h2>
+        <h2 class="rub rv">Listen</h2>
       </div>
     </div>
 
@@ -699,33 +699,33 @@ html[data-typrov] .typrov{display:flex}
   <div class="wrap">
     <div class="shd">
       <div>
-        <h2 class="rub rv">Videor</h2>
+        <h2 class="rub rv">Videos</h2>
       </div>
     </div>
 
     <div class="rut">
-      <button class="kort rv" type="button" data-yt="iS0_Bc853Bc" data-t="Där änglar hör" aria-label="Spela Där änglar hör">
-        <span class="ram"><img src="assets/anglar.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+      <button class="kort rv" type="button" data-yt="iS0_Bc853Bc" data-t="Där änglar hör" aria-label="Play Där änglar hör">
+        <span class="ram"><img src="../assets/anglar.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span>
         <span class="kt">Där änglar hör</span>
       </button>
-      <button class="kort rv" type="button" data-yt="CaXVYGNNGY0" data-t="Min filosofi" aria-label="Spela Min filosofi">
-        <span class="ram"><img src="assets/filosofi-scen-b.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+      <button class="kort rv" type="button" data-yt="CaXVYGNNGY0" data-t="Min filosofi" aria-label="Play Min filosofi">
+        <span class="ram"><img src="../assets/filosofi-scen-b.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span>
         <span class="kt">Min filosofi</span>
       </button>
-      <button class="kort rv" type="button" data-yt="jyEEpuWH82c" data-t="Hummeldal" aria-label="Spela Hummeldal">
-        <span class="ram"><img src="assets/hummeldal.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+      <button class="kort rv" type="button" data-yt="jyEEpuWH82c" data-t="Hummeldal" aria-label="Play Hummeldal">
+        <span class="ram"><img src="../assets/hummeldal.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span>
         <span class="kt">Hummeldal</span>
       </button>
-      <button class="kort rv" type="button" data-yt="LKZUf40ns8o" data-t="Blood Moon" aria-label="Spela Blood Moon">
-        <span class="ram"><img src="assets/bloodmoon.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+      <button class="kort rv" type="button" data-yt="LKZUf40ns8o" data-t="Blood Moon" aria-label="Play Blood Moon">
+        <span class="ram"><img src="../assets/bloodmoon.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span>
         <span class="kt">Blood Moon</span>
       </button>
-      <button class="kort rv" type="button" data-yt="SVQvr4itZno" data-t="Löpsedel" aria-label="Spela Löpsedel">
-        <span class="ram"><img src="assets/lopsedel.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+      <button class="kort rv" type="button" data-yt="SVQvr4itZno" data-t="Löpsedel" aria-label="Play Löpsedel">
+        <span class="ram"><img src="../assets/lopsedel.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span>
         <span class="kt">Löpsedel</span>
       </button>
-      <button class="kort rv" type="button" data-yt="bdJ6qrHlZ34" data-t="Paradise" aria-label="Spela Paradise">
-        <span class="ram"><img src="assets/paradise.jpg" alt="" width="1280" height="720"><span class="sp">Spela</span></span>
+      <button class="kort rv" type="button" data-yt="bdJ6qrHlZ34" data-t="Paradise" aria-label="Play Paradise">
+        <span class="ram"><img src="../assets/paradise.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span>
         <span class="kt">Paradise</span>
       </button>
     </div>
@@ -747,41 +747,41 @@ html[data-typrov] .typrov{display:flex}
           <!-- HANDSKRIVEN LISTA, flyttas för hand. data-publik styr heronotisen:
                "nej" så länge spelningen är ett slutet sällskap. -->
           <div class="gig next rv" data-publik="nej">
-            <span class="chip">Nästa</span>
-            <span class="d">5 september</span>
+            <span class="chip">Next</span>
+            <span class="d">5 September</span>
             <span class="v">Glanshammars kyrka</span>
             <span class="m">Örebro · Duovi</span>
           </div>
         </div>
         <div class="tomspel rv">
-          <p>Inga datum är spikade just nu. Hör av dig så hittar vi ett.</p>
-          <a class="knapp" href="#boka">Boka en spelning</a>
+          <p>No public dates are confirmed right now. Get in touch and let’s find one.</p>
+          <a class="knapp" href="#boka">Book a show</a>
         </div>
       </div>
 
       <div class="tidigare rv">
-        <span class="et">Tidigare</span>
+        <span class="et">Past shows</span>
         <div class="lista">
-        <div class="gig"><span class="d">29 aug</span><span class="v">Roslagens GK</span><span class="m">Norrtälje · Duovi</span></div>
-        <div class="gig"><span class="d">15 aug</span><span class="v">Hille kyrka</span><span class="m">Gävle · Duovi</span></div>
-        <div class="gig"><span class="d">8 aug</span><span class="v">Nyckelviken</span><span class="m">Nacka · Duovi</span></div>
-        <div class="gig"><span class="d">18 jul</span><span class="v">Rimbo</span><span class="m">Norrtälje · Duovi</span></div>
-        <div class="gig"><span class="d">16 jul</span><span class="v">Ingmarsö Krog</span><span class="m">Stockholms skärgård · Duovi</span></div>
-        <div class="gig"><span class="d">11 jul</span><span class="v">Logen, Östra Lagnö</span><span class="m">Roslagen · Duovi + band</span></div>
-        <div class="gig"><span class="d">27 jun</span><span class="v">Idöborg</span><span class="m">Värmdö · Duovi</span></div>
-        <div class="gig"><span class="d">26 jun</span><span class="v">Café Chocolat</span><span class="m">Rimbo · Duovi</span></div>
-        <div class="gig"><span class="d">13 jun</span><span class="v">Fredriksborgs Hotell</span><span class="m">Värmdö · Duovi</span></div>
-        <div class="gig"><span class="d">11 jun</span><span class="v">Rimbo kyrka</span><span class="m">Norrtälje · Duovi</span></div>
+        <div class="gig"><span class="d">29 Aug</span><span class="v">Roslagens GK</span><span class="m">Norrtälje · Duovi</span></div>
+        <div class="gig"><span class="d">15 Aug</span><span class="v">Hille kyrka</span><span class="m">Gävle · Duovi</span></div>
+        <div class="gig"><span class="d">8 Aug</span><span class="v">Nyckelviken</span><span class="m">Nacka · Duovi</span></div>
+        <div class="gig"><span class="d">18 Jul</span><span class="v">Rimbo</span><span class="m">Norrtälje · Duovi</span></div>
+        <div class="gig"><span class="d">16 Jul</span><span class="v">Ingmarsö Krog</span><span class="m">Stockholm Archipelago · Duovi</span></div>
+        <div class="gig"><span class="d">11 Jul</span><span class="v">Logen, Östra Lagnö</span><span class="m">Roslagen · Duovi + band</span></div>
+        <div class="gig"><span class="d">27 Jun</span><span class="v">Idöborg</span><span class="m">Värmdö · Duovi</span></div>
+        <div class="gig"><span class="d">26 Jun</span><span class="v">Café Chocolat</span><span class="m">Rimbo · Duovi</span></div>
+        <div class="gig"><span class="d">13 Jun</span><span class="v">Fredriksborgs Hotell</span><span class="m">Värmdö · Duovi</span></div>
+        <div class="gig"><span class="d">11 Jun</span><span class="v">Rimbo kyrka</span><span class="m">Norrtälje · Duovi</span></div>
         </div>
-        <button class="tlink tidmer" type="button">Visa alla <span class="pil ned">↓</span></button>
+        <button class="tlink tidmer" type="button">Show all <span class="pil ned">↓</span></button>
       </div>
     </div>
 
     <div class="fmt" id="format">
       <div class="shd">
         <div>
-          <span class="et rv">Liveformat</span>
-          <h2 class="rub rv">Samma låtar, <em>tre uppsättningar</em></h2>
+          <span class="et rv">Live formats</span>
+          <h2 class="rub rv">The same songs, <em>three line-ups</em></h2>
         </div>
       </div>
       <div class="rad">
@@ -793,17 +793,17 @@ html[data-typrov] .typrov{display:flex}
                adjektiv om musiken — låtarna finns en skärm upp. Rummen i Duovi är
                listans (kyrkor, krogar); Band kortast eftersom listan visar en
                bandspelning mot tio med Duovi. -->
-          <p>Röst och gitarr, ingenting emellan. Får plats i vilket rum som helst.</p>
+          <p>Voice and guitar, with nothing in between. At home in any room.</p>
         </div>
         <div class="frad rv">
           <span class="no">02</span>
           <h4>Duovi</h4>
-          <p>För vigslar, mingel och restauranger, där det ska vara nära.</p>
+          <p>For ceremonies, receptions and restaurants where the music belongs up close.</p>
         </div>
         <div class="frad rv">
           <span class="no">03</span>
           <h4>Band</h4>
-          <p>Trummor, bas och klaviatur. För scener där låtarna ska ta plats.</p>
+          <p>Drums, bass and keyboards. For stages where the songs can fill the room.</p>
         </div>
       </div>
     </div>
@@ -814,16 +814,16 @@ html[data-typrov] .typrov{display:flex}
 <section class="sek pap om" id="om">
   <div class="wrap">
     <div class="tva">
-      <span class="ph rv"><img src="assets/klas-guitar-shoulder.jpg" alt="Klas Österman med gitarren över axeln, vid vattnet i skymningen" width="1152" height="2047"></span>
+      <span class="ph rv"><img src="../assets/klas-guitar-shoulder.jpg" alt="Klas Österman with a guitar over his shoulder by the water at dusk" width="1152" height="2047"></span>
       <div>
-        <h2 class="rub rv">Artist &amp; <em>låtskrivare</em></h2>
+        <h2 class="rub rv">Artist &amp; <em>songwriter</em></h2>
         <!-- Bion i full längd — B:s tre meningar ordagrant (= m0:s). Klas 2026-09-03:
              "Bion vill jag ha tillbaka i sin fulla längd" och "jämför det nya med B så
              ser du vad som saknas". Den kortade treradaren från 2026-09-02 är borta;
              "åt andra" och "eget" var sessionens tillägg och står inte i originalet. -->
-        <p class="stor rv">Klas Österman är en svensk singer-songwriter, artist och låtskrivare med rötter i hiphopens textvärld och ett starkt fokus på berättande, melodier och personligt uttryck.</p>
-        <p class="rv">Med texter som rör sig nära livet och musik som spänner från avskalat akustiskt till större, atmosfäriska produktioner skapar han ett eget sound där ärlighet, känsla och starka melodier står i centrum.</p>
-        <p class="rv">Efter många år som låtskrivare och producent hittade Klas tillbaka till sitt skapande, sin röst och viljan att stå på scen.</p>
+        <p class="stor rv">Klas Österman is a Swedish singer-songwriter, artist and composer whose roots in hip-hop lyricism shape a strong focus on storytelling, melody and personal expression.</p>
+        <p class="rv">His lyrics stay close to real life, while the music moves from stripped-back acoustic arrangements to expansive, atmospheric productions — always centred on honesty, emotion and memorable melodies.</p>
+        <p class="rv">After many years as a songwriter and producer, Klas found his way back to his own music, his voice and the stage.</p>
       </div>
     </div>
   </div>
@@ -834,21 +834,21 @@ html[data-typrov] .typrov{display:flex}
 <section class="duovi" id="duovi">
   <div class="duohero">
     <div class="bg">
-      <img src="assets/duovi-scen.jpg" alt="Duovi — Klas Österman och Josefin Blomberg på scen" width="1920" height="1080">
+      <img src="../assets/duovi-scen.jpg" alt="Duovi — Klas Österman and Josefin Blomberg on stage" width="1920" height="1080">
     </div>
     <div class="skym" aria-hidden="true"></div>
     <div class="duohin">
-      <span class="et rv">Två röster · piano &amp; gitarr</span>
+      <span class="et rv">Two voices · piano &amp; guitar</span>
       <h2 class="rv">Duovi</h2>
     </div>
   </div>
 
   <div class="duoin">
     <div class="lead">
-      <p class="rv">Med Josefin Blomberg. Från en stilla vigsel till en hel konsert.</p>
+      <p class="rv">With Josefin Blomberg. From an intimate wedding ceremony to a full concert.</p>
       <div class="akt rv">
-        <a class="knapp fyll" href="#boka" data-form="Duovi">Boka Duovi</a>
-        <a class='tlink' href='/duovi'>Läs mer om Duovi <span class="pil">→</span></a>
+        <a class="knapp fyll" href="#boka" data-form="Duovi">Book Duovi</a>
+        <a class='tlink' href='/en/duovi'>Discover Duovi <span class="pil">→</span></a>
       </div>
     </div>
 
@@ -860,29 +860,29 @@ html[data-typrov] .typrov{display:flex}
   <div class="wrap">
     <div class="shd">
       <div>
-        <h2 class="rub rv">Boka en spelning</h2>
+        <h2 class="rub rv">Book a show</h2>
       </div>
-      <p class="ing rv">Skriv det du vet — datum, plats och ungefär vad det gäller. Resten löser vi tillsammans.</p>
+      <p class="ing rv">Tell us what you know — the date, location and what you have in mind. We’ll work out the rest together.</p>
     </div>
 
-    <form class="fgrid rv js-direct-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-success="Tack! Din bokningsförfrågan är skickad. Jag återkommer så snart jag kan.">
+    <form class="fgrid rv js-direct-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-success="Thank you! Your booking enquiry has been sent. I’ll get back to you as soon as I can.">
       <!-- Fem fält, inte åtta (Joachim 2026-09-02: "Korta formuläret"). Ingressen
            lovar "skriv det du vet" — typ av evenemang och antal gäster är
            fritextens jobb, datum och ort är en rad. Liveformatet står kvar
            eftersom Duovi-sidan förväljer det (?form=Duovi). -->
-      <input type="hidden" name="_subject" value="Bokningsförfrågan via klasosterman.se">
-      <input type="hidden" name="Formulär" value="Bokning – Klas Österman">
-      <div><label for="f-namn">Namn</label><input id="f-namn" name="Namn" type="text" autocomplete="name" required></div>
-      <div><label for="f-post">E-post</label><input id="f-post" name="email" type="email" autocomplete="email" required></div>
-      <div><label for="f-nar">När och var</label><input id="f-nar" name="När och var" type="text"></div>
+      <input type="hidden" name="_subject" value="Booking enquiry via klasosterman.se">
+      <input type="hidden" name="Formulär" value="Booking – Klas Österman">
+      <div><label for="f-namn">Name</label><input id="f-namn" name="Namn" type="text" autocomplete="name" required></div>
+      <div><label for="f-post">Email</label><input id="f-post" name="email" type="email" autocomplete="email" required></div>
+      <div><label for="f-nar">When and where</label><input id="f-nar" name="När och var" type="text"></div>
       <div>
-        <label for="f-form">Liveformat</label>
-        <select id="f-form" name="Liveformat"><option>Vet inte ännu</option><option>Solo</option><option>Duovi</option><option>Fullt band</option></select>
+        <label for="f-form">Live formats</label>
+        <select id="f-form" name="Liveformat"><option>Not sure yet</option><option>Solo</option><option>Duovi</option><option>Full band</option></select>
       </div>
-      <div class="full"><label for="f-txt">Berätta kort</label><textarea id="f-txt" name="Meddelande" rows="4"></textarea></div>
+      <div class="full"><label for="f-txt">Tell us briefly</label><textarea id="f-txt" name="Meddelande" rows="4"></textarea></div>
       <div class="full fslut">
-        <button class="knapp fyll" type="submit">Skicka förfrågan</button>
-        <span class="fine">Skickas till info@klasosterman.se</span>
+        <button class="knapp fyll" type="submit">Send enquiry</button>
+        <span class="fine">Sent to info@klasosterman.se</span>
         <span class="fine formstatus" role="status" aria-live="polite"></span>
       </div>
     </form>
@@ -894,20 +894,20 @@ html[data-typrov] .typrov{display:flex}
   <div class="wrap">
     <div class="mailrow" id="nyheter">
       <div class="rv">
-        <h4>Ny musik &amp; spelningar</h4>
-        <p>Ett kort mejl när jag släpper musik eller annonserar en offentlig spelning. Inget annat.</p>
+        <h4>New music &amp; live dates</h4>
+        <p>A short email when I release music or announce a public show. Nothing else.</p>
       </div>
-      <form class="mrow rv js-direct-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-success="Tack! Du är nu anmäld till mejllistan.">
-        <input type="hidden" name="_subject" value="Anmälan till Klas Östermans mejllista">
-        <input type="hidden" name="Formulär" value="Mejllista – Klas Österman">
-        <input name="email" type="email" autocomplete="email" required placeholder="Din e-postadress" aria-label="Din e-postadress">
-        <button class="knapp fyll" type="submit">Håll mig uppdaterad</button>
+      <form class="mrow rv js-direct-form" action="https://formspree.io/f/mbgrgdao" method="POST" data-success="Thank you! You are now on the mailing list.">
+        <input type="hidden" name="_subject" value="Klas Österman mailing list signup">
+        <input type="hidden" name="Formulär" value="Mailing list – Klas Österman">
+        <input name="email" type="email" autocomplete="email" required placeholder="Your email address" aria-label="Your email address">
+        <button class="knapp fyll" type="submit">Keep me updated</button>
         <span class="fine formstatus" role="status" aria-live="polite"></span>
       </form>
     </div>
     <div class="fcols">
       <div><div class="fm">Klas Österman</div><p class="fmrad">Singer-songwriter</p></div>
-      <div class="rv"><h5>Följ &amp; kontakt</h5><div class="soc">
+      <div class="rv"><h5>Follow &amp; contact</h5><div class="soc">
         <a href="https://www.instagram.com/klasostermanmusic/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.tiktok.com/@klasosterman" target="_blank" rel="noopener">TikTok</a>
         <a href="https://www.facebook.com/KlasOstermanMusic" target="_blank" rel="noopener">Facebook</a>
@@ -916,24 +916,24 @@ html[data-typrov] .typrov{display:flex}
     </div>
 
     <div class="legal">
-      <span>© 2026 Klas Österman · Alla rättigheter förbehållna</span>
+      <span>© 2026 Klas Österman · All rights reserved</span>
     </div>
   </div>
 </footer>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Videospelare">
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video player">
   <div class="duk3">
     <div class="knappar">
-      <button class="fs" id="lbfs" type="button" aria-label="Helskärm"><svg class="fsi" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg><svg class="fsx" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 2v4H2M10 2v4h4M6 14v-4H2M10 14v-4h4"/></svg><span>Helskärm</span></button>
-      <button class="st" id="lbst" type="button" aria-label="Stäng"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg><span>Stäng</span></button>
+      <button class="fs" id="lbfs" type="button" aria-label="Fullscreen"><svg class="fsi" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 6V2h4M14 6V2h-4M2 10v4h4M14 10v4h-4"/></svg><svg class="fsx" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 2v4H2M10 2v4h4M6 14v-4H2M10 14v-4h4"/></svg><span>Fullscreen</span></button>
+      <button class="st" id="lbst" type="button" aria-label="Close"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13"/></svg><span>Close</span></button>
     </div>
     <div id="lbslot"></div>
   </div>
 </div>
 
-<script src="vendor/gsap.min.js"></script>
-<script src="vendor/ScrollTrigger.min.js"></script>
-<script src="vendor/lenis.min.js"></script>
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../vendor/lenis.min.js"></script>
 <script>
 (function(){
 'use strict';
@@ -1029,7 +1029,7 @@ sattSnitt(TY === 'prov' ? Q.get('snitt') : TY);
   function text(){
     if (!knapp) return;
     var oppen = tidigare.classList.contains('oppen'), stangd = doc.getAttribute('data-tidigare') === 'stangd';
-    knapp.firstChild.nodeValue = oppen ? (stangd ? 'Fäll ihop ' : 'Visa färre ') : (stangd ? 'Tidigare spelningar ' : 'Visa alla ');
+    knapp.firstChild.nodeValue = oppen ? (stangd ? 'Fäll ihop ' : 'Show fewer ') : (stangd ? 'Past shows ' : 'Show all ');
   }
   function matOm(){ if (window.ScrollTrigger) ScrollTrigger.refresh(); if (lenis) lenis.resize(); }   /* lenis är closure-variabeln, inte window.lenis (granskningen 2026-09-04) */
   satt(TID === 'prov' ? Q.get('tid') : TID);   /* null → fyra */
@@ -1038,7 +1038,7 @@ sattSnitt(TY === 'prov' ? Q.get('snitt') : TY);
   doc.setAttribute('data-typrov', '1');
   var p = document.createElement('div');
   p.className = 'typrov tidprov';
-  p.innerHTML = '<b>Tidigare</b><button data-v="alla">Alla</button><button data-v="fyra">Fyra + visa alla · nu</button><button data-v="stangd">Hopfällt</button>';
+  p.innerHTML = '<b>Past shows</b><button data-v="alla">Alla</button><button data-v="fyra">Fyra + visa alla · nu</button><button data-v="stangd">Hopfällt</button>';
   document.body.appendChild(p);
   var knappar = Array.prototype.slice.call(p.querySelectorAll('button'));
   var mark = function(){
@@ -1143,7 +1143,7 @@ var lenis = null;
   function uppd(){
     var i = !!iHelskarm();
     lb.classList.toggle('ifs', i);
-    if (fsk) { fsk.querySelector('span').textContent = i ? 'Minimera' : 'Helskärm'; fsk.setAttribute('aria-label', i ? 'Minimera' : 'Helskärm'); }
+    if (fsk) { fsk.querySelector('span').textContent = i ? 'Exit fullscreen' : 'Fullscreen'; fsk.setAttribute('aria-label', i ? 'Exit fullscreen' : 'Fullscreen'); }
   }
   function lamnaHelskarm(){
     var ut = document.exitFullscreen || document.webkitExitFullscreen;
@@ -1416,7 +1416,7 @@ document.querySelectorAll('.js-direct-form').forEach(function(form){
     var status = form.querySelector('.formstatus');
     var original = knapp.textContent;
     knapp.disabled = true;
-    knapp.textContent = 'Skickar…';
+    knapp.textContent = 'Sending…';
     status.textContent = '';
     try {
       var svar = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
@@ -1424,7 +1424,7 @@ document.querySelectorAll('.js-direct-form').forEach(function(form){
       form.reset();
       status.textContent = form.dataset.success;
     } catch (_) {
-      status.textContent = 'Något gick fel. Försök igen eller mejla info@klasosterman.se.';
+      status.textContent = 'Something went wrong. Please try again or email info@klasosterman.se.';
     } finally {
       knapp.disabled = false;
       knapp.textContent = original;
