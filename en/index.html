@@ -744,9 +744,10 @@ html[data-typrov] .typrov{display:flex}
     <div class="tva">
       <div>
         <div class="gigs" id="gigs">
-          <!-- HANDSKRIVEN LISTA, flyttas för hand. data-publik styr heronotisen:
-               "nej" så länge spelningen är ett slutet sällskap. -->
-          <div class="gig next rv" data-publik="nej">
+          <!-- Ange data-date="ÅÅÅÅ-MM-DD" på varje spelning. gig-dates.js sorterar
+               automatiskt i kommande och tidigare efter svensk tid.
+               data-publik="nej" för slutna sällskap, "ja" för offentliga spelningar. -->
+          <div class="gig next rv" data-date="2026-09-05" data-publik="nej">
             <span class="chip">Next</span>
             <span class="d">5 September</span>
             <span class="v">Glanshammars kyrka</span>
@@ -762,16 +763,16 @@ html[data-typrov] .typrov{display:flex}
       <div class="tidigare rv">
         <span class="et">Past shows</span>
         <div class="lista">
-        <div class="gig"><span class="d">29 Aug</span><span class="v">Roslagens GK</span><span class="m">Norrtälje · Duovi</span></div>
-        <div class="gig"><span class="d">15 Aug</span><span class="v">Hille kyrka</span><span class="m">Gävle · Duovi</span></div>
-        <div class="gig"><span class="d">8 Aug</span><span class="v">Nyckelviken</span><span class="m">Nacka · Duovi</span></div>
-        <div class="gig"><span class="d">18 Jul</span><span class="v">Rimbo</span><span class="m">Norrtälje · Duovi</span></div>
-        <div class="gig"><span class="d">16 Jul</span><span class="v">Ingmarsö Krog</span><span class="m">Stockholm Archipelago · Duovi</span></div>
-        <div class="gig"><span class="d">11 Jul</span><span class="v">Logen, Östra Lagnö</span><span class="m">Roslagen · Duovi + band</span></div>
-        <div class="gig"><span class="d">27 Jun</span><span class="v">Idöborg</span><span class="m">Värmdö · Duovi</span></div>
-        <div class="gig"><span class="d">26 Jun</span><span class="v">Café Chocolat</span><span class="m">Rimbo · Duovi</span></div>
-        <div class="gig"><span class="d">13 Jun</span><span class="v">Fredriksborgs Hotell</span><span class="m">Värmdö · Duovi</span></div>
-        <div class="gig"><span class="d">11 Jun</span><span class="v">Rimbo kyrka</span><span class="m">Norrtälje · Duovi</span></div>
+        <div class="gig" data-date="2026-08-29"><span class="d">29 Aug</span><span class="v">Roslagens GK</span><span class="m">Norrtälje · Duovi</span></div>
+        <div class="gig" data-date="2026-08-15"><span class="d">15 Aug</span><span class="v">Hille kyrka</span><span class="m">Gävle · Duovi</span></div>
+        <div class="gig" data-date="2026-08-08"><span class="d">8 Aug</span><span class="v">Nyckelviken</span><span class="m">Nacka · Duovi</span></div>
+        <div class="gig" data-date="2026-07-18"><span class="d">18 Jul</span><span class="v">Rimbo</span><span class="m">Norrtälje · Duovi</span></div>
+        <div class="gig" data-date="2026-07-16"><span class="d">16 Jul</span><span class="v">Ingmarsö Krog</span><span class="m">Stockholm Archipelago · Duovi</span></div>
+        <div class="gig" data-date="2026-07-11"><span class="d">11 Jul</span><span class="v">Logen, Östra Lagnö</span><span class="m">Roslagen · Duovi + band</span></div>
+        <div class="gig" data-date="2026-06-27"><span class="d">27 Jun</span><span class="v">Idöborg</span><span class="m">Värmdö · Duovi</span></div>
+        <div class="gig" data-date="2026-06-26"><span class="d">26 Jun</span><span class="v">Café Chocolat</span><span class="m">Rimbo · Duovi</span></div>
+        <div class="gig" data-date="2026-06-13"><span class="d">13 Jun</span><span class="v">Fredriksborgs Hotell</span><span class="m">Värmdö · Duovi</span></div>
+        <div class="gig" data-date="2026-06-11"><span class="d">11 Jun</span><span class="v">Rimbo kyrka</span><span class="m">Norrtälje · Duovi</span></div>
         </div>
         <button class="tlink tidmer" type="button">Show all <span class="pil ned">↓</span></button>
       </div>
@@ -931,6 +932,7 @@ html[data-typrov] .typrov{display:flex}
   </div>
 </div>
 
+<script src="/gig-dates.js"></script>
 <script src="../vendor/gsap.min.js"></script>
 <script src="../vendor/ScrollTrigger.min.js"></script>
 <script src="../vendor/lenis.min.js"></script>
