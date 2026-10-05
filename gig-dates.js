@@ -22,6 +22,12 @@
   var longDate = new Intl.DateTimeFormat(english ? 'en-GB' : 'sv-SE', {
     timeZone: 'UTC', day: 'numeric', month: 'long'
   });
+  var shortDateWithYear = new Intl.DateTimeFormat(english ? 'en-GB' : 'sv-SE', {
+    timeZone: 'UTC', day: 'numeric', month: 'short', year: 'numeric'
+  });
+  var longDateWithYear = new Intl.DateTimeFormat(english ? 'en-GB' : 'sv-SE', {
+    timeZone: 'UTC', day: 'numeric', month: 'long', year: 'numeric'
+  });
   var upcomingShows = [], pastShows = [];
 
   Array.prototype.forEach.call(live.querySelectorAll('.gig[data-date]'), function (gig) {
@@ -54,7 +60,9 @@
       chip.remove();
     }
     var label = gig.querySelector('.d');
-    if (label) label.textContent = (next ? longDate : shortDate).format(show.date);
+    var anotherYear = show.key.slice(0, 4) !== today.year;
+    var dateFormat = anotherYear ? (next ? longDateWithYear : shortDateWithYear) : (next ? longDate : shortDate);
+    if (label) label.textContent = dateFormat.format(show.date);
     container.appendChild(gig);
   }
 
