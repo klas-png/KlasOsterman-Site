@@ -321,10 +321,13 @@ html[data-hero="fore"] .hero .in{padding-bottom:clamp(40px,5.5vw,76px)}
 .tyst a:hover{color:var(--glod);border-bottom-color:var(--glod)}
 
 /* ===========================================================================
-   7. SE — rutnät med ett stort kort. Ingen remsa, inget lås.
+   7. SE — rutnät med ett stort kort och en hopfälld extravideo.
    =========================================================================== */
 .se .rut{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,30px) clamp(14px,1.8vw,26px);
   margin-top:clamp(32px,4vw,56px)}
+.se .rut .extra{display:none}
+.se .rut.oppen .extra{display:block}
+.se .videomer{margin-top:24px}
 .se .kort:first-child{grid-column:span 2;grid-row:span 2}
 @media(max-width:760px){
   .se .rut{grid-template-columns:1fr 1fr}
@@ -694,7 +697,7 @@ html[data-typrov] .typrov{display:flex}
 </section>
 
 <!-- ============================ VIDEOR ============================
-     Seven music videos, Klas's own thumbnails. All play on the page. -->
+     Six music videos are shown first; the live version is under Show more. -->
 <section class="sek se" id="videor">
   <div class="wrap">
     <div class="shd">
@@ -728,11 +731,12 @@ html[data-typrov] .typrov{display:flex}
         <span class="ram"><img src="../assets/paradise.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span>
         <span class="kt">Paradise</span>
       </button>
-      <button class="kort rv" type="button" data-yt="-xe97gUJZjM" data-t="Paradise · live with band" aria-label="Play Paradise live with band">
+      <button class="kort rv extra" type="button" data-yt="-xe97gUJZjM" data-t="Paradise · live with band" aria-label="Play Paradise live with band">
         <span class="ram"><img src="../assets/paradise-live-band.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span>
         <span class="kt">Paradise · live with band</span>
       </button>
     </div>
+    <button class="tlink videomer" type="button" aria-expanded="false">Show more <span class="pil">↓</span></button>
   </div>
 </section>
 
@@ -1229,6 +1233,14 @@ var lenis = null;
     if (!k) return;
     e.preventDefault();
     oppna(k.getAttribute('data-yt'), k.getAttribute('data-t'), k);
+  });
+  var rut = document.querySelector('.se .rut'), videomer = document.querySelector('.se .videomer');
+  if (rut && videomer) videomer.addEventListener('click', function(){
+    var oppen = rut.classList.toggle('oppen');
+    videomer.firstChild.nodeValue = oppen ? 'Show less ' : 'Show more ';
+    videomer.setAttribute('aria-expanded', String(oppen));
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+    if (lenis && typeof lenis.resize === 'function') lenis.resize();
   });
   st.addEventListener('click', stang);
   lb.addEventListener('click', function(e){ if (e.target === lb) stang(); });
