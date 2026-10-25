@@ -695,6 +695,8 @@ html[data-typrov] .typrov{display:flex}
       </button>
     </div>
     <div class="duogrid">
+      <button class="kort rv" type="button" data-yt="Hqtj4NgHu2E" data-t="Ferris Wheel" aria-label="Play Ferris Wheel">
+        <span class="ram"><img src="../../assets/ferris-wheel-live.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span><span class="kt">Ferris Wheel</span></button>
       <button class="kort rv" type="button" data-yt="epgLor8Q7ns" data-t="Det eviga intets land" aria-label="Play Det eviga intets land">
         <span class="ram"><img src="../../assets/duovid-eviga.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span><span class="kt">Det eviga intets land</span></button>
       <button class="kort rv" type="button" data-yt="1yt9LfNf8ZM" data-t="Om du lämnade mig nu" aria-label="Play Om du lämnade mig nu">
@@ -707,9 +709,9 @@ html[data-typrov] .typrov{display:flex}
         <span class="ram"><img src="../../assets/duovid-josefin.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span><span class="kt">Josefin</span></button>
       <button class="kort rv" type="button" data-yt="OTCFXBb_DKw" data-t="Änglavakt" aria-label="Play Änglavakt">
         <span class="ram"><img src="../../assets/duovid-anglavakt.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span><span class="kt">Änglavakt</span></button>
-      <button class="kort rv extra" type="button" data-yt="w5T6a0E-rKA" data-t="San Francisco" aria-label="Play San Francisco">
+      <button class="kort rv" type="button" data-yt="w5T6a0E-rKA" data-t="San Francisco" aria-label="Play San Francisco">
         <span class="ram"><img src="../../assets/duovid-sanfran.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span><span class="kt">San Francisco</span></button>
-      <button class="kort rv extra" type="button" data-yt="quZoqEIczVs" data-t="Living comes with dying" aria-label="Play Living comes with dying">
+      <button class="kort rv" type="button" data-yt="quZoqEIczVs" data-t="Living comes with dying" aria-label="Play Living comes with dying">
         <span class="ram"><img src="../../assets/duovid-living.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span><span class="kt">Living comes with dying</span></button>
       <button class="kort rv extra" type="button" data-yt="ypPF4HfDf0k" data-t="Santeria" aria-label="Play Santeria">
         <span class="ram"><img src="../../assets/duovid-santeria.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span><span class="kt">Santeria</span></button>
@@ -1042,9 +1044,10 @@ var lenis = null;
     slot.innerHTML = '';
     var f = document.createElement('iframe');
     var safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&playsinline=0&rel=0&modestbranding=1'
+    f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&playsinline=1&rel=0&modestbranding=1'
       + (safari ? '&mute=1' : '');
     f.title = titel || 'Video';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
     f.setAttribute('allowfullscreen', '');
     slot.appendChild(f);
@@ -1144,7 +1147,7 @@ var lenis = null;
   }, { threshold: .35 }).observe(v);
 })();
 
-/* Tre extra musikvideor fälls ut på begäran. */
+/* The final extra music video expands on request. */
 (function(){
   var grid = document.querySelector('.duogrid'), knapp = document.querySelector('.videomer');
   if (!grid || !knapp) return;

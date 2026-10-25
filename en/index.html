@@ -694,7 +694,7 @@ html[data-typrov] .typrov{display:flex}
 </section>
 
 <!-- ============================ VIDEOR ============================
-     Sex musikvideor, Klas egna miniatyrer. Alla spelar på sidan. -->
+     Seven music videos, Klas's own thumbnails. All play on the page. -->
 <section class="sek se" id="videor">
   <div class="wrap">
     <div class="shd">
@@ -727,6 +727,10 @@ html[data-typrov] .typrov{display:flex}
       <button class="kort rv" type="button" data-yt="bdJ6qrHlZ34" data-t="Paradise" aria-label="Play Paradise">
         <span class="ram"><img src="../assets/paradise.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span>
         <span class="kt">Paradise</span>
+      </button>
+      <button class="kort rv" type="button" data-yt="-xe97gUJZjM" data-t="Paradise · live with band" aria-label="Play Paradise live with band">
+        <span class="ram"><img src="../assets/paradise-live-band.jpg" alt="" width="1280" height="720"><span class="sp">Play</span></span>
+        <span class="kt">Paradise · live with band</span>
       </button>
     </div>
   </div>
@@ -1193,9 +1197,10 @@ var lenis = null;
     slot.innerHTML = '';
     var f = document.createElement('iframe');
     var safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&playsinline=0&rel=0&modestbranding=1'
+    f.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&playsinline=1&rel=0&modestbranding=1'
       + (safari ? '&mute=1' : '');
     f.title = titel || 'Video';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
     f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
     f.setAttribute('allowfullscreen', '');
     slot.appendChild(f);
