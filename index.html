@@ -1251,52 +1251,46 @@ var lenis = null;
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('pa') && !iHelskarm()) stang(); });
 })();
 
-/* Väckning på iPhone (2026-09-04). iOS spelar inte autoplay-video i strömsparläge eller
-   lågdataläge; i stället visas en play-glyf som inte gör något utan controls. Heron har
-   ingen egen kod — den litar på attributen. Första beröringen/tangenten är en användargest:
-   då spelas varje tyst video som syns i vyn och står still. Nollkostnad där autoplay redan
-   fungerar (paused är false, ingenting händer). Duovi: duken får samma hjälp. */
+/* Restart the silent background when it becomes visible again. */
 (function(){
   var hero = document.querySelector('.hero .bg video');
   if (!hero) return;
-  hero.defaultMuted = true;
-  hero.muted = true;
+  hero.defaultMuted = hero.muted = hero.autoplay = hero.loop = true;
   hero.setAttribute('muted', '');
   hero.setAttribute('playsinline', '');
-  hero.setAttribute('webkit-playsinline', '');
+  var button = document.createElement('button');
+  button.type = 'button';
+  button.textContent = 'Spela bakgrundsvideon';
+  button.hidden = true;
+  button.style.cssText = 'position:absolute;bottom:20px;right:20px;z-index:5;padding:10px 16px;background:#181410;color:#f1ece4;border:1px solid #999;font:inherit;cursor:pointer';
+  hero.closest('.hero').appendChild(button);
+  function synlig(){
+    var r = hero.getBoundingClientRect();
+    return !document.hidden && r.bottom > 0 && r.top < innerHeight;
+  }
   function spela(){
+    if (!synlig() || !hero.paused) return;
     hero.muted = true;
-    var p;
-    try { p = hero.play(); } catch (e) { return; }
-    if (p && p.catch) p.catch(function(){});
+    try {
+      var p = hero.play();
+      if (p && p.catch) p.catch(function(){button.hidden = false;});
+    } catch(e) {button.hidden = false;}
   }
-  if (hero.readyState >= 2) spela();
-  else hero.addEventListener('canplay', spela, { once: true });
-  hero.addEventListener('loadeddata', spela, { once: true });
+  button.addEventListener('click', spela);
+  hero.addEventListener('playing', function(){button.hidden = true;});
+  hero.addEventListener('canplay', spela);
+  hero.addEventListener('ended', function(){hero.currentTime = 0;spela();});
   addEventListener('pageshow', spela);
-  document.addEventListener('visibilitychange', function(){ if (!document.hidden) spela(); });
-  [250, 1000, 3000].forEach(function(ms){ setTimeout(spela, ms); });
-})();
-
-/* Väckning på iPhone. Första beröringen/tangenten är en användargest; då spelas varje
-   tyst video som syns i vyn och står still. Nollkostnad där autoplay redan fungerar. */
-(function(){
-  var vackt = false;
-  function vack(){
-    if (vackt) return;
-    var videor = document.querySelectorAll('video[muted]'), n = 0;
-    for (var i = 0; i < videor.length; i++) {
-      var v = videor[i], r = v.getBoundingClientRect();
-      if (!v.paused || r.bottom <= 0 || r.top >= innerHeight) continue;
-      v.muted = true;
-      try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
-      n++;
-    }
-    if (n === 0 || videor.length === 0) vackt = true;
-  }
-  ['touchstart', 'pointerdown', 'keydown', 'scroll'].forEach(function(h){
-    document.addEventListener(h, vack, { passive: true });
+  document.addEventListener('visibilitychange', spela);
+  ['pointerdown','touchstart','keydown'].forEach(function(event){
+    document.addEventListener(event, spela, {passive:true});
   });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting) spela();
+    }, {threshold:0.05}).observe(hero);
+  }
+  spela();
 })();
 
 /* Hamburgermenyn (se CSS-kommentaren). Länkarna och wordmarken klonas ur headern. Lagret
