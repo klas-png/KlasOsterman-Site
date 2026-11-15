@@ -49,7 +49,13 @@
      Checken körs med   MALFIL=mockups/kvall.html node scripts/check.js
 ============================================================================ -->
 <html lang="en">
-<head>
+<head><script>
+(function(){
+ var nav=performance.getEntriesByType('navigation')[0];
+ var fresh=(!nav || nav.type==='navigate') && !location.hash && !new URLSearchParams(location.search).has('jump');
+ if(fresh){history.scrollRestoration='manual';addEventListener('pageshow',function(e){if(!e.persisted){if(window.__lenis)window.__lenis.scrollTo(0,{immediate:true});else scrollTo(0,0);}});}
+})();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Klas Österman — Swedish singer-songwriter</title>
@@ -1248,52 +1254,25 @@ var lenis = null;
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('pa') && !iHelskarm()) stang(); });
 })();
 
-/* Väckning på iPhone (2026-09-04). iOS spelar inte autoplay-video i strömsparläge eller
-   lågdataläge; i stället visas en play-glyf som inte gör något utan controls. Heron har
-   ingen egen kod — den litar på attributen. Första beröringen/tangenten är en användargest:
-   då spelas varje tyst video som syns i vyn och står still. Nollkostnad där autoplay redan
-   fungerar (paused är false, ingenting händer). Duovi: duken får samma hjälp. */
+/* Keep the silent hero alive when Safari restores or reveals the page. */
 (function(){
-  var hero = document.querySelector('.hero .bg video');
-  if (!hero) return;
-  hero.defaultMuted = true;
-  hero.muted = true;
-  hero.setAttribute('muted', '');
-  hero.setAttribute('playsinline', '');
-  hero.setAttribute('webkit-playsinline', '');
-  function spela(){
-    hero.muted = true;
-    var p;
-    try { p = hero.play(); } catch (e) { return; }
-    if (p && p.catch) p.catch(function(){});
-  }
-  if (hero.readyState >= 2) spela();
-  else hero.addEventListener('canplay', spela, { once: true });
-  hero.addEventListener('loadeddata', spela, { once: true });
-  addEventListener('pageshow', spela);
-  document.addEventListener('visibilitychange', function(){ if (!document.hidden) spela(); });
-  [250, 1000, 3000].forEach(function(ms){ setTimeout(spela, ms); });
-})();
-
-/* Väckning på iPhone. Första beröringen/tangenten är en användargest; då spelas varje
-   tyst video som syns i vyn och står still. Nollkostnad där autoplay redan fungerar. */
-(function(){
-  var vackt = false;
-  function vack(){
-    if (vackt) return;
-    var videor = document.querySelectorAll('video[muted]'), n = 0;
-    for (var i = 0; i < videor.length; i++) {
-      var v = videor[i], r = v.getBoundingClientRect();
-      if (!v.paused || r.bottom <= 0 || r.top >= innerHeight) continue;
-      v.muted = true;
-      try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
-      n++;
-    }
-    if (n === 0 || videor.length === 0) vackt = true;
-  }
-  ['touchstart', 'pointerdown', 'keydown', 'scroll'].forEach(function(h){
-    document.addEventListener(h, vack, { passive: true });
-  });
+ var v=document.querySelector('.hero .bg video');if(!v)return;
+ v.defaultMuted=true;v.muted=true;v.loop=true;v.playsInline=true;
+ var pending=false, timer=0;
+ function visible(){var r=v.getBoundingClientRect();return !document.hidden && r.bottom>0 && r.top<innerHeight;}
+ function start(){
+  if(!visible() || !v.paused || pending)return;
+  pending=true;v.muted=true;
+  try{var p=v.play();if(p&&p.then)p.then(function(){pending=false;},function(){pending=false;});else pending=false;}catch(e){pending=false;}
+ }
+ function later(){clearTimeout(timer);timer=setTimeout(start,150);}
+ ['loadeddata','canplay'].forEach(function(e){v.addEventListener(e,start);});
+ v.addEventListener('pause',later);
+ ['pageshow','focus','load'].forEach(function(e){addEventListener(e,later);});
+ document.addEventListener('visibilitychange',later);
+ ['pointerdown','touchstart','keydown','scroll'].forEach(function(e){document.addEventListener(e,start,{passive:true});});
+ if('IntersectionObserver' in window)new IntersectionObserver(function(entries){if(entries[0].isIntersecting)later();},{threshold:0.01}).observe(v);
+ [0,250,1000,3000].forEach(function(t){setTimeout(start,t);});
 })();
 
 /* Hamburgermenyn (se CSS-kommentaren). Länkarna och wordmarken klonas ur headern. Lagret
