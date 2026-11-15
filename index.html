@@ -496,8 +496,7 @@ footer{padding:clamp(56px,7vw,104px) 0 34px}
 .fcols{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(2,minmax(0,1fr));gap:34px clamp(28px,4vw,64px);
   padding:0 0 clamp(38px,4.4vw,58px)}
 .mailrow + .fcols{padding-top:clamp(38px,4.4vw,58px)}
-.fcols > :last-child{grid-column:-2}
-@media(max-width:760px){.fcols{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.fcols{grid-template-columns:1fr 1fr}.fcols > :first-child{grid-column:1 / -1}}
 /* Ge diakritiska tecken utrymme även när webbläsaren rasteriserar texten. */
 .fm{font:300 clamp(24px,2.2vw,32px)/1.3 var(--disp);letter-spacing:-.015em}
 .fmrad{margin-top:10px;font:400 13px/1.5 var(--ui);color:var(--ljus3)}
@@ -924,6 +923,10 @@ html[data-typrov] .typrov{display:flex}
     </div>
     <div class="fcols">
       <div><div class="fm">Klas Österman</div><p class="fmrad">Singer-songwriter</p></div>
+      <div class="rv"><h5>Tillsammans</h5><div class="soc">
+        <a href="/duovi/">Duovi</a>
+        <a href="https://www.josefinblomberg.se/">Josefin Blomberg</a>
+      </div></div>
       <div class="rv"><h5>Följ &amp; kontakt</h5><div class="soc">
         <a href="https://www.instagram.com/klasostermanmusic/" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.tiktok.com/@klasosterman" target="_blank" rel="noopener">TikTok</a>
