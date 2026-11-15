@@ -248,7 +248,7 @@ a:hover .pil,button:hover .pil{transform:translateX(5px)}
 /* Ken Burns bara på stillbild. Mätt 2026-09-04 med hero-montage-2 (yuv420p): zoomen på VIDEON gav en
    bildruta om 50–63 ms per svep i heron (max 17,9 utan; omslaget med will-change hjälpte inte; den gamla
    yuv444-filen klarade sig för att Chrome avkodar den i mjukvara utanför videolagret). Duovi har img. */
-.hero .bg img{animation:kb 44s ease-in-out infinite alternate}
+.hero .bg img{animation:none}.hero-motion{display:block;width:100%;height:100%;pointer-events:none}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.07)}}
 .hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
   background:linear-gradient(rgba(12,10,8,.34),rgba(12,10,8,.3) 45%,rgba(12,10,8,.82) 82%,var(--natt) 99%)}
@@ -635,51 +635,7 @@ html[data-typrov] .typrov{display:flex}
 <!-- ============================ HERO ============================ -->
 <div class="hero linje" id="top">
   <div class="bg">
-    <video aria-hidden="true" tabindex="-1" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" webkit-playsinline="true" preload="auto" disablepictureinpicture poster="assets/hero-poster.jpg">
-      <!-- hero-montage-2.mp4 (2026-09-04): samma klipp omkodat till H.264 High yuv420p, faststart.
-           Originalet är High 4:4:4 Predictive/yuv444p — Chrome avkodar det i mjukvara, Safari
-           (macOS och iOS) vägrar och visar bara postern. Klas: "videon startar inte i Safari". -->
-      <source src="assets/hero-montage-2.mp4?v=2" type="video/mp4">
-    </video>
-<script>
-/* Independent silent hero: never touches Spotify or the music-video player. */
-(function(){
-  var video = document.querySelector('.hero .bg video');
-  if (!video) return;
-  video.controls = false;
-  video.removeAttribute("controls");
-  video.defaultMuted = true;
-  video.muted = true;
-  video.loop = true;
-  video.autoplay = true;
-  video.playsInline = true;
-  var pending = false;
-  function start(){
-    if (document.hidden || pending || !video.paused) return;
-    video.muted = true;
-    pending = true;
-    try {
-      var play = video.play();
-      if (play && play.then) play.then(function(){pending=false;},function(){pending=false;});
-      else pending=false;
-    } catch(e) {pending=false;}
-  }
-  video.addEventListener('loadeddata', start);
-  video.addEventListener('canplay', start);
-  video.addEventListener('pause', function(){setTimeout(start, 200);});
-  video.addEventListener('ended', function(){video.currentTime=0;start();});
-  window.addEventListener('pageshow', start);
-  window.addEventListener('focus', start);
-  document.addEventListener('visibilitychange', start);
-  ['pointerdown','touchstart','keydown'].forEach(function(event){
-    document.addEventListener(event,start,{passive:true});
-  });
-  if ('IntersectionObserver' in window) new IntersectionObserver(function(entries){
-    if (entries[0].isIntersecting) start();
-  }).observe(video);
-  [0,250,1000,3000].forEach(function(delay){setTimeout(start,delay);});
-})();
-</script>
+    <picture class="hero-motion" aria-hidden="true"><source media="(prefers-reduced-motion: reduce)" srcset="assets/hero-poster.jpg"><img src="assets/hero-background.webp" alt="" width="1280" height="720" fetchpriority="high"></picture>
 
   </div>
   <div class="in">
