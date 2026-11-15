@@ -633,6 +633,44 @@ html[data-typrov] .typrov{display:flex}
            (macOS och iOS) vägrar och visar bara postern. Klas: "videon startar inte i Safari". -->
       <source src="assets/hero-montage-2.mp4?v=2" type="video/mp4">
     </video>
+<script>
+/* Independent silent hero: never touches Spotify or the music-video player. */
+(function(){
+  var video = document.querySelector('.hero .bg video');
+  if (!video) return;
+  video.defaultMuted = true;
+  video.muted = true;
+  video.loop = true;
+  video.autoplay = true;
+  video.playsInline = true;
+  var pending = false;
+  function start(){
+    if (document.hidden || pending || !video.paused) return;
+    video.muted = true;
+    pending = true;
+    try {
+      var play = video.play();
+      if (play && play.then) play.then(function(){pending=false;},function(){pending=false;});
+      else pending=false;
+    } catch(e) {pending=false;}
+  }
+  video.addEventListener('loadeddata', start);
+  video.addEventListener('canplay', start);
+  video.addEventListener('pause', function(){setTimeout(start, 200);});
+  video.addEventListener('ended', function(){video.currentTime=0;start();});
+  window.addEventListener('pageshow', start);
+  window.addEventListener('focus', start);
+  document.addEventListener('visibilitychange', start);
+  ['pointerdown','touchstart','keydown'].forEach(function(event){
+    document.addEventListener(event,start,{passive:true});
+  });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(entries){
+    if (entries[0].isIntersecting) start();
+  }).observe(video);
+  [0,250,1000,3000].forEach(function(delay){setTimeout(start,delay);});
+})();
+</script>
+
   </div>
   <div class="in">
     <div class="topp">
@@ -1249,48 +1287,6 @@ var lenis = null;
   lb.addEventListener('click', function(e){ if (e.target === lb) stang(); });
   /* Esc i helskärm sköter webbläsaren (tillbaka till lådan); Esc i lådan stänger. */
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('pa') && !iHelskarm()) stang(); });
-})();
-
-/* Restart the silent background when it becomes visible again. */
-(function(){
-  var hero = document.querySelector('.hero .bg video');
-  if (!hero) return;
-  hero.defaultMuted = hero.muted = hero.autoplay = hero.loop = true;
-  hero.setAttribute('muted', '');
-  hero.setAttribute('playsinline', '');
-  var button = document.createElement('button');
-  button.type = 'button';
-  button.textContent = 'Spela bakgrundsvideon';
-  button.hidden = true;
-  button.style.cssText = 'position:absolute;bottom:20px;right:20px;z-index:5;padding:10px 16px;background:#181410;color:#f1ece4;border:1px solid #999;font:inherit;cursor:pointer';
-  hero.closest('.hero').appendChild(button);
-  function synlig(){
-    var r = hero.getBoundingClientRect();
-    return !document.hidden && r.bottom > 0 && r.top < innerHeight;
-  }
-  function spela(){
-    if (!synlig() || !hero.paused) return;
-    hero.muted = true;
-    try {
-      var p = hero.play();
-      if (p && p.catch) p.catch(function(){button.hidden = false;});
-    } catch(e) {button.hidden = false;}
-  }
-  button.addEventListener('click', spela);
-  hero.addEventListener('playing', function(){button.hidden = true;});
-  hero.addEventListener('canplay', spela);
-  hero.addEventListener('ended', function(){hero.currentTime = 0;spela();});
-  addEventListener('pageshow', spela);
-  document.addEventListener('visibilitychange', spela);
-  ['pointerdown','touchstart','keydown'].forEach(function(event){
-    document.addEventListener(event, spela, {passive:true});
-  });
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function(entries){
-      if(entries[0].isIntersecting) spela();
-    }, {threshold:0.05}).observe(hero);
-  }
-  spela();
 })();
 
 /* Hamburgermenyn (se CSS-kommentaren). Länkarna och wordmarken klonas ur headern. Lagret

@@ -634,6 +634,44 @@ html[data-typrov] .typrov{display:flex}
            (macOS och iOS) vägrar och visar bara postern. Klas: "videon startar inte i Safari". -->
       <source src="../assets/hero-montage-2.mp4?v=2" type="video/mp4">
     </video>
+<script>
+/* Independent silent hero: never touches Spotify or the music-video player. */
+(function(){
+  var video = document.querySelector('.hero .bg video');
+  if (!video) return;
+  video.defaultMuted = true;
+  video.muted = true;
+  video.loop = true;
+  video.autoplay = true;
+  video.playsInline = true;
+  var pending = false;
+  function start(){
+    if (document.hidden || pending || !video.paused) return;
+    video.muted = true;
+    pending = true;
+    try {
+      var play = video.play();
+      if (play && play.then) play.then(function(){pending=false;},function(){pending=false;});
+      else pending=false;
+    } catch(e) {pending=false;}
+  }
+  video.addEventListener('loadeddata', start);
+  video.addEventListener('canplay', start);
+  video.addEventListener('pause', function(){setTimeout(start, 200);});
+  video.addEventListener('ended', function(){video.currentTime=0;start();});
+  window.addEventListener('pageshow', start);
+  window.addEventListener('focus', start);
+  document.addEventListener('visibilitychange', start);
+  ['pointerdown','touchstart','keydown'].forEach(function(event){
+    document.addEventListener(event,start,{passive:true});
+  });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function(entries){
+    if (entries[0].isIntersecting) start();
+  }).observe(video);
+  [0,250,1000,3000].forEach(function(delay){setTimeout(start,delay);});
+})();
+</script>
+
   </div>
   <div class="in">
     <div class="topp">
@@ -1246,54 +1284,6 @@ var lenis = null;
   lb.addEventListener('click', function(e){ if (e.target === lb) stang(); });
   /* Esc i helskärm sköter webbläsaren (tillbaka till lådan); Esc i lådan stänger. */
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('pa') && !iHelskarm()) stang(); });
-})();
-
-/* Väckning på iPhone (2026-09-04). iOS spelar inte autoplay-video i strömsparläge eller
-   lågdataläge; i stället visas en play-glyf som inte gör något utan controls. Heron har
-   ingen egen kod — den litar på attributen. Första beröringen/tangenten är en användargest:
-   då spelas varje tyst video som syns i vyn och står still. Nollkostnad där autoplay redan
-   fungerar (paused är false, ingenting händer). Duovi: duken får samma hjälp. */
-(function(){
-  var hero = document.querySelector('.hero .bg video');
-  if (!hero) return;
-  hero.defaultMuted = true;
-  hero.muted = true;
-  hero.setAttribute('muted', '');
-  hero.setAttribute('playsinline', '');
-  hero.setAttribute('webkit-playsinline', '');
-  function spela(){
-    hero.muted = true;
-    var p;
-    try { p = hero.play(); } catch (e) { return; }
-    if (p && p.catch) p.catch(function(){});
-  }
-  if (hero.readyState >= 2) spela();
-  else hero.addEventListener('canplay', spela, { once: true });
-  hero.addEventListener('loadeddata', spela, { once: true });
-  addEventListener('pageshow', spela);
-  document.addEventListener('visibilitychange', function(){ if (!document.hidden) spela(); });
-  [250, 1000, 3000].forEach(function(ms){ setTimeout(spela, ms); });
-})();
-
-/* Väckning på iPhone. Första beröringen/tangenten är en användargest; då spelas varje
-   tyst video som syns i vyn och står still. Nollkostnad där autoplay redan fungerar. */
-(function(){
-  var vackt = false;
-  function vack(){
-    if (vackt) return;
-    var videor = document.querySelectorAll('video[muted]'), n = 0;
-    for (var i = 0; i < videor.length; i++) {
-      var v = videor[i], r = v.getBoundingClientRect();
-      if (!v.paused || r.bottom <= 0 || r.top >= innerHeight) continue;
-      v.muted = true;
-      try { var p = v.play(); if (p && p.catch) p.catch(function(){}); } catch (e) {}
-      n++;
-    }
-    if (n === 0 || videor.length === 0) vackt = true;
-  }
-  ['touchstart', 'pointerdown', 'keydown', 'scroll'].forEach(function(h){
-    document.addEventListener(h, vack, { passive: true });
-  });
 })();
 
 /* Hamburgermenyn (se CSS-kommentaren). Länkarna och wordmarken klonas ur headern. Lagret
